@@ -91,16 +91,18 @@ char *get_next_line(int fd)
 	int len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	str = ft_calloc(1, 1);
-	str = ft_strjoin(str, plus);
-	len = ft_readf(fd, &str, plus, 0);
-	if (len == 0)
+			return (NULL);
+	{
+		str = ft_calloc(1, 1);
+		str = ft_strjoin(str, plus);
+		len = ft_readf(fd, &str, plus, 0);
+		if (len == 0)
 	{
 		free(str);
 		return (NULL);
 	}
 	str = ft_retstr(str, len);
+	}
 	return (str);
 }
 
@@ -110,6 +112,7 @@ char *get_next_line(int fd)
 	char *f = "not null";
 	int x = 1;
 	fd = open("prova.txt", O_RDONLY, 777);
+	
 	if (f == NULL)
 	{
 		f = get_next_line(fd);
