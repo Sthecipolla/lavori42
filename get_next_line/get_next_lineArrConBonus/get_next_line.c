@@ -87,15 +87,15 @@ static char *ft_retstr(char *str, size_t limit)
 char *get_next_line(int fd)
 {
 	char *str;
-	static char plus[2048][BUFFER_SIZE + 1];
+	static char plus[BUFFER_SIZE + 1];
 	int len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 			return (NULL);
 	{
 		str = ft_calloc(1, 1);
-		str = ft_strjoin(str, plus[fd]);
-		len = ft_readf(fd, &str, plus[fd], 0);
+		str = ft_strjoin(str, plus);
+		len = ft_readf(fd, &str, plus, 0);
 		if (len == 0)
 	{
 		free(str);
