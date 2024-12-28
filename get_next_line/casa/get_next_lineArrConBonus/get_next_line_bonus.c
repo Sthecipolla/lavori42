@@ -75,7 +75,7 @@ static char *ft_retstr(char *str, size_t limit)
 char *get_next_line(int fd)
 {
 	char *str;
-	static char plus[2048][BUFFER_SIZE + 1];
+	static char plus[4096][BUFFER_SIZE + 1];
 	int len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
