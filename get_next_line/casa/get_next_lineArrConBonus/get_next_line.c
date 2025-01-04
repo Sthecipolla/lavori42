@@ -9,7 +9,7 @@
 /*   Updated: 2024/12/27 12:04:12 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/* 
+
 #include "get_next_line.h"
 
 static int		check(char *str);
@@ -104,7 +104,7 @@ char *get_next_line(int fd)
 	str = ft_retstr(str, len);
 	}
 	return (str);
-} */
+} 
 
 /* int main()
 {
