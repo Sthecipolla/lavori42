@@ -1,0 +1,73 @@
+#!/bin/bash# architecture
+arch=$(uname -a)# physical CPU#
+
+
+# con grep cerchiamo physical id nel file cpuinfo e con wc -l contiamo in quante linee appare
+phy_cpu=$(grep "physical id" /proc/cpuinfo | wc -l)# virtual CPU
+
+# idem ma cerchiamo processor
+vir_cpu=$(grep "processor" /proc/cpuinfo | wc -l)# Memory usage/RAM
+
+
+# con free otteniamo le info in megabytes [--mega] sulla ram, ma dobbiamo filtrarle per avere quello che ci serve. Usiamo awk che cerca la
+# riga che inizia con Mem: e poi di quella riga stampiamo prima la prima parola $2 per il totale, $3 per quella usata, e poi per la percentuale stampiamo
+# il risultato di (used:total)x100
+ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+ram_used=$(free --mega | awk '$1 == "Mem:" {print $3}')
+ram_percent=$(free --mega | awk '$1 == "Mem:" {printf("%.2f", $3/$2*100)}')# disk usage
+
+
+# con df ossia disk filesystem abbiamo le info sull'uso del disco, con grep cerchiamo le righe con /dev/, ma con grep -v escludiamo quelle con /boot, poi
+# sommiamo quanto e' l uso del disco con $3 mentre il totale e $2, per la percentule la calcoliamo
+disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk_t/1024}')
+disk_used=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} END {print disk_u}')
+disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{dik_u += $3} {disk_t += $2} END {printf("%d"), disk_u/disk_t*100}')# cpu load
+
+
+# non l ho fatto identico alla guida, ma credo funzioni cmq, da controllare)(con vmastat otteniamo le statistiche del sistema, tra cui l'uso della cpu.
+# Scrivendo vmstat 1 2 otteniamo il risultato 2 volte a distanza di un secondo, e con tail -l prendiamo come buono solo l'ultimo stampato. A noi interessa
+# la 15esima parola, quindi prendiamo quella con $15. Con cpu_fin faccio il calcolo per la percentuale
+cpul=$(vmstat 1 2 | tail -l | awk '{printf $15}')
+cpu_op=$(expr 100- $cpul)
+cpu_fin=$(printf "%.1f" $cpu_op)# last boot
+
+
+# con who otteniamo le nostre info e con la flag -b le filtriamo. Ci assicuriamo che la prima parola sia system e poi printiamo prima la terza parola, spazio
+# , e poi la quarta
+l_boot=$(who -b | awk '$1 == "system" {print $3 " " $4}')# LVM use
+
+
+# questa e un if perche' dobbiamo scrivere yes se i lvm usati sono maggiori di 0, senno si scrive no. Usiamo lsblk per avere le info, cerchiamo con grep
+# lvm, con wc -l contiamo il numero di righe in cui compare, poi compariamo il numero di linee contate con 0. Se le linee sono maggiori di 0 stampi con echo
+# yes, senno' stampi no. Fi e per chiudere l if statement
+lvm=$(if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo yes; else echo no; fi)# connections TCP
+
+
+# qui ci serve contare il numero di linee in cui ci sono delle tcp attive quindi cerchiamo con grep ESTAB e contiamo le linee
+tcp=$(ss -ta | grep ESTAB | wc -l)# user log
+
+
+# contiamo quanti user ci sono
+user_l=$(users | wc -w)# network
+
+
+# per avere l ip si usa semplicemente hostname -I, mentre per MAC usiamo ip link che mostra la network interface, poi cerchiamo con grep e stampiamo cio' che
+# ci serve
+ip=$(hostname -I)
+mac=$(ip link | grep "link/ether" | awk '{print $2}')# number of sudo commands
+
+
+# in journalctl, un tool che colleziona i system log, filtriamo le info dicendogli una path, _COMM=sudo, e ancora di piu' filtriamo con grep COMMAND per
+# avere solo i comandi eseguibili, poi contiamo le linee in cui compaiono questi comandi
+sudo=$(journalctl _COMM=sudo | grep COMMAND | wc -l)wall " Architecture : $arch
+       CPU physical : $phy_cpu
+       vCPU : $vir_cpu
+       Memory Usage : $ram_used/${ram_total}MB ($ram_percent%)
+       Disk Usage : $disk_used/$disk_total ($disk_percent%)
+       CPU load : $cpu_fin%
+       Last boot : $l_boot
+       LVM use : $lvm
+       Connections TCP : $tcp ESTABLISHED
+       User log : $user_l
+       Network : IP $ip ($mac)
+       Sudo : $sudo cmd"
