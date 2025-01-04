@@ -1,0 +1,82 @@
+
+
+
+
+				SCRIPT DEBIANT MONITORIG
+						
+					
+	
+---------------------------------------------------------------------------------------------
+NOME VARIABILE=$
+
+assegna alla variabile il risultato dello script il $ serve ad assegnare il risultato alla
+variabile utilizzata
+				
+---------------------------------------------------------------------------------------------
+arch=$uname -a 
+
+ti da le informazione su tutto il sistema operativo(versione, nome, ecc...) 
+
+Linux lhima42 6.1.0-28-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.119-1 (2024-11-22) x86_64 GNU/Linux
+
+1)uname = ti dice il sistema operativo (solo il nome )
+
+2)-a = all (ti da tutti i dati possibili di quel comando)
+---------------------------------------------------------------------------------------------
+cpuf=$(grep "physical id" /proc/cpuinfo | wc -l)
+questo cerca nel file cpuinfo i dettagli assegnati sopra
+
+grep e un comando che cerca in un file o nell'output del terminale in base alla sintassi
+
+es: 
+
+grep "physical id" = nomeFile (nel file)
+grep "physical id" = (nel output)
+
+| = in aggiunta fai anche questo 
+
+wc = sta per word count e ti conta con la flag -w(le parole) oppure con -l(le linee)
+---------------------------------------------------------------------------------------------
+cpuv=$(grep "processor" /proc/cpuinfo | wc -l)
+stessa cosa di quello sopra solo che cerca la parola "processor"
+---------------------------------------------------------------------------------------------
+ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+
+free = ti ritorna i valori della memoria 
+
+--mega = mi converte il ritorno dei dati in mega
+
+awk = e un comando che processa i dati testuali e ti cerca con il $ la parola che vuoi e ci 
+fa un IF 
+per esempio se scrivo $1 ti cerca la prima parola e se ci metto $1 == "Mem" controlla che siano uguale e se lo sono ti ritorna quello che ci metti dentro alle graffe {comando} 
+
+lista comandi trovati
+
+-print stampa un elemento 
+es:
+
+-printf ti stampa :
+es: %.2f ti arrotonda alle ultime due cifre del decimale 
+
+le lettere sono uguali al printf di C letteralmente
+
+
+---------------------------------------------------------------------------------------------
+disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk>
+
+
+df = mostra la quantita di memoria disponibile del disco nel file system
+
+-m = e uguale --mega pero '--mega' e per free '-m' invece e per df
+
+-v ti cerca tutte le cose che non fanno parte della ricerca di grep
+per esempio se cerchi grep -v dio ti trova tutte le linee che non "dio"
+
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+
