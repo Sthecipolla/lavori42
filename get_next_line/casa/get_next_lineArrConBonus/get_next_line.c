@@ -104,7 +104,7 @@ char *get_next_line(int fd)
 	str = ft_retstr(str, len);
 	}
 	return (str);
-}
+} 
 
 /* int main()
 {
