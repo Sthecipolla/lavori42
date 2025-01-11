@@ -80,16 +80,14 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 			return (NULL);
-	{
-		str = ft_calloc(1, 1);
-		str = ft_strjoin(str, plus[fd]);
-		len = ft_readf(fd, &str, plus[fd], 0);
-		if (len == 0)
+	str = ft_calloc(1, 1);
+	str = ft_strjoin(str, plus[fd]);
+	len = ft_readf(fd, &str, plus[fd], 0);
+	if (len == 0)
 	{
 		free(str);
 		return (NULL);
 	}
 	str = ft_retstr(str, len);
-	}
 	return (str);
 }

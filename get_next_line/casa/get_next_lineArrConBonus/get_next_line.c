@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:04:12 by lhima             #+#    #+#             */
-/*   Updated: 2024/12/27 12:04:12 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/07 17:41:02 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,19 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 			return (NULL);
-	{
-		str = ft_calloc(1, 1);
-		str = ft_strjoin(str, plus);
-		len = ft_readf(fd, &str, plus, 0);
-		if (len == 0)
+	str = ft_calloc(1, 1);
+	str = ft_strjoin(str, plus);
+	len = ft_readf(fd, &str, plus, 0);
+	if (len == 0)
 	{
 		free(str);
 		return (NULL);
 	}
 	str = ft_retstr(str, len);
-	}
 	return (str);
 } 
 
-/* int main()
+ int main()
 {
 	int fd[3];
 	char *f = "not null";
@@ -159,4 +157,4 @@ char *get_next_line(int fd)
 		close(fd[2]);
 	}
 	return (0);
-} */
+} 
