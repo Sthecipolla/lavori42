@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/20 14:23:52 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/30 12:12:57 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
 
-int	main(void)
+void	*ft_memchr(const void *b, int c, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	unsigned char	*arr;
+	unsigned char	a;
+	size_t			t;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	arr = (unsigned char *)b;
+	a = (unsigned char)c;
+	t = 0;
+	while (t < n)
+	{
+		if (arr[t] == a)
+			return ((void *)&arr[t]);
+		t++;
+	}
+	return (NULL);
 }

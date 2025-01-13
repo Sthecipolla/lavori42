@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/19 10:46:33 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/26 10:08:07 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int	main(void)
+int	ft_isdigit(int c)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	if ((c > 47) && (c < 58))
+		return (1024);
+	return (0);
 }

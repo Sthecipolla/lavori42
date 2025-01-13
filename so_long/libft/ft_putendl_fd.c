@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/25 15:30:18 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/25 15:36:49 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
+#include <unistd.h>
+#include <fcntl.h>
 
-int	main(void)
+void	ft_putendl_fd(char *s, int fd)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	write(fd, &s[0], ft_strlen(s));
+	write(fd, "\n", 1);
 }

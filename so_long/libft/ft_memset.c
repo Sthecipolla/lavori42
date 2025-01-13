@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/19 11:24:39 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/29 16:09:00 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
+#include <stdio.h>
 
-int	main(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	unsigned char	*arr;
+	size_t			y;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	y = 0;
+	arr = (unsigned char *) s;
+	while (y < n)
+	{
+		arr[y] = c;
+		y ++;
+	}
+	return (s);
 }

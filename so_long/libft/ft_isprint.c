@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/19 10:55:55 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/27 15:19:33 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stdio.h>
 
-int	main(void)
+int	ft_isprint(int c)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	if ((c >= 32 && c <= 126))
+		return (12);
+	return (0);
 }

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/21 12:40:15 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/03 14:21:27 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int	main(void)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*mlx;
-	void	*mlx_win;
+	void		*s;
+	size_t		i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	i = 0;
+	s = malloc(nmemb * size);
+	if (s == NULL)
+		return (NULL);
+	while (i < nmemb * size)
+	{
+		((unsigned char *)s)[i ++] = '\0';
+	}
+	return ((void *)s);
 }

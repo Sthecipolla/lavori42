@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/20 13:42:52 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/02 16:30:43 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stdio.h>
 
-int	main(void)
+char	*ft_strchr(const char *s, int c)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int	i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	i = 0;
+	c = (unsigned char)c;
+	while (s[i] != '\0')
+	{
+		if (c == s[i])
+			return ((char *)&s[i]);
+		i ++ ;
+	}
+	if (c == s[i])
+		return ((char *)&s[i]);
+	return (NULL);
 }

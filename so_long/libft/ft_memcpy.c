@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/21 12:12:18 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/02 11:29:17 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
 
-int	main(void)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*arr;
+	char	*srr;
+	size_t	y;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	y = 0;
+	if (!src && !dest)
+		return (NULL);
+	srr = (char *) src;
+	arr = (char *) dest;
+	while ((y < n))
+	{
+		arr[y] = srr[y];
+		y ++;
+	}
+	return ((void *)arr);
 }

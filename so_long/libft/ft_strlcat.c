@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/20 10:58:03 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/29 16:57:42 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
+#include <stddef.h>
+#include <stdio.h>
 
-int	main(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t		i;
+	size_t		i2;
+	size_t		dst2;
+	size_t		scr2;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	dst2 = ft_strlen(dst);
+	scr2 = ft_strlen(src);
+	i = dst2;
+	i2 = 0;
+	if (size <= dst2)
+		return (size + scr2);
+	while (i < size - 1 && src[i2] != '\0')
+	{
+		dst[i] = src[i2];
+		i2 ++;
+		i ++;
+	}
+	dst[i] = '\0';
+	return (dst2 + scr2);
 }

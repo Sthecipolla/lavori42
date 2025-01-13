@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/20 10:58:09 by lhima             #+#    #+#             */
+/*   Updated: 2024/11/29 14:16:09 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
 
-int	main(void)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*dest2;
+	char	*src2;
+	int		y;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	y = 0;
+	dest2 = (char *) dest;
+	src2 = (char *) src;
+	if (dest2 < src2)
+	{
+		while (y < (int) n)
+		{
+			dest2[y] = src2[y];
+			y ++;
+		}
+	}
+	else if (dest2 > src2)
+	{
+		y = n;
+		while (--y >= 0)
+			dest2[y] = src2[y];
+	}
+	return (dest);
 }

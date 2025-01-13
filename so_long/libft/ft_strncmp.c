@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/20 14:15:16 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/02 16:28:41 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stdio.h>
 
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t			i;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	i = 0;
+	if (len == 0)
+		return (0);
+	while (p1[i] == p2[i] && (i < len - 1) && p1[i] != '\0' && p2[i] != '\0')
+		i ++;
+	return ((unsigned char)p1[i] - p2[i]);
 }

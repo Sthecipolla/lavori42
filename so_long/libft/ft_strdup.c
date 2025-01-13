@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 10:19:38 by lhima            ###   ########.fr       */
+/*   Created: 2024/11/21 11:02:06 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/02 11:13:44 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int		i;
+	char	*se;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i] != '\0' )
+		i ++;
+	se = (char *) malloc((i + 1) * sizeof(char));
+	if (se == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0' )
+	{
+		se[i] = s[i];
+		i ++;
+	}
+	se[i] = '\0';
+	return (se);
 }
