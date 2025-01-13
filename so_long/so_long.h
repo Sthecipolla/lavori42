@@ -7,7 +7,7 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-} t_data
+} t_data;
 
 # include "./minilibx-linux/mlx.h"
 # include <X11/X.h>

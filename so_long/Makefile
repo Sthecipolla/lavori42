@@ -14,7 +14,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) $(MINILBX) -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) $(MINILBX) -o lets_go
 
 clean:
 	rm -f $(OBJ)
