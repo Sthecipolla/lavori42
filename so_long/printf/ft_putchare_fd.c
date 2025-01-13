@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchare_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/13 15:15:07 by lhima            ###   ########.fr       */
+/*   Created: 2024/12/09 15:37:43 by lhima             #+#    #+#             */
+/*   Updated: 2024/12/10 12:15:22 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_putchare_fd(char c, int fd)
 {
-	void	*mlx;
-	void	*mlx_win;
-	//t_data	img;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "bib bob");
-	ft_calloc(1,1);
-
-	mlx_loop(mlx);
-
+	write(fd, &c, 1);
+	return (1);
 }

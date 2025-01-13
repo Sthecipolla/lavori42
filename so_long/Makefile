@@ -4,9 +4,8 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-MINILBX = -Lminilibx-linux -lmlx -lXext -lX11 #-Llibft -Lprintf
+MINILBX = -Lminilibx-linux -lmlx -lXext -lX11 -Llibft -l:libft.a -Lprintf -l:libftprintf.a -Lget_next_line -l:get_next_line.a
 
-#LIB =
 SRC = main.c
 
 OBJ = $(SRC:.c=.o)
@@ -14,18 +13,33 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@make -C get_next_line
+	@make -C libft
+	@make -C printf
 	$(CC) $(OBJ) $(CFLAGS) $(MINILBX) -o lets_go
 
 clean:
-	rm -f $(OBJ)
+	@make clean -C get_next_line
+	@make clean -C libft
+	@make clean -C printf
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@make fclean -C get_next_line
+	@make fclean -C libft
+	@make fclean -C printf
+	@rm -f $(NAME)
 
 re: fclean all
+	@make re -C get_next_line
+	@make re -C libft
+	@make re -C printf
 
 #da commentare dopo
-norminette:
-	norminette ./libft ./get_next_line ./so_long
+norminette_all:
+	norminette ./libft ./get_next_line ./printf $(SRC)
 
+norminette:
+	norminette $(SRC)
+#
 .PHONY: all clean fclean re

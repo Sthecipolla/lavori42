@@ -10,6 +10,8 @@ typedef struct	s_data {
 } t_data;
 
 # include "./minilibx-linux/mlx.h"
+# include  "./printf/ft_printf.h"
+# include  "./libft/libft.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 
