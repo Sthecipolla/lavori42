@@ -24,4 +24,8 @@ fclean: clean
 
 re: fclean all
 
+#da commentare dopo
+norminette:
+	norminette ./libft ./get_next_line ./so_long
+
 .PHONY: all clean fclean re

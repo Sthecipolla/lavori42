@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:04:12 by lhima             #+#    #+#             */
-/*   Updated: 2024/12/27 12:04:12 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/13 11:04:55 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		ft_readf(int fd, char **str, char *plus, int y);
 static char		*ft_retstr(char *str, size_t limit);
 static int		ft_len_and_fill(char *plus, char *str);
 
-int ft_readf(int fd, char **str, char *plus, int y)
+int	ft_readf(int fd, char **str, char *plus, int y)
 {
 	char	*buffer;
 	int		x;
@@ -43,9 +43,10 @@ int ft_readf(int fd, char **str, char *plus, int y)
 	}
 	return (ft_len_and_fill(plus, *str) + 1);
 }
-int ft_len_and_fill(char *plus, char *str)
+
+int	ft_len_and_fill(char *plus, char *str)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (str[x] != '\n' && str[x] != '\0')
@@ -55,9 +56,9 @@ int ft_len_and_fill(char *plus, char *str)
 	return (x);
 }
 
-int check(char *str)
+int	check(char *str)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (str[x] != '\0')
@@ -65,10 +66,11 @@ int check(char *str)
 			return (1);
 	return (0);
 }
-static char *ft_retstr(char *str, size_t limit)
+
+static char	*ft_retstr(char *str, size_t limit)
 {
-	char *c;
-	size_t x;
+	char	*c;
+	size_t	x;
 
 	c = 0;
 	x = 0;
@@ -84,59 +86,24 @@ static char *ft_retstr(char *str, size_t limit)
 	return (c);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char *str;
-	static char plus[BUFFER_SIZE + 1];
-	int len;
+	char		*str;
+	static char	plus[BUFFER_SIZE + 1];
+	int			len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
-			return (NULL);
+		return (NULL);
 	{
 		str = ft_calloc(1, 1);
 		str = ft_strjoin(str, plus);
 		len = ft_readf(fd, &str, plus, 0);
 		if (len == 0)
-	{
-		free(str);
-		return (NULL);
-	}
-	str = ft_retstr(str, len);
+		{
+			free(str);
+			return (NULL);
+		}
+		str = ft_retstr(str, len);
 	}
 	return (str);
 }
-
-/* int main()
-{
-	int fd;
-	char *f = "not null";
-	int x = 1;
-	fd = open("prova.txt", O_RDONLY, 777);
-	
-	if (f == NULL)
-	{
-		f = get_next_line(fd);
-		if (f != NULL)
-			printf("linea %d%s%s", x++, ": ", f);
-		if (f != NULL)
-			free(f);
-	}
-	else
-	{
-		while (f != NULL)
-		{
-			f = get_next_line(fd);
-			if (f != NULL)
-				printf("linea lunga %ld numero %d%s%s", ft_strlen(f), x++, ": ", f);
-			if (f != NULL)
-			{
-
-				free(f);
-			}
-		}
-		printf("\nfine.\n");
-		close(fd);
-		printf("%c", '\n');
-	}
-	return (0);
-} */
