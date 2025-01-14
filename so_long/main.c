@@ -68,9 +68,11 @@ int	main(void)
 	//t_win_list	vars;
 	int	x;
 
+	x = 0;
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
-	x = mlx_key_hook (prom-> window,input_men, &prom);
+	mlx_key_hook (prom-> window,input_men, &prom);
+	x ++;
 	mlx_loop(prom -> session);
 }
