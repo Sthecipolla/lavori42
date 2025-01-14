@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *c)
+size_t	ft_strlen_get(const char *c)
 {
 	size_t	x;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *c)
 	return (x);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc_get(size_t nmemb, size_t size)
 {
 	void	*s;
 	size_t	i;
@@ -38,7 +38,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return ((void *)s);
 }
 
-static size_t	ft_strtcpy(const char *s, char *cpy, size_t j)
+static size_t	ft_strtcpy_get(const char *s, char *cpy, size_t j)
 {
 	size_t	i;
 
@@ -52,7 +52,7 @@ static size_t	ft_strtcpy(const char *s, char *cpy, size_t j)
 	return (j);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_get(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -60,14 +60,14 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s2 == NULL || s1 == NULL)
 		return (NULL);
-	i = ft_strlen(s1);
-	i = i + (ft_strlen(s2));
+	i = ft_strlen_get(s1);
+	i = i + (ft_strlen_get(s2));
 	j = 0;
-	str = (char *)ft_calloc((i + 1), 1);
+	str = (char *)ft_calloc_get((i + 1), 1);
 	if (str == NULL)
 		return (NULL);
-	j = ft_strtcpy(s1, str, j);
-	j = ft_strtcpy(s2, str, j);
+	j = ft_strtcpy_get(s1, str, j);
+	j = ft_strtcpy_get(s2, str, j);
 	free(s1);
 	str[i] = '\0';
 	return (str);

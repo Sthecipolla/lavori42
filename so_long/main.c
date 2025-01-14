@@ -19,6 +19,28 @@
 	mlx_destroy_window(vars->mlx, vars->window);
 	return (0);
 } */
+void	create_map(t_map *map)
+{
+	char *str;
+	int	x;
+	int fd;
+	int y;
+
+	x = 0;
+	y = -1;
+	fd = open("text.txt",O_RDONLY ,777);
+	str = ft_calloc(1,1);
+	while(str != NULL)
+	{
+		free(str);
+		str = get_next_line(fd);
+		x++;
+	}
+	str = ft_calloc(1,1);
+	map -> map =  (void **)ft_calloc(x + 1, sizeof(char*));
+	while(++y < x)
+		map -> map[x++] = get_next_line(fd);
+}
 
 int other_input(int key_sim, t_map *s)
 {
@@ -37,42 +59,16 @@ int	input_men(int key_sim, t_map **s)
 	}
 	return (other_input(key_sim, (*s)));
 }
-void	create_map(t_map *map)
-{
-	char *str;
-	int	x;
-	int fd;
 
-	x = 0;
-	fd = open("text.txt",O_RDONLY ,777);
-	str = calloc(1,1);
-	while(str != NULL)
-	{
-		free(str);
-		str = get_next_line(fd);
-		x++;
-	}
-	x = 0;
-	str = calloc(1,1);
-	map -> map =  (char **)ft_calloc(x + 1, sizeof(char*));
-	while(str != NULL)
-	{
-		free(str);
-		map -> map[x++] = get_next_line(fd);
-	}
-}
 int	main(void)
 {
 	t_map	*prom;
 	//t_data	img;
 	//t_win_list	vars;
-	int	x;
 
-	x = 0;
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
 	mlx_key_hook (prom-> window,input_men, &prom);
-	x ++;
 	mlx_loop(prom -> session);
 }

@@ -32,13 +32,13 @@ int	ft_readf(int fd, char **str, char *plus, int y)
 	}
 	while (check(*str) == 0)
 	{
-		buffer = ft_calloc((size_t)BUFFER_SIZE + 1, 1);
+		buffer = ft_calloc_get((size_t)BUFFER_SIZE + 1, 1);
 		x = read(fd, buffer, BUFFER_SIZE);
 		if (x == 0)
 			return (free(buffer), ft_len_and_fill(plus, *str));
 		else if (x < 0)
 			return (free(buffer), 0);
-		*str = ft_strjoin(*str, buffer);
+		*str = ft_strjoin_get(*str, buffer);
 		free(buffer);
 	}
 	return (ft_len_and_fill(plus, *str) + 1);
@@ -74,7 +74,7 @@ static char	*ft_retstr(char *str, size_t limit)
 
 	c = 0;
 	x = 0;
-	c = ft_calloc((size_t)limit + 1, 1);
+	c = ft_calloc_get((size_t)limit + 1, 1);
 	while (str[x] != '\n' && str[x] != '\0')
 	{
 		c[x] = str[x];
@@ -95,8 +95,8 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	{
-		str = ft_calloc(1, 1);
-		str = ft_strjoin(str, plus);
+		str = ft_calloc_get(1, 1);
+		str = ft_strjoin_get(str, plus);
 		len = ft_readf(fd, &str, plus, 0);
 		if (len == 0)
 		{

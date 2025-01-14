@@ -29,10 +29,10 @@
 # include <sys/stat.h>
 # include <stddef.h>
 
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strjoin(char *s1, char *s2);
+void	*ft_calloc_get(size_t nmemb, size_t size);
+char	*ft_strjoin_get(char *s1, char *s2);
 void	cut(char *s, char *start, int len);
-size_t	ft_strlen(const char *c);
+size_t	ft_strlen_get(const char *c);
 char	*get_next_line(int fd);
 
 #endif
