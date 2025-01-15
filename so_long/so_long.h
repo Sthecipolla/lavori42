@@ -13,7 +13,7 @@ typedef struct l_map
 {
 	void *session;
 	void *window;
-	void **map;
+	char **map;
 
 }t_map;
 
