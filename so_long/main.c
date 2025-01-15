@@ -19,6 +19,15 @@
 	mlx_destroy_window(vars->mlx, vars->window);
 	return (0);
 } */
+
+/* void print_map(char ***map)
+{
+	int x;
+
+	x = 0;
+	while((*map)[x] != NULL)
+		ft_printf("%s",(char *) (*map)[x ++]);
+} */
 void	create_map(t_map **map)
 {
 	char *str;
@@ -81,14 +90,7 @@ int	input_men(int key_sim, t_map **s)
 	return (other_input(key_sim, (*s)));
 }
 
-/* void print_map(char ***map)
-{
-	int x;
 
-	x = 0;
-	while((*map)[x] != NULL)
-		ft_printf("%s",(char *) (*map)[x ++]);
-} */
 int	main(void)
 {
 	t_map	*prom;
@@ -98,7 +100,8 @@ int	main(void)
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
 	create_map(&prom);
-	print_map(&prom -> map);
+	//print_map(&prom -> map);
+	//check_map(prom -> map);
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
 	mlx_key_hook (prom-> window,input_men, &prom);
 	mlx_loop(prom -> session);
