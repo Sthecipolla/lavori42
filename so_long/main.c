@@ -105,4 +105,5 @@ int	main(void)
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
 	mlx_key_hook (prom-> window,input_men, &prom);
 	mlx_loop(prom -> session);
+	free(prom);
 }
