@@ -33,19 +33,19 @@ static	int check_border_are_all_close(char **map)
 	int mxlenCol;
 	int mxlenLinee;
 
-	mxlenCol = lenCol(map);
-	mxlenLinee = ft_strlen(map[0]);
-	
-	linee = -1;
-	while (map[++linee] != NULL)
-	{
-		if (map[linee][0] != '1' || map[linee][mxlenCol] != '1')
-			return (0);
-	}
+	mxlenLinee = lenCol(map) - 1 ;
+	mxlenCol = ft_strlen(map[0]) - 2;
+
 	col = -1;
-	while (map[++col] != NULL)
+	while (++col <= mxlenCol)
 	{
 		if (map[0][col] != '1' || map[mxlenLinee][col] != '1')
+			return (0);
+	}
+	linee = -1;
+	while (++linee <= mxlenLinee)
+	{
+		if (map[linee][0] != '1' || map[linee][mxlenCol] != '1')
 			return (0);
 	}
 	return (1);
@@ -53,9 +53,9 @@ static	int check_border_are_all_close(char **map)
 
 int check_border(char **map)
 {
-	if( check_border_are_all_close(map) == 0)
-		exit(10);
 	if(check_wall_all_alline(map)== 0)
-		exit(12);
+		return (0);
+	if( check_border_are_all_close(map) == 0)
+		return(0);
 	return (1);
 }
