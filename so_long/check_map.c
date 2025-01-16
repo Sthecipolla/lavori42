@@ -1,17 +1,18 @@
 #include "so_long.h"
 
-void	check_map(char **map)
+int	check_map(char **map)
 {
-	int border;
 /* 	int portal;
 	int player;
 	int coin; */
 
-	border = check_border(map);
-	/* portal = 0;
-	player;
+/* 	player;
 	coin; */
-	if(border == 0)
-		exit(1);
+	if(check_border(map) == 0)
+		return (1);
+	/* if(check_portal(map) == 0)
+		return (1); */
+	ft_printf("stefano");
+	return 0;
 }
 

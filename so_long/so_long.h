@@ -18,8 +18,9 @@ typedef struct l_map
 }t_map;
 
 int check_border(char **map);
-void check_map(char **map);
+int check_map(char **map);
 int	main(void);
+int check_portal(char	**matrix);
 
 #endif
 
