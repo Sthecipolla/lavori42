@@ -41,19 +41,17 @@ static int	check_map(char **map)
 		return (0);
 	return (1);
 }
-static void	fill_map(t_map *map)
+static int	linee_count(int x)
 {
 	char *str;
-	int	x;
 	int fd;
-	int y;
-
-	x = 0;
-	y = -1;
-	fd = open("text.bar",O_RDONLY ,777);
+	fd = open("text.bar",O_RDONLY);
 	if (fd < 0)
         exit(fd);
 	str = ft_calloc(1,1);
+	if (str == NULL)
+		return (0);
+	
 	while(str != NULL)
 	{
 		free(str);
@@ -61,13 +59,32 @@ static void	fill_map(t_map *map)
 		x++;
 	}
 	close(fd);
-	fd = open("text.bar",O_RDONLY ,777);
+	return (x);
+}
+static void	fill_map(t_map *map)
+{
+	int	x;
+	int fd;
+	int y;
+
+	y = -1;
+	x = linee_count(0);
+	if(x == 0)
+		ft_clean(map, 11);
+	fd = open("text.bar",O_RDONLY);
 	if (fd < 0)
-        exit(fd);
+        ft_clean(map, 11);
 	map -> map =  (char **)malloc(x * sizeof(char*));
+	if (!map)
+		ft_clean(map, 11);
 	while(++y < x - 1)
+	{
 		map -> map[y] = get_next_line(fd);
+		if (map -> map[y] == NULL)
+			ft_clean(map, 11);
+	}
 	map -> map[y] = NULL;
+	close(fd);
 }
 void create_map(t_map *mapstruct)
 {

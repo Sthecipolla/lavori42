@@ -72,16 +72,17 @@ static char	*ft_retstr(char *str, size_t limit)
 	char	*c;
 	size_t	x;
 
-	c = 0;
 	x = 0;
 	c = ft_calloc_get((size_t)limit + 1, 1);
+	if(!c)
+		return (NULL);
 	while (str[x] != '\n' && str[x] != '\0')
 	{
 		c[x] = str[x];
 		x++;
 	}
-	if (str[x] == '\n')
-		c[x++] = '\n';
+	if(str[x] == '\n')
+		c[x] = '\0';
 	free(str);
 	return (c);
 }
@@ -96,7 +97,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	{
 		str = ft_calloc_get(1, 1);
+		if(str == NULL)
+			return (NULL);
 		str = ft_strjoin_get(str, plus);
+		if (str == NULL)
+			return (NULL);
 		len = ft_readf(fd, &str, plus, 0);
 		if (len == 0)
 		{
@@ -104,6 +109,8 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		str = ft_retstr(str, len);
+		if (str == NULL)
+			return (NULL);
 	}
 	return (str);
 }

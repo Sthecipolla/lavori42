@@ -26,7 +26,7 @@ void free_double_pointer(char **ptr)
 static	int errorPrint(int	error)
 {
 	if(error == 11)
-		ft_printf("error\n map\n");
+		ft_printf("error\nmap\n");
 	return(0);
 }
 int	ft_clean(t_map *s, int error)

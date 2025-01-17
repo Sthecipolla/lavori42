@@ -13,12 +13,14 @@ static int	check_wall_all_alline(char **map)
 {
 	int col;
 	int index;
+	int app;
 
 	col = ft_strlen(map[0]);
 	index = 0;
 	while(map[index]!=NULL)
 	{
-		if((int)ft_strlen(map[index])!=col)
+		app = (int)ft_strlen(map[index]);
+		if(app != col)
 			return (0);
 		index++;
 	}
@@ -34,7 +36,7 @@ static	int check_border_are_all_close(char **map)
 	int mxlenLinee;
 
 	mxlenLinee = lenCol(map) - 1 ;
-	mxlenCol = ft_strlen(map[0]) - 2;
+	mxlenCol = ft_strlen(map[0]) - 1;
 
 	col = -1;
 	while (++col <= mxlenCol)
@@ -55,7 +57,7 @@ int check_border(char **map)
 {
 	if(check_wall_all_alline(map)== 0)
 		return (0);
-	if( check_border_are_all_close(map) == 0)
+	if(check_border_are_all_close(map) == 0)
 		return(0);
 	return (1);
 }

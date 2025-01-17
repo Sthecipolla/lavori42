@@ -18,11 +18,13 @@ int	main(void)
 
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
+	//mlx_png_file_to_image(prom -> session, "grande.png", 0, 0);
+	//mlx_put_image_to_window(prom -> session, prom -> window, "grande.png", 0, 0);
 	//print_map(prom -> map);
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
 	create_map(prom);
 	mlx_key_hook (prom-> window,ft_input, prom);
-	mlx_hook(prom-> window,17, 0 ,ft_clean, prom);
+	mlx_hook(prom-> window, 17, 0, ft_clean, prom);
 	mlx_loop(prom -> session);
 	free(prom);
 }
