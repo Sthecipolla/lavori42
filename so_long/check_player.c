@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int check_portal(char	**matrix)
+int check_player(char	**matrix)
 {
 	int	i;
 	int	j;
@@ -13,7 +13,7 @@ int check_portal(char	**matrix)
 	j = 0;
 		while (matrix[i][j] != '\0' && matrix[i][j] != '\n')
 		{
-		if(matrix[i][j] == 'E')
+		if(matrix[i][j] == 'P')
 		{
 			count++;
 			if(count == 2)
