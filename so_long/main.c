@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/17 16:39:42 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/18 14:54:11 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int	main(void)
 
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
-	//mlx_png_file_to_image(prom -> session, "grande.png", 0, 0);
-	//mlx_put_image_to_window(prom -> session, prom -> window, "grande.png", 0, 0);
-	//print_map(prom -> map);
 	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
 	create_map(prom);
+	ft_img_men(prom);
 	mlx_key_hook (prom-> window,ft_input, prom);
 	mlx_hook(prom-> window, 17, 0, ft_clean, prom);
+	//mlx_loop_hook()
 	mlx_loop(prom -> session);
-	free(prom);
 }

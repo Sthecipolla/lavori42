@@ -3,6 +3,7 @@
 		"mlx.h": "c",
 		"so_long.h": "c",
 		"keysym.h": "c",
-		"get_next_line.h": "c"
+		"get_next_line.h": "c",
+		"mlx_int.h": "c"
 	}
 }

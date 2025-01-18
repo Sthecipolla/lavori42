@@ -27,6 +27,8 @@ static	int errorPrint(int	error)
 {
 	if(error == 11)
 		ft_printf("error\nmap\n");
+	if(error == 12)
+		ft_printf("error\nimg\n");
 	return(0);
 }
 int	ft_clean(t_map *s, int error)
@@ -35,6 +37,7 @@ int	ft_clean(t_map *s, int error)
 		mlx_destroy_display(s -> session);
 		free_double_pointer(s -> map);
 		free(s -> session);
+		free(s -> img);
 		free(s);
 		if(error > 0)
 			error= errorPrint(error);
