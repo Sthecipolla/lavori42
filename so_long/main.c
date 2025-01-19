@@ -18,9 +18,9 @@ int	main(void)
 
 	prom = ft_calloc(sizeof(t_map), 1);
 	prom -> session = mlx_init();
-	prom-> window = mlx_new_window(prom -> session, 1920, 1080, "bib bob");
+	prom-> window = mlx_new_window(prom -> session,900, 400, "bib bob");
 	create_map(prom);
-	ft_img_men(prom);
+	ft_img(prom);
 	mlx_key_hook (prom-> window,ft_input, prom);
 	mlx_hook(prom-> window, 17, 0, ft_clean, prom);
 	//mlx_loop_hook()

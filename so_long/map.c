@@ -1,30 +1,22 @@
 #include "so_long.h"
-static	int	check_other_char(char **matrix)
+
+int fill_img(t_cr_image *str_img, void *session)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (matrix[i] != NULL)
-	{
-	j = 0;
-		while (matrix[i][j] != '\0' && matrix[i][j] != '\n')
-		{
-		if(matrix[i][j] != 'P' && matrix[i][j] != 'C')
-		{
-			if(matrix[i][j] != 'E' && matrix[i][j] != '1')
-			{
-				if(matrix[i][j] != '0')
-					return (0);
-			}
-		}
-		j++;
-		}
-		i++;
-	}
-	return (1);
+	str_img[0].img = mlx_xpm_file_to_image(session,"./img_folder/Goku_e_basta.xpm", &str_img[0].width,  &str_img[0].height);
+	if(str_img[0].img == NULL)
+		return (1);
+	str_img[1].img = mlx_xpm_file_to_image(session,"./img_folder/wall.xpm",&str_img[1].width,  &str_img[1].height);
+	if(str_img[1].img == NULL)
+		return (1);
+	str_img[2].img = mlx_xpm_file_to_image(session,"./img_folder/road.xpm",&str_img[2].width,  &str_img[2].height);
+	if(str_img[2].img == NULL)
+		return (1);
+	str_img[3].img = mlx_xpm_file_to_image(session,"./img_folder/portal.xpm",&str_img[3].width,  &str_img[3].height);
+	if(str_img[3].img == NULL)
+		return (1);
+	str_img[4].img = NULL;
+	return (0);
 }
-
 static int	check_map(char **map)
 {
 
@@ -86,9 +78,11 @@ static void	fill_map(t_map *map)
 	map -> map[y] = NULL;
 	close(fd);
 }
-void create_map(t_map *mapstruct)
+void create_map(t_map *app)
 {
-	fill_map(mapstruct);
-	if(check_map(mapstruct -> map) == 0)
-		ft_clean(mapstruct, 11);
+	fill_map(app);
+	if(check_map(app -> map) == 0)
+		ft_clean(app, 11);
+	if(fill_img(app -> imgarr,app -> session) == 1)
+		ft_clean(app, 12);
 }

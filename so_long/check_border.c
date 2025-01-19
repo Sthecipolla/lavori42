@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static int	lenCol(char **map)
+int	lenCol(char **map)
 {
 	int mxlenCol;
 
