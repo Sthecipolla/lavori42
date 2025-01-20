@@ -42,6 +42,6 @@ norminette:
 	norminette $(SRC)
 
 go:
-	make && clear && valgrind -s --leak-check=full --track-origins=yes --show-reachable=yes ./lets_go
+	make && clear && valgrind -s --leak-check=full --track-origins=yes --show-reachable=yes ./lets_go "text.bar"
 #
 .PHONY: all clean fclean re

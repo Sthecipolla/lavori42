@@ -38,11 +38,11 @@ static int	check_map(t_map *app)
 		return (0);
 	return (1);
 }
-static int	linee_count(t_map *c, int x)
+static int	linee_count(t_map *c, int x,char *file)
 {
 	char *str;
 	int fd;
-	fd = open("text.bar",O_RDONLY);
+	fd = open(file,O_RDONLY);
 	if (fd < 0)
         ft_clean(c, 11);
 	str = ft_calloc(1,1);
@@ -57,17 +57,17 @@ static int	linee_count(t_map *c, int x)
 	close(fd);
 	return (x);
 }
-static void	fill_map(t_map *map)
+static void	fill_map(t_map *map, char *file)
 {
 	int	x;
 	int fd;
 	int y;
 
 	y = -1;
-	x = linee_count(map,0);
+	x = linee_count(map,0,file);
 	if(x == 0)
 		ft_clean(map, 11);
-	fd = open("text.bar",O_RDONLY);
+	fd = open(file,O_RDONLY);
 	if (fd < 0)
         ft_clean(map, 11);
 	map -> map =  (char **)malloc(x * sizeof(char*));
@@ -82,10 +82,10 @@ static void	fill_map(t_map *map)
 	map -> map[y] = NULL;
 	close(fd);
 }
-void create_map(t_map *app)
+void create_map(t_map *app,char *file)
 {
 	app ->coins=0;
-	fill_map(app);
+	fill_map(app,file);
 	if(check_map(app) == 0)
 		ft_clean(app, 11);
 }

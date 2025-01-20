@@ -29,10 +29,9 @@ typedef struct l_map
 }t_map;
 
 
-
+int	main(int argn, char **argc);
 int check_border(char **map);
 //int check_map(char **map);
-int	main(void);
 int check_portal(char	**matrix);
 int check_player(char	**matrix);
 int	check_coins(char	**matrix);
@@ -44,7 +43,7 @@ void	set_all_z(char	**map, int x, int y);
 //void print_map(char **map);
 int	ft_input(int key_sim, t_map *s);
 int	other_input(int key_sim, t_map *s);
-void	create_map(t_map *mapstruct);
+void create_map(t_map *app,char *file);
 void	ft_img(t_map *prom);
 int	lenCol(char **map);
 int	check_other_char(char **matrix);
