@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:13:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/20 17:07:10 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/20 18:15:51 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(void)
 	y = ft_strlen(prom -> map[0]) * 32;
 	prom-> window = mlx_new_window(prom -> session,y, x, "bib bob");
 	ft_img(prom);
-	mlx_key_hook (prom-> window,ft_input, prom);
-	//mlx_hook(prom-> window, 2, 1L << (1L<<8), ft_input, prom);
+	// mlx_key_hook (prom-> window, ft_input, prom);
+	mlx_hook(prom-> window, 2, 1L << 0, ft_input, prom);
 	mlx_hook(prom-> window, 17, 0, ft_clean, prom);
 	//mlx_loop_hook()
 	mlx_loop(prom -> session);

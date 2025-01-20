@@ -46,7 +46,6 @@ int	ft_input(int key_sim, t_map *s)
 		calc_position(s,1,0);
 	if(key_sim == XK_a)
 		calc_position(s,-1,0);
-
 	return (0);
 }
 
