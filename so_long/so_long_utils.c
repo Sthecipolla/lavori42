@@ -23,29 +23,36 @@ void free_double_pointer(char **ptr)
     }
     free(ptr);
 }
-static	int errorPrint(int	error)
-{
-	if(error == 11)
-		ft_printf("error\nmap\n");
-	if(error == 12)
-		ft_printf("error\nimg\n");
-	return(0);
-}
+
 int	ft_clean(t_map *s, int error)
 {
 	int i;
 
 	i = -1;
-	while (s->imgarr[++i].img != NULL)
-    	mlx_destroy_image(s->session, s->imgarr[i].img);
-	mlx_destroy_window(s -> session, s -> window);
-	mlx_destroy_display(s -> session);
+	if(s -> imgarr[0].img)
+	{
+		while (s->imgarr[++i].img != NULL)
+    		mlx_destroy_image(s->session, s->imgarr[i].img);
+	}
+	if(s -> window)
+		mlx_destroy_window(s -> session, s -> window);
+	if(s -> session)
+		mlx_destroy_display(s -> session);
 	free_double_pointer(s -> map);
 	free(s -> session);
 	free(s);
 	if(error > 0)
 		error= errorPrint(error);
 	exit(error);
+}
+int	lenCol(char **map)
+{
+	int mxlenCol;
+
+	mxlenCol = 0;
+	while (map[mxlenCol] != NULL)
+		mxlenCol++;
+	return (mxlenCol);
 }
 
 char **create_a_copy_map(char **map)

@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 MINILBX = -Lminilibx-linux -lmlx -lXext -lX11 -Llibft -l:libft.a -Lprintf -l:libftprintf.a -Lget_next_line -l:get_next_line.a
 
 SRC = main.c map.c check_border.c check_portal.c check_player.c check_coins.c so_long_utils.c check_utils.c\
-input_menag.c img_print.c
+input_menag.c img_print.c error.c
 
 
 all: $(NAME)

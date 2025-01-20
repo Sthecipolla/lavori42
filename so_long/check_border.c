@@ -1,14 +1,6 @@
 #include "so_long.h"
 
-int	lenCol(char **map)
-{
-	int mxlenCol;
 
-	mxlenCol = 0;
-	while (map[mxlenCol] != NULL)
-		mxlenCol++;
-	return (mxlenCol);
-}
 static int	check_wall_all_alline(char **map)
 {
 	int col;

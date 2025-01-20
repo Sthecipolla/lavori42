@@ -1,35 +1,40 @@
 #include "so_long.h"
 
-int fill_img(t_cr_image *str_img, void *session)
+static int calc_coins(char **matrix)
 {
-	str_img[0].img = mlx_xpm_file_to_image(session,"./img_folder/Goku_e_basta.xpm", &str_img[0].width,  &str_img[0].height);
-	if(str_img[0].img == NULL)
-		return (1);
-	str_img[1].img = mlx_xpm_file_to_image(session,"./img_folder/wall.xpm",&str_img[1].width,  &str_img[1].height);
-	if(str_img[1].img == NULL)
-		return (1);
-	str_img[2].img = mlx_xpm_file_to_image(session,"./img_folder/road.xpm",&str_img[2].width,  &str_img[2].height);
-	if(str_img[2].img == NULL)
-		return (1);
-	str_img[3].img = mlx_xpm_file_to_image(session,"./img_folder/portal.xpm",&str_img[3].width,  &str_img[3].height);
-	if(str_img[3].img == NULL)
-		return (1);
-	str_img[4].img = NULL;
-	return (0);
+	int	i;
+	int	j;
+	int coins;
+
+	coins = 0;
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+	j = 0;
+		while (matrix[i][j] != '\0' && matrix[i][j] != '\n')
+		{
+		if(matrix[i][j] == 'C')
+			coins++;
+		j++;
+		}
+		i++;
+	}
+	return (coins);
 }
-static int	check_map(char **map)
+static int	check_map(t_map *app)
 {
 
-	//coin;
-	if(check_border(map) == 0)
+	if(check_border(app -> map) == 0)
 		return (0);
-	if(check_coins(map) == 0)
+	if( check_coins(app -> map) == 0)
 		return(0);
-	if(check_portal(map) == 0)
+	else
+		app ->tot_coins = calc_coins(app -> map);
+	if(check_portal(app -> map) == 0)
 		return (0);
-	if(check_player(map) == 0)
+	if(check_player(app -> map) == 0)
 		return(0);
-	if(check_other_char(map) == 0)
+	if(check_other_char(app -> map) == 0)
 		return (0);
 	return (1);
 }
@@ -43,7 +48,6 @@ static int	linee_count(int x)
 	str = ft_calloc(1,1);
 	if (str == NULL)
 		return (0);
-	
 	while(str != NULL)
 	{
 		free(str);
@@ -80,9 +84,8 @@ static void	fill_map(t_map *map)
 }
 void create_map(t_map *app)
 {
+	app ->coins=0;
 	fill_map(app);
-	if(check_map(app -> map) == 0)
+	if(check_map(app) == 0)
 		ft_clean(app, 11);
-	if(fill_img(app -> imgarr,app -> session) == 1)
-		ft_clean(app, 12);
 }

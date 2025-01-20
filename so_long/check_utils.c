@@ -57,3 +57,28 @@ int	check_other_char(char **matrix)
 	return (1);
 }
 
+int	check_pos_player(char **matrix, int x)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+	j = 0;
+		while (matrix[i][j] != '\0')
+		{
+		if(matrix[i][j] == 'P')
+		{
+			if(x == 0)
+				return(i);
+			return(j);
+		}
+		j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+

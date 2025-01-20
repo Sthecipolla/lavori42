@@ -13,7 +13,7 @@ typedef struct s_image123
 {
 	int height;
 	int width;
-	void **img;
+	void *img;
 
 }t_cr_image;
 
@@ -22,6 +22,8 @@ typedef struct l_map
 	void *session;
 	void *window;
 	char **map;
+	int	coins;
+	int	tot_coins;
 	t_cr_image imgarr[7];
 
 }t_map;
@@ -47,6 +49,8 @@ void	ft_img(t_map *prom);
 int	lenCol(char **map);
 int	check_other_char(char **matrix);
 int fill_img(t_cr_image *str_img, void *session);
+int errorPrint(int	error);
+int	check_pos_player(char **matrix, int x);
 
 
 #endif
