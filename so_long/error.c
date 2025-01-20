@@ -6,5 +6,9 @@ int errorPrint(int	error)
 		ft_printf("error\nmap\n");
 	if(error == 12)
 		ft_printf("error\nimg\n");
+	if(error == 13)
+		ft_printf("error\nreading file\n");
+/* 	if(error == 12)
+		ft_printf("error\nimg\n"); */
 	return(0);
 }

@@ -44,7 +44,7 @@ static int	linee_count(t_map *c, int x,char *file)
 	int fd;
 	fd = open(file,O_RDONLY);
 	if (fd < 0)
-        ft_clean(c, 11);
+        ft_clean(c, 13);
 	str = ft_calloc(1,1);
 	if (str == NULL)
 		return (0);
@@ -66,7 +66,7 @@ static void	fill_map(t_map *map, char *file)
 	y = -1;
 	x = linee_count(map,0,file);
 	if(x == 0)
-		ft_clean(map, 11);
+		ft_clean(map, 13);
 	fd = open(file,O_RDONLY);
 	if (fd < 0)
         ft_clean(map, 11);
