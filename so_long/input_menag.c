@@ -20,7 +20,7 @@ static int calc_position(t_map *prom,int move_x,int move_y)
 		return (2);
 	if(prom -> map[y + move_y][x + move_x] == 'E' && \
 	prom -> coins != prom -> tot_coins)
-		return(2);
+		return (2);
 	if(prom -> map[y + move_y][x + move_x] == 'E' && \
 	prom -> coins == prom -> tot_coins)
 		ft_clean(prom, 0);
@@ -33,6 +33,7 @@ static int calc_position(t_map *prom,int move_x,int move_y)
 	ft_img(prom);
 	return(0);
 }
+
 int	ft_input(int key_sim, t_map *s)
 {
 	if(key_sim == XK_Escape)

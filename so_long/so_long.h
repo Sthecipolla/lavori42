@@ -41,7 +41,7 @@ int	ft_clean(t_map *s, int error);
 char **create_a_copy_map(char **map);
 int check_for_zero(char	**matrix);
 void	set_all_z(char	**map, int x, int y);
-void print_map(char **map);
+//void print_map(char **map);
 int	ft_input(int key_sim, t_map *s);
 int	other_input(int key_sim, t_map *s);
 void	create_map(t_map *mapstruct);

@@ -3,6 +3,11 @@
 
 void	set_all_z(char	**map, int x, int y)
 {
+	if(map[x][y] == 'E')
+	{
+		map[x][y] = '1';
+		return ;
+	}
 	if(map[x][y] == '1' || map[x][y] == 'z')
 		return;
 	map[x][y] = 'z';
@@ -19,8 +24,8 @@ int check_for_zero(char	**matrix)
 	i = 0;
 	while (matrix[i] != NULL)
 	{
-	j = 0;
-		while (matrix[i][j] != '\0' && matrix[i][j] != '\n')
+		j = 0;
+		while (matrix[i][j])
 		{
 		if(matrix[i][j] == 'C' || matrix[i][j] == 'P' || matrix[i][j] == 'E')
 				return (0);

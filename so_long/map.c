@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static int calc_coins(char **matrix)
+static int calc_coins(char ** matrix)
 {
 	int	i;
 	int	j;
@@ -38,13 +38,13 @@ static int	check_map(t_map *app)
 		return (0);
 	return (1);
 }
-static int	linee_count(int x)
+static int	linee_count(t_map *c, int x)
 {
 	char *str;
 	int fd;
 	fd = open("text.bar",O_RDONLY);
 	if (fd < 0)
-        exit(fd);
+        ft_clean(c, 11);
 	str = ft_calloc(1,1);
 	if (str == NULL)
 		return (0);
@@ -64,7 +64,7 @@ static void	fill_map(t_map *map)
 	int y;
 
 	y = -1;
-	x = linee_count(0);
+	x = linee_count(map,0);
 	if(x == 0)
 		ft_clean(map, 11);
 	fd = open("text.bar",O_RDONLY);

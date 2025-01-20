@@ -40,5 +40,8 @@ norminette_all:
 
 norminette:
 	norminette $(SRC)
+
+go:
+	make && clear && valgrind -s --leak-check=full --track-origins=yes --show-reachable=yes ./lets_go
 #
 .PHONY: all clean fclean re
