@@ -14,6 +14,12 @@ all: $(NAME)
 $(NAME): $(SRC)
 	@make -C ./libft
 	$(CC) $(CFLAGS) $(SRC) $(OTHER_SOURCE) -o $(NAME)
+
+checker:
+	wget https://cdn.intra.42.fr/document/document/28256/checker_linux
+
+delete_checker:
+	rm -f checker_linux
 #
 norminette:
 	norminette $(SRC) push_swap.h
