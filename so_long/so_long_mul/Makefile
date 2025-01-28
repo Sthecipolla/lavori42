@@ -11,13 +11,15 @@ input_menag.c img_print.c error.c
 
 MINILB = ./minilibx-linux/
 
+MAKEFILE = -s
+
 all: $(MINILB) $(NAME)
 
 $(NAME): $(SRC)
 	@make -C get_next_line
 	@make -C libft
 	@make -C printf
-	$(CC) $(SRC) $(CFLAGS) $(MINILBX) -o so_long
+	@$(CC) $(SRC) $(CFLAGS) $(MINILBX) -o so_long
 
 $(MINILB):
 	wget https://cdn.intra.42.fr/document/document/26192/minilibx-linux.tgz
@@ -43,3 +45,5 @@ re: fclean all
 	@make re -C printf
 
 .PHONY: all clean fclean re
+
+.SILENT:
