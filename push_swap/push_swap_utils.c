@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:34 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:06:15 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/28 17:53:41 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,19 @@ int	len_split(t_lista *arr)
 	return (x);
 }
 
-void ft_clean(t_lista *t_list, int error)
+void ft_clean(t_lista *list, int error)
 {
 	t_lista *tmp;
 
 	print_error(error);
-	if(t_list == NULL)
+	if(list == NULL)
 		exit(0);
-	while(t_list->next != NULL)
+	while(list != NULL)
 	{
-		tmp = t_list->next;
-		free(t_list);
-		t_list = tmp;
+		tmp = list->next;
+		free(list ->num);
+		free(list);
+		list = tmp;
 	}
 	exit(0);
 }

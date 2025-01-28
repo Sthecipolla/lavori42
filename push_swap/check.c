@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:32 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 16:46:08 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/28 17:18:14 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,19 @@ int check(char **arr)
 	{
 		free_double_pointer(arr);
 		print_error(2);
-		return (0);
+		exit(0);
 	}
 	if(check_max_value(arr) == 0)
 	{
 		free_double_pointer(arr);
 		print_error(3);
-		return (0);
+		exit(0);
 	}
 	if(check_duplicates(arr) == 0)
 	{
 		free_double_pointer(arr);
 		print_error(4);
-		return (0);
+		exit(0);
 	}
 	return (1);
 }

@@ -6,40 +6,40 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:37 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 16:46:46 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/28 17:34:19 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-static void	check_swap_a(t_lista *t_lista)
+static void	check_swap_a(t_lista *list)
 {
-	if(t_lista == NULL)
-		ft_clean(t_lista, 1);
-	if(len_split(t_lista) < 2)
-		ft_clean(t_lista, 1);
+	if(list == NULL)
+		ft_clean(list, 1);
+	if(len_split(list) < 2)
+		ft_clean(list, 1);
 }
 
-static void print_arr(t_lista *t_lista)
+static void print_arr(t_lista *list)
 {
 
-	while(t_lista != NULL)
+	while(list != NULL)
 	{
-		ft_printf("%s ", t_lista->num);
-		t_lista = t_lista->next;
+		ft_printf("%s ", list->num);
+		list = list->next;
 	}
 	ft_printf("\n");
 }
-void swap_a(t_lista *t_lista)
+void swap_a(t_lista *list)
 {
-	check_swap_a(t_lista);
+	check_swap_a(list);
 	ft_printf("before:\n");
-	print_arr(t_lista);
+	print_arr(list);
 	ft_printf("after:\n");
 	char *t;
-	t = t_lista->num;
-	t_lista->num = t_lista->next->num;
-	t_lista->next->num = t;
+	t = list->num;
+	list->num = list->next->num;
+	list->next->num = t;
 	ft_printf("swap first 2 num\n");
-	print_arr(t_lista);
+	print_arr(list);
 }

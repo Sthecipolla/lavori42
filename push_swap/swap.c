@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:35:08 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:04:44 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/28 17:50:08 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,27 @@ char **fill(char *arr)
 		return (NULL);
 	return (num);
 }
-static void fill_struc(t_lista *t_lista, char **str)
+static void fill_struc(t_lista *list, char **str)
 {
 	int i;
 
 	i = 0;
 	while(str[i] != NULL)
 	{
-		t_lista->num = str[i];
-		t_lista->next = ft_calloc(sizeof(t_lista),1);
-		t_lista = t_lista->next;
+		list->num = ft_strdup(str[i]);
+		if(str[i + 1] == NULL)
+			break;
+		list->next = ft_calloc(sizeof(t_lista),1);
+		list = list->next;
 		i++;
 	}
-	t_lista->next = NULL;
+	list->next = NULL;
 	free_double_pointer(str);
 }
 int	main(int argc, char **argv)
 {
 	char **str;
-	t_lista *t_lista;
-	t_lista = ft_calloc(sizeof(t_lista),1);
+	t_lista *list;
 
 	str = fill(argv[1]);
 	//devo unire i valori se ci sono piu argomenti
@@ -53,9 +54,9 @@ int	main(int argc, char **argv)
 		ft_printf("Error\narg\n");
 		return (0);
 	}
-	fill_struc(t_lista, str);
-	swap_a(t_lista);
-
-	ft_clean(t_lista, 0);
+	list = ft_calloc(sizeof(t_lista),1);
+	fill_struc(list, str);
+	swap_a(list);
+	ft_clean(list, 0);
 	return (0);
 }
