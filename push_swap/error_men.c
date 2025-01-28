@@ -21,7 +21,7 @@ void print_error(int error)
 	if(error == 2)
 		ft_printf("Error\nnumber invalid\n");
 	if(error == 3)
-		ft_printf("Error\nnumber max\n");
+		ft_printf("Error\nnumber > int max\n");
 	if(error == 4)
 		ft_printf("Error\nduplicates\n");
 }

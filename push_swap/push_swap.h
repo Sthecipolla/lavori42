@@ -18,6 +18,8 @@ typedef struct s_list
 
 int		check(char **arr);
 void	free_double_pointer(char **ptr);
+void	fill_struc(t_lista *list, char **str);
+char	**fill(char **arr);
 int		len_split(t_lista *list);
 void	ft_clean(t_lista *list,int error);
 void	swap_a(t_lista *list);
