@@ -8,22 +8,15 @@ MINILBX = -Lminilibx-linux -lmlx -lXext -lX11 -Llibft -l:libft.a -Lprintf -l:lib
 
 SRC = main.c map.c check_border.c check_portal.c check_player.c check_coins.c so_long_utils.c check_utils.c\
 input_menag.c img_print.c error.c
+# img_print_second.c
 
-MINILB = ./minilibx-linux/
-
-all: $(MINILB) $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRC)
 	@make -C get_next_line
 	@make -C libft
 	@make -C printf
 	$(CC) $(SRC) $(CFLAGS) $(MINILBX) -o so_long
-
-$(MINILB):
-	wget https://cdn.intra.42.fr/document/document/26192/minilibx-linux.tgz
-	tar -xvf minilibx-linux.tgz
-	make -C minilibx-linux
-	rm -f minilibx-linux.tgz
 
 clean:
 	@make clean -C get_next_line
@@ -34,7 +27,6 @@ fclean: clean
 	@make fclean -C get_next_line
 	@make fclean -C libft
 	@make fclean -C printf
-	@rm -rf ./minilibx-linux/
 	@rm -f $(NAME)
 
 re: fclean all
@@ -42,4 +34,16 @@ re: fclean all
 	@make re -C libft
 	@make re -C printf
 
+#da commentare dopo
+norminette_all:
+	clear && norminette ./libft ./get_next_line ./printf $(SRC)
+
+norminette:
+	clear && norminette $(SRC)
+
+go:
+	make && clear && valgrind -s --leak-check=full --track-origins=yes --show-reachable=yes ./so_long "text.ber"
+no_go:
+	make && clear
+#
 .PHONY: all clean fclean re
