@@ -1,62 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   swap_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 12:35:08 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:50:08 by lhima            ###   ########.fr       */
+/*   Created: 2025/01/28 13:18:37 by lhima             #+#    #+#             */
+/*   Updated: 2025/01/28 17:34:19 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-char **fill(char *arr)
+static int	check_swap_a(t_lista *list)
 {
-	char **num;
-	int i;
-
-	i = 0;
-	num = ft_split(arr, ' ');
-	if(num == NULL)
-		return 0;
-	if(!num)
-		return (NULL);
-	return (num);
-}
-static void fill_struc(t_lista *list, char **str)
-{
-	int i;
-
-	i = 0;
-	while(str[i] != NULL)
-	{
-		list->num = ft_strdup(str[i]);
-		if(str[i + 1] == NULL)
-			break;
-		list->next = ft_calloc(sizeof(t_lista),1);
-		list = list->next;
-		i++;
-	}
-	list->next = NULL;
-	free_double_pointer(str);
-}
-int	main(int argc, char **argv)
-{
-	char **str;
-	t_lista *list;
-
-	str = fill(argv[1]);
-	//devo unire i valori se ci sono piu argomenti
-	if(check(str) == 0 || argc == 1)
-	{
-		ft_printf("Error\narg\n");
+	if(list == NULL)
 		return (0);
+	if(len_split(list) < 2)
+		return (0);
+	return (1);
+}
+
+static void print_arr(t_lista *list)
+{
+
+	while(list != NULL)
+	{
+		ft_printf("%s ", list->num);
+		list = list->next;
 	}
-	list = ft_calloc(sizeof(t_lista),1);
-	fill_struc(list, str);
+	ft_printf("\n");
+}
+void swap_a(t_lista *list)
+{
+	if(check_swap_a(list) == 0)
+		return;
+	ft_printf("before:\n");
+	print_arr(list);
+	ft_printf("after:\n");
+	char *t;
+	t = list->num;
+	list->num = list->next->num;
+	list->next->num = t;
+	ft_printf("swap first 2 num\n");
+	print_arr(list);
+}
+void swap_b(t_lista *list)
+{
 	swap_a(list);
-	ft_clean(list, 0);
-	return (0);
+}
+void swap_ss(t_lista *list, t_lista *list2)
+{
+	swap_a(list);
+	swap_b(list2);
 }

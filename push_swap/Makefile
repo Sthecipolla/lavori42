@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
 
-SRC = check.c swap.c swap_a.c push_swap_utils.c error_men.c
+SRC = main.c rotate.c check.c swap.c push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c
 
 all: $(NAME)
 	clear

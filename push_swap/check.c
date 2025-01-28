@@ -41,7 +41,7 @@ static int check_max_value(char **arr)
 	x = 0;
 	while(arr[x] != NULL)
 	{
-		if(ft_atoi(arr[x]) > 2147483647 || ft_atoi(arr[x]) < -2147483648)
+		if(ft_atoi_long(arr[x]) > 2147483647 || ft_atoi_long(arr[x]) < -2147483648)
 			return (0);
 		x++;
 	}
