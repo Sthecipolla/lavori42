@@ -5,7 +5,7 @@ static void push(t_lista ***to_take, t_lista ***to_add)
 {
 	t_lista *tmp;
 
-	if(**to_take == NULL)
+	if(**to_take == NULL || (**to_take) ->num == NULL)
 		return;
 	tmp = **to_take;
 	**to_take = (**to_take)->next;

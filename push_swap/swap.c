@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:37 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:34:19 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/29 10:19:38 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,7 @@ static int	check_swap_a(t_lista *list)
 	return (1);
 }
 
-static void print_arr(t_lista *list)
-{
 
-	while(list != NULL)
-	{
-		ft_printf("%s ", list->num);
-		list = list->next;
-	}
-	ft_printf("\n");
-}
 void swap_a(t_lista *list)
 {
 	if(check_swap_a(list) == 0)

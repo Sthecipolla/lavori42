@@ -35,6 +35,9 @@ void	swap_ss(t_lista *list, t_lista *list2);
 void	push_a(t_lista **a, t_lista **b);
 void	push_b(t_lista **a, t_lista **b);
 long	ft_atoi_long(const char *nptr);
+//da cancellare
+void print_arr(t_lista *list);
+//
 
 
 
