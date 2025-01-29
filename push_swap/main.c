@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:35:08 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/29 17:46:29 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/29 17:54:34 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	main(int argc, char **argv)
 		{
 			if(len == 0)
 				swap_a(list);
-			else if(len == 2)
-				rotate_a(&list);
+			else if(len == 3)
+				reverse_a(&list);
 			else if(len == 1)
 				reverse_a(&list);
 		}
