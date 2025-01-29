@@ -6,35 +6,38 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:37 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/29 10:19:38 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:45:07 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-
-static int	check_swap_a(t_lista *list)
+int check_order(t_lista *l)
 {
-	if(list == NULL)
-		return (0);
-	if(len_split(list) < 2)
-		return (0);
-	return (1);
+	t_lista *tmp;
+	int		i;
+
+	i = 0;
+	tmp = l;
+	while(tmp->next != NULL)
+	{
+		if(ft_atoi(tmp->num) > ft_atoi(tmp->next->num))
+			return (i);
+		tmp = tmp->next;
+		i ++;
+	}
+	return (i + 1);
 }
 
 
 void swap_a(t_lista *list)
 {
-	if(check_swap_a(list) == 0)
+	if(list -> next == NULL || list == NULL)
 		return;
-	ft_printf("before:\n");
-	print_arr(list);
-	ft_printf("after:\n");
+
 	char *t;
 	t = list->num;
 	list->num = list->next->num;
 	list->next->num = t;
-	ft_printf("swap first 2 num\n");
-	print_arr(list);
 }
 void swap_b(t_lista *list)
 {
