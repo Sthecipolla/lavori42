@@ -21,7 +21,7 @@ int check_order(t_lista *l)
 	tmp = l;
 	while(tmp->next != NULL)
 	{
-		if(ft_atoi(tmp->num) > ft_atoi(tmp->next->num))
+		if(tmp->num > tmp->next->num)
 			return (i);
 		tmp = tmp->next;
 		i ++;
@@ -56,11 +56,11 @@ int find_min(t_lista *l)
 
 	i = 0;
 	tmp = l;
-	min = ft_atoi(tmp->num);
+	min = tmp->num;
 	while(tmp != NULL)
 	{
-		if(ft_atoi(tmp->num) < min)
-			min = ft_atoi(tmp->num);
+		if(tmp->num < min)
+			min = tmp->num;
 		tmp = tmp->next;
 		i ++;
 	}

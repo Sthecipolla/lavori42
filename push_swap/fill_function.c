@@ -31,11 +31,15 @@ char **fill(char **arr)
 void fill_struc(t_lista *list, char **str)
 {
 	int i;
+	char *c;
 
+	 
 	i = 0;
 	while(str[i] != NULL)
 	{
-		list->num = ft_strdup(str[i]);
+		c = ft_strdup(str[i]);
+		list->num = ft_atoi(c);
+		free(c);
 		if(str[i + 1] == NULL)
 			break;
 		list->next = ft_calloc(sizeof(t_lista),1);

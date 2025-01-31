@@ -14,10 +14,10 @@
 
 void swap_a(t_lista *list)
 {
+	int t;
+
 	if(list -> next == NULL || list == NULL)
 		return;
-
-	char *t;
 	t = list->num;
 	list->num = list->next->num;
 	list->next->num = t;

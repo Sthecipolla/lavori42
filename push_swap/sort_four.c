@@ -19,7 +19,7 @@ static int check_if_last(t_lista **a)
 	tmp = *a;
 	while(tmp->next != NULL)
 		tmp = tmp->next;
-	if(ft_atoi(tmp->num) == find_min(*a))
+	if(tmp->num == find_min(*a))
 	{
 		ft_printf("rra\n");
 		reverse_a(&(*a));
@@ -37,8 +37,8 @@ static int sorter_four(t_lista **a)
 	while(len_split((*a)) != 3)
 	{
 		i++;
-		check_if_last(&(*a));
-		if(ft_atoi((*a)->num) == find_min((*a)))
+		i+=check_if_last(&(*a));
+		if((*a)->num == find_min((*a)))
 		{
 			ft_printf("pb\n");
 			push_b(&(*a), &b);

@@ -62,7 +62,7 @@ void print_arr(t_lista *list)
 
 	while(list != NULL)
 	{
-		ft_printf("%s ", list->num);
+		ft_printf("%d ", list->num);
 		list = list->next;
 	}
 	ft_printf("\n");
