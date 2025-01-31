@@ -53,7 +53,6 @@ static int sorter_four(t_lista **a)
 	push_a(&b, &(*a));
 	ft_printf("pa\n");
 	i++;
-	print_arr(*a);
 	return (i);
 }
 

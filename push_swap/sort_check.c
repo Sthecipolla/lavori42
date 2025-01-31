@@ -19,20 +19,15 @@ int sorted_move(t_lista **a)
 	{
 		ft_printf("sa\n");
 		swap_a(*a);
-		ft_clean(*a, 0);
 	}
 	else if(len_split(*a) == 3)
-	{
-
 		ft_printf("%d\n", before_three_sort(&(*a)));
-		print_arr(*a);
-		ft_clean(*a, 0);
-	}
-	if(len_split(*a) == 4)
-	{
+	else if(len_split(*a) == 4)
 		ft_printf("%d\n",before_four_sort(&(*a)));
-		ft_clean(*a, 0);
-	}
+	else if(len_split(*a) == 5)
+		ft_printf("%d\n",before_five_sort(&(*a)));
 
+	print_arr(*a);
+		ft_clean(*a, 0);
 	return (0);
 }

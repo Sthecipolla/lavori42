@@ -43,6 +43,7 @@ int		before_four_sort(t_lista **a);
 int		find_min(t_lista *l);
 //int		order_num_three(t_lista **list, int i);
 int		before_three_sort(t_lista **a);
+int before_five_sort(t_lista **a);
 
 
 
