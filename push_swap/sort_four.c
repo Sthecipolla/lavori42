@@ -49,7 +49,7 @@ static int sorter_four(t_lista **a)
 			rotate_a(&(*a));
 		}
 	}
-	i+=order_num_three(&(*a), 0);
+	i+=before_three_sort(&(*a));
 	push_a(&b, &(*a));
 	ft_printf("pa\n");
 	i++;
