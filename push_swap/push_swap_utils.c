@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:34 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:53:41 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:08:42 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,26 @@ void ft_clean(t_lista *list, int error)
 {
 	t_lista *tmp;
 
-	print_error(error);
 	if(list == NULL)
 		exit(0);
 	while(list != NULL)
 	{
 		tmp = list->next;
-		free(list ->num);
 		free(list);
 		list = tmp;
 	}
+	if(error == 100)
+		return ;
+	print_error(error);
 	exit(0);
+}
+void print_arr(t_lista *list)
+{
+
+	while(list != NULL)
+	{
+		ft_printf("%s ", list->num);
+		list = list->next;
+	}
+	ft_printf("\n");
 }

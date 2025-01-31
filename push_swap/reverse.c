@@ -1,32 +1,32 @@
 # include "push_swap.h"
 
-static void reverse(t_lista ***list)
+static void reverse_rotate(t_lista **list)
 {
 	t_lista *tmp;
 	t_lista *tmp2;
 
-	if(**list == NULL || (**list)->next == NULL)
-		return;
-	tmp = **list;
-	tmp2 = **list;
-	while(tmp2->next->next != NULL)
-		tmp2 = tmp2->next;
-	tmp2->next = NULL;
-	while(tmp->next != NULL)
+	tmp = *list;
+	tmp2 = *list;
+	if(tmp == NULL || tmp->next == NULL)
+		return ;
+	while(tmp->next->next != NULL)
 		tmp = tmp->next;
-	tmp->next = **list;
-	**list = tmp;
+	tmp2 = tmp->next;
+	tmp->next = NULL;
+	tmp2->next = *list;
+	*list = tmp2;
 }
 void reverse_a(t_lista **list)
 {
-	reverse(&list);
+	reverse_rotate(&(*list));
 }
 void reverse_b(t_lista **list)
 {
-	reverse(&list);
+	reverse_rotate(&(*list));
 }
 void reverse_rr(t_lista **a, t_lista **b)
 {
-	reverse(&a);
-	reverse(&b);
+	reverse_rotate(&(*a));
+	reverse_rotate(&(*b));
 }
+//porta in cima l'ultimo elemento della lista

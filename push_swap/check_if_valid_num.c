@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_if_valid_num.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:32 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 17:18:14 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/31 14:12:55 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int check_if_int_number(char **arr)
 		y = 0;
 		while(arr[x][y] != '\0')
 		{
-			if(arr[x][y] == '-' && y == 0 && arr[x][y] == '+')
+			if((arr[x][y] == '-' && y == 0) || (arr[x][y] == '+' && y == 0))
 				y++;
 			if(ft_isdigit(arr[x][y]) == 0)
 				return (0);
@@ -66,9 +66,23 @@ static int check_duplicates(char **arr)
 	}
 	return (1);
 }
+static int len_matrix(char **arr)
+{
+	int x;
 
+	x = 0;
+	while(arr[x] != NULL)
+		x++;
+	return (x);
+}
 int check(char **arr)
 {
+	while(len_matrix(arr) < 2)
+	{
+		free_double_pointer(arr);
+		print_error(1);
+		exit(0);
+	}
 	if(check_if_int_number(arr) == 0)
 	{
 		free_double_pointer(arr);

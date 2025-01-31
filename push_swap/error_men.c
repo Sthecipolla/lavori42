@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:29 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/28 16:32:43 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/31 13:44:14 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void print_error(int error)
 	if(error == 0)
 		return ;
 	if(error == 1)
-		ft_printf("Error\nnumber < 2\n");
+		write(2,"Error\nnumber < 2\n",17);
 	if(error == 2)
-		ft_printf("Error\nnumber invalid\n");
+		write(2,"Error\nnumber invalid\n",21);
 	if(error == 3)
-		ft_printf("Error\nnumber > int max\n");
+		write(2, "Error\nnumber > int max\n", 23);
 	if(error == 4)
-		ft_printf("Error\nduplicates\n");
+		write(2,"Error\nduplicates\n",17);
 }

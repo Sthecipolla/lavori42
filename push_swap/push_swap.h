@@ -15,7 +15,9 @@ typedef struct s_list
 	struct s_list	*next;
 }t_lista;
 
-
+//da cancellare
+void print_arr(t_lista *list);
+//da cancellare
 int		check(char **arr);
 void	free_double_pointer(char **ptr);
 void	fill_struc(t_lista *list, char **str);
@@ -35,6 +37,12 @@ void	swap_ss(t_lista *list, t_lista *list2);
 void	push_a(t_lista **a, t_lista **b);
 void	push_b(t_lista **a, t_lista **b);
 long	ft_atoi_long(const char *nptr);
+int		check_order(t_lista *l);
+int		sorted_move(t_lista **a);
+int		sorter_four(t_lista **a);
+int		find_min(t_lista *l);
+int		order_num_three(t_lista **list, int i);
+
 
 
 
