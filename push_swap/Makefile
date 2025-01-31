@@ -6,7 +6,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
 
-SRC = main.c rotate.c check_if_valid_num.c swap.c push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c fill_function.c
+SRC = main.c sort_check.c rotate.c check_if_valid_num.c swap.c \
+push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c \
+fill_function.c sort_four.c utils_sorting.c
 
 all: $(NAME)
 	clear
@@ -28,7 +30,10 @@ norminette:
 
 norminette_all:
 	norminette $(SRC) ./libft/
+	norminette $(SRC) ./printf/
 
+rapid_test:
+	./push_swap 3 2 5 2> error.txt
 #go:
 # da cancellare
 clean:
