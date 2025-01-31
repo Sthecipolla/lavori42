@@ -6,13 +6,13 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:21:48 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/31 16:49:33 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/31 17:10:31 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-int check_if_last(t_lista **a)
+static int check_if_last(t_lista **a)
 {
 	t_lista *tmp;
 
@@ -28,7 +28,7 @@ int check_if_last(t_lista **a)
 	return (0);
 }
 
-int sorter_four(t_lista **a)
+static int sorter_four(t_lista **a)
 {
 	t_lista *b;
 	int i;
@@ -55,4 +55,11 @@ int sorter_four(t_lista **a)
 	i++;
 	print_arr(*a);
 	return (i);
+}
+
+int before_four_sort(t_lista **a)
+{
+	if(check_order(*a) == 4)
+		return (0);
+	return (sorter_four(&(*a)));
 }

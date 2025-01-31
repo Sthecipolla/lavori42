@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:31:00 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/31 14:47:03 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/31 17:04:38 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int find_min(t_lista *l)
 	i = 0;
 	tmp = l;
 	min = ft_atoi(tmp->num);
-	while(tmp->next != NULL)
+	while(tmp != NULL)
 	{
 		if(ft_atoi(tmp->num) < min)
 			min = ft_atoi(tmp->num);

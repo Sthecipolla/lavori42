@@ -39,7 +39,7 @@ void	push_b(t_lista **a, t_lista **b);
 long	ft_atoi_long(const char *nptr);
 int		check_order(t_lista *l);
 int		sorted_move(t_lista **a);
-int		sorter_four(t_lista **a);
+int		before_four_sort(t_lista **a);
 int		find_min(t_lista *l);
 int		order_num_three(t_lista **list, int i);
 

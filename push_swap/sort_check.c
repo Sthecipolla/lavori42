@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:21:42 by lhima             #+#    #+#             */
-/*   Updated: 2025/01/31 15:55:10 by lhima            ###   ########.fr       */
+/*   Updated: 2025/01/31 17:11:26 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int sorted_move(t_lista **a)
 	}
 	else if(len_split(*a) == 3)
 	{
+
 		ft_printf("%d\n", order_num_three(&(*a), 0));
 		print_arr(*a);
 		ft_clean(*a, 0);
 	}
 	if(len_split(*a) == 4)
 	{
-		ft_printf("%d\n",sorter_four(&(*a)));
+		ft_printf("%d\n",before_four_sort(&(*a)));
 		ft_clean(*a, 0);
 	}
 
