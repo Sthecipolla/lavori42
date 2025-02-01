@@ -16,38 +16,29 @@ static int check_if_last(t_lista **a)
 	return (0);
 }
 
-static int sorter_five(t_lista **a)
+static int sorter_five(t_lista **a, t_lista **b)
 {
-	t_lista *b;
 	int i;
 
 	i = 0;
-	while(len_split((*a)) != 4)
+	while(len_split((*a)) != 3)
 	{
 		i++;
 		i+=check_if_last(&(*a));
 		if((*a)->num == find_min((*a)))
-		{
-			ft_printf("pb\n");
-			push_b(&(*a), &b);
-		}
+			push_b(a,b);
 		else
-		{
-			ft_printf("ra\n");
 			rotate_a(&(*a));
-		}
 	}
-	i+=before_four_sort(&(*a));
-	push_a(&b, &(*a));
-	ft_printf("pa\n");
-	i++;
+	i = i + before_three_sort(a) + 2;
+	push_a(b, a);
 	return (i);
 }
 
 
-int before_five_sort(t_lista **a)
+int before_five_sort(t_lista **a, t_lista **b)
 {
 	if(check_order(*a) == 4)
 		return (0);
-	return (sorter_five(&(*a)));
+	return (sorter_five(&(*a),&(*b)));
 }

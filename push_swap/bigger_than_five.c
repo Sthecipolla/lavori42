@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_four.c                                        :+:      :+:    :+:   */
+/*   bigger_than_five.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 14:21:48 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/01 14:41:43 by lhima            ###   ########.fr       */
+/*   Created: 2025/02/01 15:31:16 by lhima             #+#    #+#             */
+/*   Updated: 2025/02/01 15:43:14 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 static int check_if_last(t_lista **a)
 {
@@ -21,13 +21,14 @@ static int check_if_last(t_lista **a)
 		tmp = tmp->next;
 	if(tmp->num == find_min(*a))
 	{
+		ft_printf("rra\n");
 		reverse_a(&(*a));
 		return (1);
 	}
 	return (0);
 }
 
-static int sorter_four(t_lista **a, t_lista **b)
+static int sorting(t_lista **a, t_lista **b)
 {
 	int i;
 
@@ -37,21 +38,19 @@ static int sorter_four(t_lista **a, t_lista **b)
 		i++;
 		i+=check_if_last(&(*a));
 		if((*a)->num == find_min((*a)))
-			push_b(&(*a), &(*b));
-
+			push_b(a,b);
 		else
 			rotate_a(&(*a));
-
 	}
-	i+=before_three_sort(&(*a));
-	push_a(b, a);
-	i++;
+	i = i + before_three_sort(a) + 2;
+	while((*b)-> len > 0)
+		push_a(b, a);
 	return (i);
 }
 
-int before_four_sort(t_lista **a, t_lista **b)
+int before_sorting_num(t_lista **a,t_lista **b)
 {
-	if(check_order(*a) == 4)
+	if(check_order(*a) == len_split(*a))
 		return (0);
-	return (sorter_four(a,b));
+	return (sorting(a,b));
 }

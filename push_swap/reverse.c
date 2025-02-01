@@ -19,14 +19,17 @@ static void reverse_rotate(t_lista **list)
 void reverse_a(t_lista **list)
 {
 	reverse_rotate(&(*list));
+	ft_printf("rra\n");
 }
 void reverse_b(t_lista **list)
 {
 	reverse_rotate(&(*list));
+	ft_printf("rrb\n");
 }
 void reverse_rr(t_lista **a, t_lista **b)
 {
 	reverse_rotate(&(*a));
 	reverse_rotate(&(*b));
+	ft_printf("rrr\n");
 }
 //porta in cima l'ultimo elemento della lista

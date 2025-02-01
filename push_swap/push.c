@@ -14,9 +14,19 @@ static void push(t_lista **to_take, t_lista **to_add)
 }
 void push_a(t_lista **b, t_lista **a)
 {
-	push(&(*b), &(*a));
+	if((*b)->len == 0)
+		return;
+	push(b, a);
+	ft_printf("pa\n");
+	(*b)->len--;
+	(*a)->len++;
 }
 void push_b(t_lista **a, t_lista **b)
 {
-	push(&(*a), &(*b));
+	if((*a)->len == 0)
+		return;
+	push(a, b);
+	ft_printf("pb\n");
+	(*b)->len++;
+	(*a)->len--;
 }
