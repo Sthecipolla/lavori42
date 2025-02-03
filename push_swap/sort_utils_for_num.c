@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_utils_for_num.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 12:35:08 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/03 17:14:00 by lhima            ###   ########.fr       */
+/*   Created: 2025/02/03 17:03:35 by lhima             #+#    #+#             */
+/*   Updated: 2025/02/03 17:11:01 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-int	main(int argc, char **argv)
+void search_topalf_for_min(t_lista **a, t_lista **b)
 {
-	char **str;
-	t_lista *list;
-	t_lista *b;
-	if(argc == 1)
+	t_lista *tmp;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	tmp = *a;
+	while(tmp->next != NULL)
 	{
-		write(2,"Error\nno arg\n",13);
-		return (0);
+		if(tmp->num == find_min(*a))
+			break;
+		tmp = tmp->next;
+		i++;
 	}
-	b = NULL;
-	str = fill(argv);
-	check(str);
-	list = ft_calloc(sizeof(t_lista),1);
-	fill_struc(list, str);
-	sorted_move(&list,&b);
-	ft_clean(list, 100);
-	return (0);
+	if(i < len_split(*a) / 2)
+	{
+		while(j < i)
+		{
+			rotate_a(a);
+			j++;
+		}
+	}
+	else
+	{
+		while(j < len_split(*a) - i)
+		{
+			reverse_a(a);
+			j++;
+		}
+	}
+	push_b(a,b);
+
 }

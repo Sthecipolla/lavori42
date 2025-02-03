@@ -17,18 +17,18 @@ static void rotate(t_lista **list)
 }
 void rotate_a(t_lista **list)
 {
-	rotate(&(*list));
+	rotate(list);
 	ft_printf("ra\n");
 }
 void rotate_b(t_lista **list)
 {
-	rotate(&(*list));
+	rotate(list);
 	ft_printf("rb\n");
 }
 void rotate_rr(t_lista **a, t_lista **b)
 {
-	rotate(&(*a));
-	rotate(&(*b));
+	rotate(a);
+	rotate(b);
 	ft_printf("rr\n");
 }
 //porta in fondo il primo elemento della lista

@@ -18,21 +18,19 @@ static int check_if_last(t_lista **a)
 
 static int sorter_five(t_lista **a, t_lista **b)
 {
-	int i;
 
-	i = 0;
 	while(len_split((*a)) != 3)
 	{
-		i++;
-		i+=check_if_last(&(*a));
+		check_if_last(a);
 		if((*a)->num == find_min((*a)))
 			push_b(a,b);
 		else
 			rotate_a(&(*a));
 	}
-	i = i + before_three_sort(a) + 2;
+	before_three_sort(a);
 	push_a(b, a);
-	return (i);
+	push_a(b, a);
+	return (1);
 }
 
 
