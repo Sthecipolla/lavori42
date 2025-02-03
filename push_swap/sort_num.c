@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:31:16 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/03 17:21:43 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/03 18:32:42 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 
 static int sorting(t_lista **a, t_lista **b)
 {
-	while(len_split(*a) != 3)
+	while(len_split(*a) != 5)
 	{
 		search_topalf_for_min(a,b);
 	}
-	before_three_sort(a);
+	before_five_sort(a,b);
 	while((*b) != NULL)
 		push_a(b, a);
 	return (1);
