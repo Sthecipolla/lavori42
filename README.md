@@ -7,3 +7,5 @@
 
 git checkout nome-branch per cambiare branch
 !!!!!pero prima devi fare pull per pigliare il branch
+creato script per alla scuola 
+
