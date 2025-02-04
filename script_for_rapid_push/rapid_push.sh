@@ -12,3 +12,6 @@ git commit -m "rapid push"
 # Push the changes to the remote repository                                     
 git push
 
+Git push completed!
+pause
+
