@@ -13,9 +13,7 @@ push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c \
 fill_function.c sort_four.c utils_sorting.c sort_three.c sort_five.c \
 sort_num.c sort_utils_for_num.c
 
-
-OBJ_DIR = obj
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 	clear
@@ -26,9 +24,10 @@ $(NAME): $(OBJ)
 	@make -C ./printf
 	$(CC) $(CFLAGS) $(OBJ) $(OTHER_SOURCE) -o $(NAME)
 
-%.o: %.c
-	mkdir obj
-	$(CC) $(CFLAGS) -c $< -o $@
+#%.o: $(SRC)
+#	mkdir -p obj
+#	cd obj
+#	$(CC) $(CFLAGS) -c $< -o $@
 
 checker:
 	wget https://cdn.intra.42.fr/document/document/28256/checker_linux
