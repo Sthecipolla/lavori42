@@ -53,10 +53,10 @@ int		find_min(t_lista *l);
 //int		order_num_three(t_lista **list, int i);
 int		before_four_sort(t_lista **a, t_lista **b);
 int		before_three_sort(t_lista **a);
-int before_five_sort(t_lista **a, t_lista **b);
-int before_sorting_num(t_lista **a,t_lista **b);
-void find_num_cost(t_lista **a, t_lista **b);
-void add_cost(t_lista *list);
+int		before_five_sort(t_lista **a, t_lista **b);
+int		before_sorting_num(t_lista **a,t_lista **b);
+void	find_num_cost(t_lista **a, t_lista **b);
+void	add_cost(t_lista *list);
 
 
 

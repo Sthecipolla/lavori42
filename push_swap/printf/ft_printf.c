@@ -37,12 +37,10 @@ static int	check_type(const char c,	va_list arg)
 
 int	ft_printf(const char *c, ...)
 {
-	int			i;
 	va_list		args;
 	int			len;
 
 	va_start(args, c);
-	i = 0;
 	len = 0;
 	while (*c != '\0')
 	{

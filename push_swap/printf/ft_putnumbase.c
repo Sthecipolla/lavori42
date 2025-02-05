@@ -46,9 +46,6 @@ int	ft_putnbr_base(unsigned int nbr, char *base)
 	i = calcobase (base);
 	if (i == -1)
 		return (0);
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-	}
+
 	return (divisione(nbr, base, i, 0));
 }

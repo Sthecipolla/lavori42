@@ -54,10 +54,8 @@ void add_cost(t_lista *list)
 {
 	t_lista *tmp;
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
 	tmp = list;
 	while(tmp)
 	{
