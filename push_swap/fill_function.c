@@ -33,7 +33,7 @@ void fill_struc(t_lista *list, char **str)
 	int i;
 	char *c;
 
-	 
+
 	i = 0;
 	while(str[i] != NULL)
 	{
@@ -48,4 +48,22 @@ void fill_struc(t_lista *list, char **str)
 	}
 	list->next = NULL;
 	free_double_pointer(str);
+}
+
+void add_cost(t_lista *list)
+{
+	t_lista *tmp;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	tmp = list;
+	while(tmp)
+	{
+		if(len_split(tmp)/2 > i)
+			tmp->cost = (len_split(tmp)/2 - i) * -1;
+		tmp->cost = i++;
+		tmp = tmp->next;
+	}
 }

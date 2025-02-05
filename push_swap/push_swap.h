@@ -13,6 +13,7 @@ typedef struct s_list
 {
 	int				num;
 	struct s_list	*next;
+	int				cost;
 }t_lista;
 
 //da cancellare
@@ -45,7 +46,8 @@ int		before_four_sort(t_lista **a, t_lista **b);
 int		before_three_sort(t_lista **a);
 int before_five_sort(t_lista **a, t_lista **b);
 int before_sorting_num(t_lista **a,t_lista **b);
-void search_topalf_for_min(t_lista **a, t_lista **b);
+void find_num_cost(t_lista **a, t_lista **b);
+void add_cost(t_lista *list);
 
 
 
