@@ -61,9 +61,13 @@ void add_cost(t_lista *list)
 	tmp = list;
 	while(tmp)
 	{
-		if(len_split(tmp)/2 > i)
-			tmp->cost = (len_split(tmp)/2 - i) * -1;
-		tmp->cost = i++;
+		if(len_split(list)/2 < i)
+		{
+			tmp->cost = (len_split(list) - i) * -1;
+			i++;
+		}
+		else
+			tmp->cost = i++;
 		tmp = tmp->next;
 	}
 }

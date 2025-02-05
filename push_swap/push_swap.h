@@ -9,6 +9,15 @@
 # include "./libft/libft.h"
 # include "printf/ft_printf.h"
 
+
+typedef struct s_cost
+{
+	int		cost_b;
+	int		bestcost;
+	int		cost_a;
+	int		flag;
+}t_cost;
+
 typedef struct s_list
 {
 	int				num;

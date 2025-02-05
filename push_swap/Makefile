@@ -14,14 +14,21 @@ fill_function.c sort_four.c utils_sorting.c sort_three.c sort_five.c \
 sort_num.c sort_utils_for_num.c
 
 
+OBJ_DIR = obj
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+
 all: $(NAME)
 	clear
 
 
-$(NAME): $(SRC)
+$(NAME): $(OBJ)
 	@make -C ./libft
 	@make -C ./printf
-	$(CC) $(CFLAGS) $(SRC) $(OTHER_SOURCE) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(OTHER_SOURCE) -o $(NAME)
+
+%.o: %.c
+	mkdir obj
+	$(CC) $(CFLAGS) -c $< -o $@
 
 checker:
 	wget https://cdn.intra.42.fr/document/document/28256/checker_linux
@@ -46,6 +53,7 @@ go_with_count:
 clean:
 	@make -C ./libft clean
 	@make -C ./printf clean
+	rm -f $(OBJ)
 	clear
 
 fclean: clean
