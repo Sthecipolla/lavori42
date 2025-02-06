@@ -42,7 +42,9 @@ static int sorting(t_lista **a, t_lista **b)
 	while(len_split(*b) != 0)
 	{
 		find_num_cost(a, b);
+		ft_printf("a:");
 		print_arr(*a);
+		ft_printf("b:");
 		print_arr(*b);
 		add_cost(*a);
 		add_cost(*b);

@@ -32,22 +32,15 @@ int check_order(t_lista *l)
 int find_max(t_lista *l)
 {
 	t_lista *tmp;
-	int		i;
-	int		max;
+	//int		i;
 
-	i = 0;
+
 	tmp = l;
 	if(l == NULL)
 		return (0);
-	max = tmp->num;
 	while(tmp->next != NULL)
-	{
-		if(tmp->num > max)
-			max = tmp->num;
 		tmp = tmp->next;
-		i ++;
-	}
-	return (max);
+	return (tmp -> num);
 }
 
 int find_min(t_lista *l)
