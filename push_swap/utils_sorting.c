@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:31:00 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/04 10:17:19 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/06 13:54:32 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int check_order(t_lista *l)
 	}
 	return (i + 1);
 }
-/*
+
 int find_max(t_lista *l)
 {
 	t_lista *tmp;
@@ -37,16 +37,18 @@ int find_max(t_lista *l)
 
 	i = 0;
 	tmp = l;
-	max = ft_atoi(tmp->num);
+	if(l == NULL)
+		return (0);
+	max = tmp->num;
 	while(tmp->next != NULL)
 	{
-		if(ft_atoi(tmp->num) > max)
-			max = ft_atoi(tmp->num);
+		if(tmp->num > max)
+			max = tmp->num;
 		tmp = tmp->next;
 		i ++;
 	}
 	return (max);
-} */
+}
 
 int find_min(t_lista *l)
 {

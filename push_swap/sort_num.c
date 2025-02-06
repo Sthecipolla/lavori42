@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:31:16 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/05 14:37:59 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/06 11:01:13 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int sorting(t_lista **a, t_lista **b)
 		find_num_cost(a, b);
 		print_arr(*a);
 		print_arr(*b);
+		add_cost(*a);
+		add_cost(*b);
 	}
 	print_arr(*a);
 	return (1);
