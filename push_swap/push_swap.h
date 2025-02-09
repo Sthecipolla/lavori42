@@ -58,6 +58,11 @@ int		before_five_sort(t_lista **a, t_lista **b);
 int		before_sorting_num(t_lista **a,t_lista **b);
 void	find_num_cost(t_lista **a, t_lista **b);
 void	add_cost(t_lista *list);
+int		close_max(int num, t_lista *a);
+int		close_min(int num, t_lista *a);
+int		calc_distance(int cost_a, int cost_b);
+int		find_cost_of_a_num(t_lista *l ,int num);
+void	sort_stack_a(t_lista **a);
 
 
 

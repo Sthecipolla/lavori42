@@ -16,7 +16,6 @@ static int pre_check(t_lista **list, int len)
 {
 	if(len == 0 && (*list)->num > (*list)->next->next->num)
 		{
-			ft_printf("ra\n");
 			rotate_a(&(*list));
 			return (1);
 		}

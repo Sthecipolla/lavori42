@@ -32,24 +32,24 @@ int check_order(t_lista *l)
 int find_max(t_lista *l)
 {
 	t_lista *tmp;
-	//int		i;
-
+	int		max;
 
 	tmp = l;
-	if(l == NULL)
-		return (0);
-	while(tmp->next != NULL)
+	max = tmp->num;
+	while(tmp != NULL)
+	{
+		if(tmp->num > max)
+			max = tmp->num;
 		tmp = tmp->next;
-	return (tmp -> num);
+	}
+	return (max);
 }
 
 int find_min(t_lista *l)
 {
 	t_lista *tmp;
-	int		i;
 	int		min;
 
-	i = 0;
 	tmp = l;
 	min = tmp->num;
 	while(tmp != NULL)
@@ -57,7 +57,95 @@ int find_min(t_lista *l)
 		if(tmp->num < min)
 			min = tmp->num;
 		tmp = tmp->next;
-		i ++;
 	}
 	return (min);
 }
+//return num if there are no min number
+int close_min(int num, t_lista *a)
+{
+	t_lista *tmp;
+	int		close_min;
+
+	tmp = a;
+	close_min = find_min(a);
+	if(close_min == num)
+		return (num);
+	while(tmp != NULL)
+	{
+		if(!(tmp->num < close_min) && tmp->num < num)
+			close_min = tmp->num;
+		tmp = tmp->next;
+	}
+	return (close_min);
+}
+//return num if there are no max number
+int close_max(int num, t_lista *a)
+{
+	t_lista *tmp;
+	int		close_max;
+
+	tmp = a;
+	close_max = find_max(a);
+	if(close_max == num)
+		return (num);
+	while(tmp != NULL)
+	{
+		if(tmp->num < close_max && tmp->num  > num)
+			close_max = tmp->num;
+		tmp = tmp->next;
+	}
+	return (close_max);
+}
+
+
+void sort_stack_a(t_lista **a)
+{
+	t_lista *tmp;
+	int cost;
+
+	tmp = *a;
+	while(tmp->num != find_min(*a))
+		tmp = tmp -> next;
+	cost = tmp->cost;
+	if(cost < 0)
+	{
+		while(cost++ != 0)
+			reverse_a(a);
+		return;
+	} 
+	while(cost-- != 0)
+		rotate_a(a);
+	print_arr(*a);
+}
+/* int main()
+{
+	t_lista *p;
+	p = calloc(1, sizeof(t_lista));
+	t_lista *tmp = p;
+
+	int i = 1;
+	while(i < 10)
+	{	
+		if(i%2 == 0)
+			tmp->num = i;
+		else
+			tmp->num = i*3;
+		tmp-> next= calloc(1, sizeof(t_lista));
+		tmp->next->next = NULL;
+		tmp = tmp->next;
+		i++;
+	}
+	rotate_a(&p);
+	rotate_a(&p);
+	rotate_a(&p);
+	tmp = p;
+	while(tmp != NULL)
+	{
+		printf("%d\n", tmp->num);
+		tmp = tmp->next;
+	}
+	printf("max: %d\n", close_max(3, p));
+	printf("min:%d\n", close_min(3, p));
+
+	return 0;
+} */

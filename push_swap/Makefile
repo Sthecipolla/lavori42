@@ -11,7 +11,7 @@ N = 3 12 14 90 21 554
 SRC = main.c sort_check.c rotate.c check_if_valid_num.c swap.c \
 push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c \
 fill_function.c sort_four.c utils_sorting.c sort_three.c sort_five.c \
-sort_num.c sort_utils_for_num.c
+sort_num.c sort_utils_for_num.c sort_utils_for_num_second.c
 
 APP = app
 

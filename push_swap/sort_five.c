@@ -9,7 +9,6 @@ static int check_if_last(t_lista **a)
 		tmp = tmp->next;
 	if(tmp->num == find_min(*a))
 	{
-		ft_printf("rra\n");
 		reverse_a(&(*a));
 		return (1);
 	}
