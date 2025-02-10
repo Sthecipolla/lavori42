@@ -91,6 +91,4 @@ void find_num_cost(t_lista **a, t_lista **b)
 		best_cost(a, b, &costs);
 		}
 	push_a(b, a);
-	add_cost(*a);
-	add_cost(*b);
 }
