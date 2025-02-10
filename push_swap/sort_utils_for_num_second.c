@@ -16,25 +16,7 @@ int calc_distance(int cost_a, int cost_b)
 		return (cost_b - cost_a);
 	return (cost_a - cost_b);
 }
-void rotate_b_until_right(t_lista **b, int cost_a, int num)
-{
-	if(cost_a < 0)
-	{
-		while(find_cost_of_a_num(*b, num) > 0)
-		{
-			rotate_b(b);
-			add_cost(*b);
-		}
-	}
-	else
-	{
-		while(find_cost_of_a_num(*b, num) < 0)
-		{
-			reverse_b(b);
-			add_cost(*b);
-		}
-	}
-}
+
 int find_cost_of_a_num(t_lista *l ,int num)
 {
 	t_lista *tmp;

@@ -30,6 +30,7 @@ void cost_max_and_min(t_lista **a, t_lista **b, t_cost *costs, t_lista *tmp_b)
 		find_cost_of_a_num(*b,tmp_b->num));
 		costs->cost_b = find_cost_of_a_num(*b,tmp_b->num);
 		costs->cost_a = find_cost_of_a_num(*a,find_min(*a));
+		costs->num = tmp_b->num;
 		return;
 	}
 }
@@ -70,9 +71,9 @@ void best_cost(t_lista **a, t_lista **b, t_cost *costs)
 		{
 			costs->bestcost = ft_abs(find_cost_of_a_num(*a,close_max(tmp_b->num,*a)), \
 			find_cost_of_a_num(*b,tmp_b->num));
-	//		ft_printf("bestcost = %d\n", costs->bestcost);
 			costs->cost_b =  find_cost_of_a_num(*b,tmp_b->num);
 			costs->cost_a = find_cost_of_a_num(*a,close_max( tmp_b->num,*a));
+			costs->num = tmp_b->num;
 		}
 		tmp_b = tmp_b->next;
 	}
@@ -82,26 +83,14 @@ void find_num_cost(t_lista **a, t_lista **b)
 
 	t_cost	costs;
 
-	//ft_printf("lista a:\n");
-	print_arr(*a);
-	//ft_printf("lista b:\n");
-	print_arr(*b);
  	costs.bestcost = len_split(*b) + len_split(*a);
 	best_cost(a, b, &costs);
-	/* if(costs.bestcost > calc_distance(costs.cost_a, costs.cost_b))
-		rotate_b_until_right(b, costs.cost_a, find_min(*a)); */
 	while(costs.cost_a != 0 || costs.cost_b != 0)
 		{
-	//	ft_printf("cost_a = %d cost_b = %d\n", costs.cost_a, costs.cost_b);
 		move_stack(&costs.cost_a, &costs.cost_b, a, b);
 		best_cost(a, b, &costs);
 		}
 	push_a(b, a);
-	//sort_stack_a(a);
 	add_cost(*a);
 	add_cost(*b);
-	//ft_printf("lista a:\n");
-	//print_arr(*a);
-	//ft_printf("lista b:\n");
-	//print_arr(*b);
 }

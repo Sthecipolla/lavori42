@@ -15,7 +15,7 @@ typedef struct s_cost
 	int		cost_b;
 	int		bestcost;
 	int		cost_a;
-	int		flag;
+	int		num;
 }t_cost;
 
 typedef struct s_list
@@ -63,6 +63,7 @@ int		close_min(int num, t_lista *a);
 int		calc_distance(int cost_a, int cost_b);
 int		find_cost_of_a_num(t_lista *l ,int num);
 void	sort_stack_a(t_lista **a);
+//void	rotate_b_until_right(t_lista **b, int cost_a, int num);
 
 
 
