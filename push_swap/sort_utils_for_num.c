@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:03:35 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/06 16:43:36 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/11 12:28:54 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,29 @@
 
 static int	ft_abs(int num1, int num2)
 {
+	int i;
+
+	i = 0;
+	while(num1 < 0 && num2 < 0)
+	{
+		num1 += 1;
+		num2 += 1;
+		i++;
+	}
+	while(num1 > 0 && num2 > 0)
+	{
+		num1 -= 1;
+		num2 -= 1;
+		i++;
+	}
 	if(num1 < 0)
 		num1 = num1 * -1;
 	if(num2 < 0)
 		num2 = num2 * -1;
-	return (num1 + num2);
+	return (num1 + num2 + i);
 }
 
-void cost_max_and_min(t_lista **a, t_lista **b, t_cost *costs, t_lista *tmp_b)
+static	void	cost_max(t_lista **a, t_lista **b, t_cost *costs, t_lista *tmp_b)
 {
 	if(costs->bestcost > ft_abs(find_cost_of_a_num(*a,find_min(*a)), \
 	find_cost_of_a_num(*b,tmp_b->num)))
@@ -65,7 +80,7 @@ void best_cost(t_lista **a, t_lista **b, t_cost *costs)
 	while(tmp_b != NULL)
 	{
 		if(find_max(*a)< tmp_b->num)
-			cost_max_and_min(a, b, costs, tmp_b);
+			cost_max(a, b, costs, tmp_b);
 		else if(costs->bestcost > ft_abs(find_cost_of_a_num(*a,close_max(tmp_b->num,*a)), \
 		find_cost_of_a_num(*b,tmp_b->num)))
 		{

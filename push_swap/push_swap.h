@@ -51,7 +51,6 @@ int		check_order(t_lista *l);
 int		sorted_move(t_lista **a, t_lista **b);
 int		find_max(t_lista *l);
 int		find_min(t_lista *l);
-//int		order_num_three(t_lista **list, int i);
 int		before_four_sort(t_lista **a, t_lista **b);
 int		before_three_sort(t_lista **a);
 int		before_five_sort(t_lista **a, t_lista **b);
@@ -63,7 +62,6 @@ int		close_min(int num, t_lista *a);
 int		calc_distance(int cost_a, int cost_b);
 int		find_cost_of_a_num(t_lista *l ,int num);
 void	sort_stack_a(t_lista **a);
-//void	rotate_b_until_right(t_lista **b, int cost_a, int num);
 
 
 
