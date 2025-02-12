@@ -1,0 +1,11 @@
+c
+libft
+main.c
+Makefile
+obj
+pipex
+pipex.c
+pipex.h
+printf
+read.txt
+write.txt
