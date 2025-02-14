@@ -23,7 +23,7 @@ int	for_the_forking(pid_t *childpid)
 	return (0);
 }
 
-void	child_do(int argc, char **argv, char **envp, int fd[2])
+void	child_do(int argc, char **argv, char **envp, int *fd, int *file)
 {
 	pid_t	childpid;
 	int		i;
@@ -40,11 +40,13 @@ void	child_do(int argc, char **argv, char **envp, int fd[2])
 		if (childpid == 0)
 		{
 			close(fd[0]);
-			child(argv[2 + i], envp, fd);
+			child(argv[2 + i], envp, fd, file);
 		}
 		else
 			parent(fd);
+
 		wait(NULL);
+		close(fd[0]);
 	}
 }
 
@@ -66,23 +68,23 @@ int	main(int argc, char **argv, char *envp[])
 	pid_t	childpid;
 
 	argc_check_and_fd(argc, file, argv);
-	dup2(file[0], 0);
-	close(file[0]);
+	dup2(file[1], 1);
 	for_the_forking(&childpid);
 	if (childpid == 0)
 	{
-		child_do(argc, argv, envp, fd);
-		dup2(file[1], 1);
+		close(file[0]);
+		child_do(argc, argv, envp, fd, file);;
+		close(file[1]);
 		execve(find_command(ft_substr(argv[argc - 2], 0, \
 		find_space(argv[argc - 2], ' ')), envp), \
 		ft_split(argv[argc - 2], ' '), envp);
 	}
 	else
 	{
-		//close(file[0]);
 		close(file[1]);
+		dup2(file[0], 0);
 	}
 	waitpid(childpid, NULL, 0);
-	close(file[1]);
+	close(file[0]);
 	return (0);
 }

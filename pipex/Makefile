@@ -65,7 +65,7 @@ vals:
 	valgrind --trace-children=yes --track-fds=yes ./pipex read.txt ls cat write.txt
 
 val_supp:
-	valgrind --trace-children=yes --track-fds=yes --suppressions=supp.supp ./pipex read.txt ls cat write.txt
+	valgrind --trace-children=yes --track-fds=yes --suppressions=supp.supp ./pipex read.txt ls wc write.txt
 
 clean:
 	@make -C ./libft clean

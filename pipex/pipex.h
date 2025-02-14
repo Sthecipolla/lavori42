@@ -26,7 +26,7 @@
 
 char	*find_command(char *argv, char **envp);
 int		find_space(const char *s, int c);
-void	child(char	*argv, char	**envp, int fd[2]);
+void	child(char	*argv, char	**envp, int fd[2], int *file);
 void	parent(int fd[2]);
 
 #endif
