@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:31:46 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/12 21:31:46 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/15 14:51:26 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 char	*find_command(char *argv, char **envp);
 int		find_space(const char *s, int c);
-void	child(char	*argv, char	**envp, int fd[2], int *file);
+void	child(char	*argv, char	**envp, int fd[2]);
 void	parent(int fd[2]);
 
 #endif

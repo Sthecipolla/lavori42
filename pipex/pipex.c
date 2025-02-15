@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:30:35 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/12 21:30:35 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/15 14:51:28 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ char	*find_command(char *argv, char **envp)
 	return (NULL);
 }
 
-void	child(char	*argv, char **envp, int fd[2],int *file)
+void	child(char	*argv, char **envp, int fd[2])
 {
 	char	*command;
 
 	dup2(fd[1], 1);
 	command = find_command(ft_substr(argv, 0, find_space(argv, ' ')), envp);
 	close(fd[1]);
-	close(file[1]);
 	if (execve(command, ft_split(argv, ' '), envp) == -1)
 	{
 		perror("error execve\n");

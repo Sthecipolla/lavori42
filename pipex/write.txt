@@ -1,1 +1,17 @@
-     15      15     139
+get_next_line
+libft
+main_bonus.c
+main.c
+Makefile
+obj
+pipex
+pipex_bonus.c
+pipex_bonus.h
+pipex.c
+pipex.h
+printf
+prova
+prova.c
+read.txt
+supp.supp
+write.txt

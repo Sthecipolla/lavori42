@@ -62,10 +62,22 @@ go_with_bonus_dox:
 	./pipex "here_doc" ls cat wc write.txt
 
 vals:
-	valgrind --trace-children=yes --track-fds=yes ./pipex read.txt ls cat write.txt
+	valgrind --trace-children=yes --track-fds=yes \
+	./pipex read.txt ls cat write.txt
 
 val_supp:
-	valgrind --trace-children=yes --track-fds=yes --suppressions=supp.supp ./pipex read.txt ls wc write.txt
+	valgrind --trace-children=yes --track-fds=yes \
+	--suppressions=supp.supp \
+	./prova read.txt ls "grep l" write.txt
+
+prova:
+	cc prova.c pipex.c $(OTHER_SOURCE) -o prova
+
+run_prova:
+	./prova read.txt ls wc write.txt
+
+prova_rem:
+	rm -f prova
 
 clean:
 	@make -C ./libft clean

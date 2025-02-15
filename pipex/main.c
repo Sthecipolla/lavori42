@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:20:17 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/13 17:14:52 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/15 14:52:01 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	for_the_forking(pid_t *childpid)
 	return (0);
 }
 
-void	child_do(int argc, char **argv, char **envp, int *fd, int *file)
+void	child_do(int argc, char **argv, char **envp, int *fd)
 {
 	pid_t	childpid;
 	int		i;
@@ -40,14 +40,14 @@ void	child_do(int argc, char **argv, char **envp, int *fd, int *file)
 		if (childpid == 0)
 		{
 			close(fd[0]);
-			child(argv[2 + i], envp, fd, file);
+			child(argv[2 + i], envp, fd);
 		}
 		else
 			parent(fd);
 
-		wait(NULL);
 		close(fd[0]);
 	}
+	wait(NULL);
 }
 
 void	argc_check_and_fd(int argc, int *file, char **argv)
@@ -68,12 +68,13 @@ int	main(int argc, char **argv, char *envp[])
 	pid_t	childpid;
 
 	argc_check_and_fd(argc, file, argv);
-	dup2(file[1], 1);
 	for_the_forking(&childpid);
 	if (childpid == 0)
 	{
+		dup2(file[0], 0);
 		close(file[0]);
-		child_do(argc, argv, envp, fd, file);;
+		dup2(file[1], 1);
+		child_do(argc, argv, envp, fd);
 		close(file[1]);
 		execve(find_command(ft_substr(argv[argc - 2], 0, \
 		find_space(argv[argc - 2], ' ')), envp), \
