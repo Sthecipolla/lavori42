@@ -9,7 +9,7 @@
 /*   Updated: 2025/02/15 14:51:28 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/* 
 #include "pipex.h"
 
 int	find_space(const char *s, int c)
@@ -57,6 +57,11 @@ void	child(char	*argv, char **envp, int fd[2])
 {
 	char	*command;
 
+	if(fd[0] == -1)
+	{
+		close(fd[0]);
+		dup2(fd[1], 1);
+	}
 	command = find_command(ft_substr(argv, 0, find_space(argv, ' ')), envp);
 	if (execve(command, ft_split(argv, ' '), envp) == -1)
 	{
@@ -70,3 +75,4 @@ void	parent(int fd[2])
 	close(fd[1]);
 	dup2(fd[0], 0);
 }
+ */

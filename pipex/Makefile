@@ -53,7 +53,10 @@ gdb:
 	gdb  --args  ./pipex
 
 go:
-	./pipex read.txt ls cat write.txt
+	./pipex read.txt cat wc write.txt
+
+real_command:
+	< read.txt cat | wc 
 
 go_with_bonus:
 	./pipex read.txt ls cat wc write.txt

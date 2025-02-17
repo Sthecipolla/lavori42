@@ -103,17 +103,6 @@ int	main(int argc, char **argv, char *envp[])
 	return (0);
 }
 
-
-
-[
-
-
-
-
-
-
-]
-
 /* 	dup2(file[1], 1);
 	for_the_forking(&childpid);
 	if (childpid == 0)

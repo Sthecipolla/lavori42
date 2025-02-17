@@ -95,6 +95,7 @@ int	main(int argc, char **argv, char *envp[])
 	if(ft_strncmp(argv[1], "here_doc",ft_strlen("here_doc")) == 0)
 		here_doc(argv, fd, argc);
 	dup2(file[0], 0);
+	close(file[0]);
 	for_the_forking(&childpid);
 	if (childpid == 0)
 	{
@@ -107,8 +108,6 @@ int	main(int argc, char **argv, char *envp[])
 	else
 	{
 		waitpid(childpid, NULL, 0);
-		close(file[0]);
-		close(file[1]);
 		if(ft_strncmp(argv[1], "here_doc",ft_strlen("here_doc")) == 0 && argc == 6)
 			unlink("here_doc");
 	}
