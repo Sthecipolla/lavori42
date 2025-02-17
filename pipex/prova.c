@@ -64,12 +64,14 @@ int	main(int argc, char **argv, char *envp[])
 	while(argc - 3 > ++i)
 	{
 		for_the_forking(&childpid);
-		if (childpid == 0)
+		if (childpid == 0 && i == 0)
 		{
 			dup2(file[0], 0);
 			close(file[0]);
-			dup2(file[1], 1);
+			dup2(fd[1], 1);
 			close(file[1]);
+			close(fd[0]);
+			close(fd[1]);
 			//child_do(argc, argv, envp, fd);
 			execve(find_command(ft_substr(argv[argc - 2], 0, \
 			find_space(argv[argc - 2], ' ')), envp), \
@@ -77,6 +79,7 @@ int	main(int argc, char **argv, char *envp[])
 		}
 		else if(childpid == 0 && i != 0)
 		{
+			pipe(fd)
 			close(file[0]);
 			close(file[1]);
 			dup2(fd[0], 0);
@@ -89,13 +92,12 @@ int	main(int argc, char **argv, char *envp[])
 		}
 		else
 		{
-			//close(file[1]);
+			close(fd[1]);
 			dup2(fd[0], 0);
+			wait(NULL);
 		}
-
-
 	}
-	wait(NULL);
+
 	close(file[0]);
 	close(file[1]);
 	return (0);

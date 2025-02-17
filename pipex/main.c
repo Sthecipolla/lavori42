@@ -29,24 +29,22 @@ void	child_do(int argc, char **argv, char **envp, int *fd)
 	int		i;
 
 	i = -1;
+	dup2(fd[1], 1);
+	close(fd[1]);
+	child(argv[2 + i], envp, fd);
 	while (argc - 4 > ++i)
 	{
-		if (pipe(fd) == -1)
-		{
-			perror("error pipe\n");
-			exit(1);
-		}
 		for_the_forking(&childpid);
 		if (childpid == 0)
 		{
-			close(fd[0]);
+			dup2(fd[1], 1);
+			close(fd[1]);
 			child(argv[2 + i], envp, fd);
 		}
-		else
-			parent(fd);
-
+		dup2(fd[0], 0);
 		close(fd[0]);
 	}
+	parent(fd);
 	wait(NULL);
 }
 
@@ -69,13 +67,18 @@ int	main(int argc, char **argv, char *envp[])
 
 	argc_check_and_fd(argc, file, argv);
 	for_the_forking(&childpid);
+	if (pipe(fd) == -1)
+	{
+		perror("error pipe\n");
+		exit(1);
+	}
 	if (childpid == 0)
 	{
 		dup2(file[0], 0);
 		close(file[0]);
 		dup2(file[1], 1);
-		child_do(argc, argv, envp, fd);
 		close(file[1]);
+		child_do(argc, argv, envp, fd);
 		execve(find_command(ft_substr(argv[argc - 2], 0, \
 		find_space(argv[argc - 2], ' ')), envp), \
 		ft_split(argv[argc - 2], ' '), envp);
