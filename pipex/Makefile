@@ -4,12 +4,11 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = pipex.c main.c
+SRC = pipex.c main.c command.c
 
-BONUS = pipex_bonus.c main_bonus.c
+BONUS = pipex_bonus.c main_bonus.c command_bonus.c
 
-OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a \
--L./get_next_line -l:get_next_line.a
+OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
 
 OBJ_DIR = obj
 
@@ -25,13 +24,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C ./libft
 	@make -C ./printf
-	@make -C ./get_next_line
 	@$(CC) $(CFLAGS) $(OBJ) $(OTHER_SOURCE) -o $(NAME)
 
 bonus: $(OBJ_BONUS)
 	@make -C ./libft
 	@make -C ./printf
-	@make -C ./get_next_line
 	@$(CC) $(CFLAGS) $(BONUS) $(OTHER_SOURCE) -o $(NAME)
 
 $(OBJ_DIR_BONUS)/%.o: %.c
@@ -42,6 +39,24 @@ $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+clean:
+	@make -C ./libft clean
+	@make -C ./printf clean
+	rm -r -f $(OBJ_DIR)
+	rm -r -f $(OBJ_DIR_BONUS)
+
+fclean: clean
+	@make -C ./libft fclean
+	@make -C ./printf fclean
+	rm -f $(NAME)
+	clear
+
+re: fclean all
+	@make -C ./libft re
+	@make -C ./printf re
+	clear
+
+#################################################################
 norminette:
 	norminette $(SRC) pipex.h
 
@@ -49,54 +64,38 @@ norminette_all: norminette
 	norminette $(SRC) ./libft/
 	norminette $(SRC) ./printf/
 
-gdb:
-	gdb  --args  ./pipex
+# gdb:
+# 	gdb  --args  ./pipex
 
 go:
-	./pipex read.txt ls cat write.txt
+	./pipex read.txt cat wc write.txt
 
-go_with_bonus:
-	./pipex read.txt ls cat wc write.txt
+# real_command:
+# 	< read.txt cat | wc
 
-go_with_bonus_dox:
-	./pipex "here_doc" ls cat wc write.txt
+# go_with_bonus:
+# 	./pipex read.txt ls cat wc write.txt
 
-vals:
-	valgrind --trace-children=yes --track-fds=yes \
-	./pipex read.txt ls cat write.txt
+# go_with_bonus_dox:
+# 	./pipex "here_doc" ls cat wc write.txt
 
-val_supp:
-	valgrind --trace-children=yes --track-fds=yes \
-	--suppressions=supp.supp \
-	./prova read.txt ls "grep l" write.txt
+# vals:
+# 	valgrind --trace-children=yes --track-fds=yes \
+# 	./pipex read.txt ls cat write.txt
 
-prova:
-	cc prova.c pipex.c $(OTHER_SOURCE) -o prova
+# prova_val:
+# 	valgrind --trace-children=yes --track-fds=yes \
+# 	--suppressions=supp.supp \
+# 	./prova read.txt ls wc write.txt
 
-run_prova:
-	./prova read.txt ls wc write.txt
+# prova:elimina_prova
+# 	cc prova.c command.c pipex.c $(OTHER_SOURCE) -o prova
 
-prova_rem:
-	rm -f prova
+# run_prova:
+# 	./prova read.txt "ls" "wc" write.txt
 
-clean:
-	@make -C ./libft clean
-	@make -C ./printf clean
-	@make -C ./get_next_line clean
-	rm -r -f $(OBJ_DIR)
-	rm -r -f $(OBJ_DIR_BONUS)
+# elimina_prova:
+# 	rm -f prova
 
-fclean: clean
-	@make -C ./libft fclean
-	@make -C ./printf fclean
-	@make -C ./get_next_line fclean
-	rm -f $(NAME)
-	clear
-
-re: fclean all
-	@make -C ./libft re
-	@make -C ./printf re
-	@make -C ./get_next_line re
-	clear
 
 .PHONY: all clean fclean re
