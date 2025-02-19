@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:22:25 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/18 15:30:45 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/19 16:32:10 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int main(int argc, char **argv)
 	}
 	if(check_order(a) == 0 && b == NULL)
 		perror("OK\n");
-	else
-		perror("KO\n");
+	perror("KO\n");
 	return (0);
 }

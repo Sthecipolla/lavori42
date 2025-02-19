@@ -3,8 +3,11 @@ NAME = push_swap
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
+BONUSFOLDER = ./checker/
 
-OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
+BONUS = $(BONUSFOLDER)main.c $(BONUSFOLDER)move.c
+
+OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a -Lget_next_line -l:get_next_line.a
 
 N = 3 12 14 90 21 554
 
@@ -16,10 +19,16 @@ sort_num.c sort_utils_for_num.c sort_utils_for_num_second.c
 APP = app
 
 OBJ_DIR = obj
+
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 	clear
+
+bonus:
+	@make -C ./libft
+	@make -C ./printf
+	@$(CC) $(CFLAGS) $(BONUS) $(OTHER_SOURCE) -o $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./libft
