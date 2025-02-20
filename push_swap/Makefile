@@ -3,13 +3,12 @@ NAME = push_swap
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
-BONUSFOLDER = ./checker/
 
-BONUS = $(BONUSFOLDER)main.c $(BONUSFOLDER)move.c
+BONUSFOLDER = checker/
+
+BONUS = $(BONUSFOLDER)main_checker.c $(BONUSFOLDER)move.c
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a -Lget_next_line -l:get_next_line.a
-
-N = 3 12 14 90 21 554
 
 SRC = main.c sort_check.c rotate.c check_if_valid_num.c swap.c \
 push_swap_utils.c error_men.c push.c reverse.c atoi_but_long.c \
@@ -18,6 +17,11 @@ sort_num.c sort_utils_for_num.c sort_utils_for_num_second.c
 
 APP = app
 
+OBJ_DIR_BONUS = obj_bonus
+
+OBJ_BONUS = $(BONUS:%.c=%.o)
+
+
 OBJ_DIR = obj
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -25,32 +29,25 @@ OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 	clear
 
-bonus:
+bonus: $(OBJ) $(OBJ_BONUS)
 	@make -C ./libft
 	@make -C ./printf
-	@$(CC) $(CFLAGS) $(BONUS) $(OTHER_SOURCE) -o $(NAME)
+	@make -C ./get_next_line
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(OBJ) $(OTHER_SOURCE) -o checkers
 
 $(NAME): $(OBJ)
 	@make -C ./libft
 	@make -C ./printf
+	@make -C ./get_next_line
 	@$(CC) $(CFLAGS) $(OBJ) $(OTHER_SOURCE) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-checker:
-	wget https://cdn.intra.42.fr/document/document/28256/checker_linux
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-
-delete_checker:
-	rm -f checker_linux
-#
-$(APP):
-	if [ -f move.txt ]; then rm -f move.txt; fi
-	if [ -f error.txt ]; then rm -f error.txt; fi
-
-remove: $(APP)
 
 norminette:
 	norminette $(SRC) push_swap.h
@@ -59,16 +56,10 @@ norminette_all:
 	norminette $(SRC) ./libft/
 	norminette $(SRC) ./printf/
 
-rapid_test:
-	./push_swap $(LISTNUM) 2> error.txt
-#go:
-
-go_with_count:
-	./push_swap $(N) | tee move.txt | grep '[a-zA-Z]' | wc -l
-# da cancellare ce da canellare un po di roba sotto che e stata messa in piu
 clean:
 	@make -C ./libft clean
 	@make -C ./printf clean
+	@make -C ./get_next_line clean
 	rm -f $(OBJ)
 	rm -r obj
 	clear
@@ -76,12 +67,14 @@ clean:
 fclean: clean
 	@make -C ./libft fclean
 	@make -C ./printf fclean
+	@make -C ./get_next_line fclean
 	rm -f $(NAME)
 	clear
 
 re: fclean all
 	@make -C ./libft re
 	@make -C ./printf re
+	@make -C ./get_next_line re
 	clear
 
 .PHONY: all clean fclean re

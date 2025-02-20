@@ -3,27 +3,27 @@
 int	check_move(char *line, t_lista **a, t_lista **b)
 {
 	if(ft_strncmp(line, "sa", 2) == 0)
-		sa(a);
+		swap_a((*a));
 	else if(ft_strncmp(line, "sb", 2) == 0)
-		sb(b);
+		swap_b((*b));
 	else if(ft_strncmp(line, "ss", 2) == 0)
-		ss(a, b);
+		swap_ss((*a), (*b));
 	else if(ft_strncmp(line, "pa", 2) == 0)
-		pa(a, b);
+		push_a(a, b);
 	else if(ft_strncmp(line, "pb", 2) == 0)
-		pb(a, b);
+		push_b(a, b);
 	else if(ft_strncmp(line, "ra", 2) == 0)
-		ra(a);
+		rotate_a(a);
 	else if(ft_strncmp(line, "rb", 2) == 0)
-		rb(b);
+		rotate_b(b);
 	else if(ft_strncmp(line, "rr", 2) == 0)
-		rr(a, b);
+		rotate_rr(a, b);
 	else if(ft_strncmp(line, "rra", 3) == 0)
-		rra(a);
+		reverse_a(a);
 	else if(strncmp(line, "rrb", 3) == 0)
-		rrb(b);
+		reverse_b(b);
 	else if(ft_strncmp(line,"rrr",3) == 0)
-		rrr(a, b);
+		reverse_rr(a, b);
 	else
 		return (1);
 	return (0);
