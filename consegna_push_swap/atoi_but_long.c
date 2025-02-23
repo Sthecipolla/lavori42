@@ -22,7 +22,7 @@ static int	white_space(const char *arr)
 	return (i);
 }
 
-static int	negativo(const char *nptr, int i, long valore)
+static long	negativo(const char *nptr, int i, long valore)
 {
 	while (nptr[i] > 47 && nptr[i] < 58)
 	{
@@ -50,6 +50,6 @@ long	ft_atoi_long(const char *nptr)
 			valore = valore * 10 + (nptr[i++] - '0');
 	}
 	else if ((nptr[i] > 47 && nptr[i] < 58) && (segn == '-'))
-		valore = negativo(nptr, i, valore);
+		return (negativo(nptr, i, valore));
 	return (valore);
 }

@@ -61,24 +61,6 @@ int	find_min(t_lista *l)
 	return (min);
 }
 
-int	close_min(int num, t_lista *a)
-{
-	t_lista	*tmp;
-	int		close_min;
-
-	tmp = a;
-	close_min = find_min(a);
-	if (close_min == num)
-		return (num);
-	while (tmp != NULL)
-	{
-		if (!(tmp->num < close_min) && tmp->num < num)
-			close_min = tmp->num;
-		tmp = tmp->next;
-	}
-	return (close_min);
-}
-
 int	close_max(int num, t_lista *a)
 {
 	t_lista	*tmp;
