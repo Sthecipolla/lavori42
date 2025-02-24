@@ -69,23 +69,8 @@ static int	check_duplicates(char **arr)
 	return (1);
 }
 
-static int	len_matrix(char **arr)
-{
-	int	x;
-
-	x = 0;
-	while (arr[x] != NULL)
-		x++;
-	return (x);
-}
-
 int	check(char **arr)
 {
-	while (len_matrix(arr) < 2)
-	{
-		free_double_pointer(arr);
-		exit(0);
-	}
 	if (check_if_int_number(arr) == 0)
 	{
 		free_double_pointer(arr);

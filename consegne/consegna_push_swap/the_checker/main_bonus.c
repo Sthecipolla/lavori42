@@ -30,7 +30,8 @@ void	still_norm(char *line, t_lista **a, t_lista **b)
 		ft_clean(*a, 100);
 		if (line != NULL)
 			free(line);
-		ft_clean(*b, 1);
+		ft_putstr_fd("Error\n", 2);
+		ft_clean(*b, 0);
 	}
 }
 
@@ -41,7 +42,7 @@ int	main(int argc, char **argv)
 	char		*line;
 
 	if (argc < 2)
-		return (ft_putstr_fd("Error\n", 2), 0);
+		return (0);
 	things(argv, &a, &b);
 	line = get_next_line(0);
 	while (line != NULL)

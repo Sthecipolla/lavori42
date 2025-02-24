@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static void	ver(char *string, char* str)
+static void	ver(char *string, char *str)
 {
-	if(*string == '\0')
+	if (*string == '\0')
 	{
 		free(str);
 		ft_putstr_fd("Error\n", 2);

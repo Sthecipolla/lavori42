@@ -14,6 +14,8 @@
 
 int	sorted_move(t_lista **a, t_lista **b)
 {
+	if (len_split(*a) == 1)
+		return (0);
 	if ((*a)->next->num < (*a)->num && len_split(*a) == 2)
 		swap_a(*a);
 	else if (len_split(*a) == 3)

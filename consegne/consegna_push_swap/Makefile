@@ -23,7 +23,7 @@ SRC = main.c $(OTHER_FILE)
 
 OBJ = $(SRC:.c=.o)
 
-OBJ_BONUS = $(BONUS:%.c=%.o)
+OBJ_BONUS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -33,7 +33,9 @@ $(NAME): $(OBJ)
 	@make -C ./get_next_line
 	@$(CC) $(CFLAGS) $(OBJ) $(OTHER_SOURCE) -o $(NAME)
 
-bonus: $(OBJ_BONUS)
+bonus: $(NAME_CHECKER)
+
+$(NAME_CHECKER): $(OBJ_BONUS)
 	@make -C ./libft
 	@make -C ./printf
 	@make -C ./get_next_line
@@ -61,4 +63,9 @@ re: fclean all
 	@make -C ./printf re
 	@make -C ./get_next_line re
 
-.PHONY: all clean fclean re
+rebonus: fclean bonus
+	@make -C ./libft re
+	@make -C ./printf re
+	@make -C ./get_next_line re
+
+.PHONY: all clean fclean re bonus rebonus 
