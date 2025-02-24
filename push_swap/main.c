@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:35:08 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/03 17:14:00 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/24 10:42:51 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	char **str;
 	t_lista *list;
 	t_lista *b;
+
 	if(argc == 1)
 	{
 		write(2,"Error\nno arg\n",13);

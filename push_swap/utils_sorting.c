@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:31:00 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/06 13:54:32 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:26:04 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int check_order(t_lista *l)
 	t_lista *tmp;
 	int		i;
 
+	if(l == NULL)
+		return (0);
 	i = 0;
 	tmp = l;
 	while(tmp->next != NULL)
@@ -112,7 +114,7 @@ void sort_stack_a(t_lista **a)
 		while(cost++ != 0)
 			reverse_a(a);
 		return;
-	} 
+	}
 	while(cost-- != 0)
 		rotate_a(a);
 	print_arr(*a);
@@ -125,7 +127,7 @@ void sort_stack_a(t_lista **a)
 
 	int i = 1;
 	while(i < 10)
-	{	
+	{
 		if(i%2 == 0)
 			tmp->num = i;
 		else

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:22:25 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/19 16:32:10 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:31:41 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ int main(int argc, char **argv)
 		if(check_move(line, &a, &b) == 1)
 		{
 			perror("KO\n");
-			return (0);
+			return (1);
 		}
 		if(line != NULL)
 			free(line);
 		line = get_next_line(0);
 	}
-	if(check_order(a) == 0 && b == NULL)
-		perror("OK\n");
+	if(check_order(a) == len_split(a) && b == NULL)
+	{
+		ft_clean(a, 0);
+		ft_printf("OK\n");
+		return (0);
+	}
 	perror("KO\n");
-	return (0);
+	return (1);
 }
