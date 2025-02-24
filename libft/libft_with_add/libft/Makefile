@@ -16,6 +16,9 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+OTHER_SOURCE = ./printf/libftprintf.a ./get_next_line/get_next_line.a
+
+
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
 	ft_strlcat.c ft_tolower.c ft_strchr.c ft_strrchr.c \
@@ -30,15 +33,23 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@make -C printf
+	@make -C get_next_line
+	@ar rcs $(NAME) $(OBJ) $(OTHER_SOURCE)
 
 clean:
-	rm -f $(OBJ)
+	@make -C printf clean
+	@make -C get_next_line clean
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@make -C printf fclean
+	@make -C get_next_line fclean
+	@rm -f $(NAME)
 
 re: fclean all
+	@make -C printf re
+	@make -C get_next_line re
 
 .PHONY: all clean fclean re
 
