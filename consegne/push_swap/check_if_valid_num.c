@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:32 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/24 18:28:56 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/25 13:10:09 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	check_duplicates(char **arr)
 		y = x + 1;
 		while (arr[y] != NULL)
 		{
-			if (ft_strncmp(arr[x], arr[y], 100) == 0)
+			if (ft_atoi_long(arr[x]) == ft_atoi_long(arr[y]))
 				return (0);
 			y++;
 		}

@@ -6,27 +6,12 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:31:16 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/11 12:32:04 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/25 13:03:18 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* static int check_if_last(t_lista **a)
-{
-	t_lista	*tmp;
-
-	tmp = *a;
-	while(tmp->next != NULL)
-		tmp = tmp->next;
-	if(tmp->num == find_min(*a))
-	{
-		ft_printf("rra\n");
-		reverse_a(&(*a));
-		return (1);
-	}
-	return (0);
-} */
 static int	sorting(t_lista **a, t_lista **b)
 {
 	while (len_split(*a) != 3)

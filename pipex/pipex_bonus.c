@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:30:35 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/19 14:30:03 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/25 15:20:38 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,25 @@ int	find_space(const char *s, int c)
 	return (ft_strlen(s));
 }
 
+void free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
 char	*find_command(char *argv, char **envp)
 {
 	int		i;
 	char	**path;
 	char	*command;
+	char	*c;
 
 	i = 0;
 	while (envp[i])
@@ -45,12 +59,15 @@ char	*find_command(char *argv, char **envp)
 	i = 0;
 	while (path[i])
 	{
-		command = ft_strjoin(ft_strjoin(path[i], "/"), argv);
+		c = ft_strjoin(path[i], "/");
+		command = ft_strjoin(c, argv);
+		free(c);
 		if (access(command, F_OK) == 0)
-			return (command);
+			return (free_matrix(path), command);
+		free(command);
 		i++;
 	}
-	return (NULL);
+	return (free_matrix(path), NULL);
 }
 
 void	child(char	*argv, char **envp, int fd[2])

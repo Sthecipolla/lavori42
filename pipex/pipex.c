@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:30:35 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/19 15:21:56 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/25 14:20:58 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*find_command(char *argv, char **envp)
 	int		i;
 	char	**path;
 	char	*command;
+	char	*c;
 
 	i = 0;
 	while (envp[i])
@@ -57,17 +58,15 @@ char	*find_command(char *argv, char **envp)
 	i = 0;
 	while (path[i])
 	{
-		command = ft_strjoin(ft_strjoin(path[i], "/"), argv);
+		c = ft_strjoin(path[i], "/");
+		command = ft_strjoin(c, argv);
+		free(c);
 		if (access(command, F_OK) == 0)
-		{
-			free_matrix(path);
-			return (command);
-		}
+			return (free_matrix(path), command);
 		free(command);
 		i++;
 	}
-	free_matrix(path);
-	return (NULL);
+	return (free_matrix(path), NULL);
 }
 
 void	parent(int fd[2])

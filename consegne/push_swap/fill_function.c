@@ -6,17 +6,21 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:27:56 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/24 18:25:15 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/25 11:21:59 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ver(char *string, char *str)
+static void	ver(char **string)
 {
-	if (*string == '\0')
+	int	i;
+
+	i = 1;
+	while (string[i][0] != '\0' && string[i + 1] != NULL)
+		i++;
+	if (string[i][0] == '\0')
 	{
-		free(str);
 		ft_putstr_fd("Error\n", 2);
 		exit(0);
 	}
@@ -30,6 +34,7 @@ char	**fill(char **arr)
 	int		i;
 
 	i = 1;
+	ver(arr);
 	str = ft_strjoin(arr[i++], "");
 	while (arr[i])
 	{
@@ -37,7 +42,6 @@ char	**fill(char **arr)
 		str = ft_strjoin(str, " ");
 		free(app);
 		app = str;
-		ver(arr[i], str);
 		str = ft_strjoin(str, arr[i]);
 		free(app);
 		i++;

@@ -6,6 +6,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = pipex.c main.c command.c
 
+EXE = ./pipex
+
 BONUS = pipex_bonus.c main_bonus.c command_bonus.c
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
@@ -19,7 +21,7 @@ OBJ_DIR_BONUS = obj_bonus
 OBJ_BONUS = $(BONUS:%.c=$(OBJ_DIR_BONUS)/%.o)
 
 all: $(NAME)
-	clear
+#	clear
 
 $(NAME): $(OBJ)
 	@make -C ./libft
@@ -64,38 +66,12 @@ norminette_all: norminette
 	norminette $(SRC) ./libft/
 	norminette $(SRC) ./printf/
 
-# gdb:
-# 	gdb  --args  ./pipex
-
 go:
 	./pipex read.txt cat wc write.txt
 
-# real_command:
-# 	< read.txt cat | wc
-
-# go_with_bonus:
-# 	./pipex read.txt ls cat wc write.txt
-
-# go_with_bonus_dox:
-# 	./pipex "here_doc" ls cat wc write.txt
-
-# vals:
-# 	valgrind --trace-children=yes --track-fds=yes \
-# 	./pipex read.txt ls cat write.txt
-
-# prova_val:
-# 	valgrind --trace-children=yes --track-fds=yes \
-# 	--suppressions=supp.supp \
-# 	./prova read.txt ls wc write.txt
-
-# prova:elimina_prova
-# 	cc prova.c command.c pipex.c $(OTHER_SOURCE) -o prova
-
-# run_prova:
-# 	./prova read.txt "ls" "wc" write.txt
-
-# elimina_prova:
-# 	rm -f prova
-
+val:
+	valgrind --trace-children=yes --track-fds=yes \
+	--suppressions=supp.supp \
+	$(EXE) read.txt ls wc write.txt
 
 .PHONY: all clean fclean re
