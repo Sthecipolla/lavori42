@@ -8,6 +8,8 @@ SRC = pipex.c main.c command.c
 
 EXE = ./pipex
 
+COM = ls wc
+
 BONUS = pipex_bonus.c main_bonus.c command_bonus.c
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
@@ -70,8 +72,9 @@ go:
 	./pipex read.txt cat wc write.txt
 
 val:
+	echo $(COM)
 	valgrind --trace-children=yes --track-fds=yes \
 	--suppressions=supp.supp \
-	$(EXE) read.txt ls wc write.txt
+	$(EXE) read.txt $(COM) write.txt
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:54:37 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/19 14:15:09 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/26 13:02:13 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,20 @@ int	for_the_forking(pid_t *childpid)
 
 void	argc_check_and_fd(int argc, int *file, char **argv)
 {
+	int	i;
+
+	i = 1;
 	if (argc < 5)
 	{
 		perror("error argc\n");
 		exit(1);
+	}
+	while (argv[i] != NULL && argv[i][0] != '\0')
+		i++;
+	if (argv[i] != NULL && argv[i][0] == '\0')
+	{
+		ft_putstra_fd("error\n", 2);
+		exit(14);
 	}
 	file[0] = open(argv[1], O_RDONLY);
 	file[1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
