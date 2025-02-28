@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:54:37 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/28 11:22:09 by lhima            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:14:31 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@ int	for_the_forking(pid_t *childpid)
 		exit(1);
 	}
 	return (0);
+}
+
+static void	error_close(int fd)
+{
+	if (fd == 2000)
+	{
+		ft_putstra_fd("error\n", 2);
+		exit(1);
+	}
+	else
+	{
+		close(fd);
+		ft_putstra_fd("error\n", 2);
+		exit(1);
+	}
 }
 
 void	argc_check_and_fd(int argc, int *file, char **argv)
@@ -41,14 +56,11 @@ void	argc_check_and_fd(int argc, int *file, char **argv)
 		exit(14);
 	}
 	file[0] = open(argv[1], O_RDONLY);
+	if (file[0] == -1)
+		error_close(2000);
 	file[1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (file[0] == -1 || file[1] == -1)
-	{
-		close(file[0]);
-		close(file[1]);
-		ft_putstra_fd("error\n", 2);
-		exit(1);
-	}
+	if (file[1] == -1)
+		error_close(file[0]);
 }
 
 int	main(int argc, char **argv, char *envp[])
