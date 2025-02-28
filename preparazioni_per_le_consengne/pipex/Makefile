@@ -46,4 +46,10 @@ re: fclean all
 	@make -C ./libft re
 	@make -C ./printf re
 
+supp: remove_supp
+	touch supp.supp
+
+remove_supp:
+	@rm -f supp.supp
+
 .PHONY: all clean fclean re bonus
