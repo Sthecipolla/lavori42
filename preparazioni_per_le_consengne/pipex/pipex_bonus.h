@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:31:46 by lhima             #+#    #+#             */
-/*   Updated: 2025/02/28 11:23:54 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/01 13:47:14 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 # include <bsd/string.h>
 # include "./libft/libft.h"
-# include "printf/ft_printf.h"
+# include "./printf/ft_printf.h"
 # include <sys/types.h>
 # include <sys/wait.h>
 
