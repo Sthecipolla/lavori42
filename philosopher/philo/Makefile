@@ -8,8 +8,6 @@ SRC = main.c
 
 OBJ = $(SRC:%.c=%.o)
 
-#OBJ_BONUS = $(BONUS:%.c=%.o)
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -25,6 +23,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
 
 .PHONY: all clean fclean re

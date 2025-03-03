@@ -7,6 +7,34 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+typedef struct s_philo
+{
+	int sleep;
+	int eat;
+	int think;
+	int fork;
+}					t_philo;
+
+
+int checks(char **str);
+long	ft_atol(const char *nptr);
+
+
+# endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* typedef struct s_philo
 {
 	int				id;
@@ -18,4 +46,3 @@
 	struct s_data	*data;
 }					t_philo;
  */
-# endif
