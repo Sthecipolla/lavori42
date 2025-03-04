@@ -14,8 +14,13 @@ git push = invia su GitHub le tue modiche nel commit aggiunti con git add
 git pull = scarica gli aggoirnamenti di Github senza fare git clone 
 
 git checkout "nome-branch" = per cambiare branch. (!!!!!pero prima devi fare pull per pigliare il branch.)
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+per rimuovere i file eliminati da github
 
-
+git add -u
+git commit -m "Removed deleted files"
+git push
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 altri comandi futuri per situazioni specifiche:
 
 cerano ma non cio voglia di riprenderli e riscriverli
