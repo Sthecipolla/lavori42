@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -pthread -g
 
-SRC = main.c
+SRC = main.c check.c atol.c
 
 OBJ = $(SRC:%.c=%.o)
 

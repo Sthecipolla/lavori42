@@ -1,6 +1,20 @@
 {
 	"files.associations": {
-		"philo.h": "c"
+		"philo.h": "c",
+		"climits": "c",
+		"cmath": "c",
+		"compare": "c",
+		"concepts": "c",
+		"cstdarg": "c",
+		"cstdio": "c",
+		"cstdlib": "c",
+		"exception": "c",
+		"type_traits": "c",
+		"limits": "c",
+		"new": "c",
+		"*.tcc": "c",
+		"cstdint": "c",
+		"typeinfo": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

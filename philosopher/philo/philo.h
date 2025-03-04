@@ -17,7 +17,7 @@ typedef struct s_philo
 
 
 int checks(char **str);
-long	ft_atol(const char *nptr);
+long long 	ft_atol(const char *nptr);
 
 
 # endif
