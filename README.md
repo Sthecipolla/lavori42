@@ -20,6 +20,8 @@ per rimuovere i file eliminati da github
 git add -u
 git commit -m "Removed deleted files"
 git push
+
+The git add -u command stages only modified and deleted files for commit, but not new (untracked) files.
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 altri comandi futuri per situazioni specifiche:
 
