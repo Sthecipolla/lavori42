@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:31 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/04 12:00:32 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/10 15:15:38 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	if_numeric(char **str)
 	}
 	return (1);
 }
-
+//maggiore o uguali di 0 il numero di pasti e i tempi error
 int	checks(char **str)
 {
 	if (if_numeric(str) == 0)

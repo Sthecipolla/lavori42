@@ -6,34 +6,33 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/04 14:36:31 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/10 15:28:59 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void *do_something(void *stop)
+void *do_something(int fork, t_philo *philo)
 {
-	pthread_mutex_t *mutex;
-	mutex = (pthread_mutex_t *) stop;
-	pthread_mutex_lock(mutex);
-	write(1, "Hello, world!\n", 15);
-	pthread_mutex_unlock(mutex);
+	pthread_mutex_t mutex;
+
+	pthread_mutex_init(&mutex, NULL);
+	while(1)
+
+	// fork act as mutex
+	/* pthread_mutex_lock(&mutex);
+	men_fork(philo);
+	pthread_mutex_unlock(&mutex);
+	eat(philo); */
+	else
+		// is thingking
+
+	// is the philosopher eating
 
 	return (NULL);
 }
-/* void free_philo(pthread_t *philo)
-{
-	int i;
 
-	i=0;
-
-	while(philo[i])
-	{
-		free(philo[i]);
-		i++;
-	}
-} */
+// stampe si sovrappongono mutex
 
 //number_of_philosophers     time_to_die    time_to_eat    time_to_sleep    [number_of_times_each_philosopher_must_eat]
 // 5                        800            200            200             		7
@@ -55,7 +54,7 @@ int main(int argc, char **argv)
 		return (1);
 	philo = malloc(sizeof(pthread_t) * ft_atol(argv[1]));
 	pthread_mutex_init(&stop, NULL);
-	pthread_create(philo, NULL, &do_something, (void *) &stop);
+	pthread_create(philo, NULL, &do_something, NULL/*fork and philo*/);
 	pthread_join(*philo, NULL); // Wait for the thread to finish
     pthread_mutex_destroy(&stop); // Clean up the mutex
 	free(philo);

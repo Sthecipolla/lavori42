@@ -7,12 +7,17 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+
+// salvarsi il mutex di quello a sinistra
 typedef struct s_philo
 {
+	int id;
+	int tot_filo;
 	int sleep;
 	int eat;
 	int think;
-	int fork;
+	int left_fork;
+	int right_fork;
 }					t_philo;
 
 
