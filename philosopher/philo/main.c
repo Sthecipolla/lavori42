@@ -12,12 +12,48 @@
 
 #include "philo.h"
 
+
+// "2" entrambe sono prese e pront a mangiare
+// "1" disponibili
+
+
+void set_eat(t_philo *philo)
+{
+	philo->status = 1;
+	philo->left_fork = 2;
+	philo->right_fork = 2;
+	philo->eat--;
+}
+/* void set_status_wait(t_philo *philo)
+{
+
+	philo->left_fork = 0;
+	philo->right_fork = 0;
+} */
+
 void *do_something(int fork, t_philo *philo)
 {
 	pthread_mutex_t mutex;
 
 	pthread_mutex_init(&mutex, NULL);
-	while(1)
+	while(philo->eat != 0)
+	{
+		pthread_mutex_lock(&mutex);
+		if(philo->left_fork == 1 && philo->right_fork == 1)
+			set_eat(philo);
+		else
+			philo->status = 2;
+		pthread_mutex_unlock(&mutex);
+		if (philo->status == 1)
+		{
+			usleep()
+		}
+		else if (philo->status == 2)
+		{
+			// think
+		}
+
+	}
 
 	// fork act as mutex
 	/* pthread_mutex_lock(&mutex);

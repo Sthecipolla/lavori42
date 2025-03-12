@@ -15,9 +15,11 @@ typedef struct s_philo
 	int tot_filo;
 	int sleep;
 	int eat;
+	int time_to_eat;
 	int think;
-	int left_fork;
+	int *left_fork;
 	int right_fork;
+	int status
 }					t_philo;
 
 
