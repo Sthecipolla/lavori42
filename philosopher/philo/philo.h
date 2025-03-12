@@ -13,18 +13,20 @@ typedef struct s_philo
 {
 	int id;
 	int tot_filo;
-	int sleep;
-	int eat;
-	int time_to_eat;
-	int think;
+	long long sleep;
+	long long time_to_die;
+	long long eat;
+	long long think;
 	int *left_fork;
 	int right_fork;
 	int status
 }					t_philo;
 
 
-int checks(char **str);
-long long 	ft_atol(const char *nptr);
+int			checks(char **str);
+long long	ft_atol(const char *nptr);
+void		fill_philo(t_philo *philo, char argv)
+
 
 
 # endif
