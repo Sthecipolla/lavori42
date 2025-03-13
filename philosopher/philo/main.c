@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/13 15:57:06 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/13 16:41:31 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,24 @@ void *do_something(void *t)
 {
 
  	t_philo *philo = (t_philo *)t;
-	pthread_mutex_lock(&mutex);
-	print_philo(philo);
 	while(philo->eat != 0)
 	{
+		pthread_mutex_lock(&mutex);
+		print_philo(philo);
 		if(*philo->left_fork == 1 && philo->right_fork == 1)
 		{
+			pthread_mutex_unlock(&mutex);
 			set_eat(philo);
 			usleep(philo->time_to_eat);
 			set_status_wait(philo);
 		}
 		else
+		{
+			pthread_mutex_unlock(&mutex);
 			philo->status = 2;
+		}
 		print_philo(philo);
-		pthread_mutex_unlock(&mutex);
+
 		if (philo->status == 1)
 		{
 			usleep(300);
