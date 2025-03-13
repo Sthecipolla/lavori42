@@ -16,17 +16,18 @@ typedef struct s_philo
 	long long sleep;
 	long long time_to_die;
 	long long eat;
+	long long time_to_eat;
 	long long think;
 	int *left_fork;
 	int right_fork;
-	int status
+	int status;
 }					t_philo;
 
 
 int			checks(char **str);
 long long	ft_atol(const char *nptr);
-void		fill_philo(t_philo *philo, char argv)
-
+void		fill_philo(t_philo *philo, char **argv);
+void		print_philo(t_philo *philo);
 
 
 # endif
