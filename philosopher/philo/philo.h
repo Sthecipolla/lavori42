@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/14 11:24:55 by lhima             #+#    #+#             */
+/*   Updated: 2025/03/14 11:24:55 by lhima            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # ifndef PHILO_H
 # define PHILO_H
 
@@ -7,15 +19,13 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-
-// salvarsi il mutex di quello a sinistra
 typedef struct s_philo
 {
 	int id;
-	int tot_filo;
+	int	tot_filo;
 	long long sleep;
 	long long time_to_die;
-	long long eat;
+	long long eat_count;
 	long long time_to_eat;
 	long long think;
 	int *left_fork;
@@ -23,6 +33,11 @@ typedef struct s_philo
 	int status;
 }					t_philo;
 
+typedef struct s_data
+{
+	t_philo *philo;
+
+}					t_data;
 
 int			checks(char **str);
 long long	ft_atol(const char *nptr);

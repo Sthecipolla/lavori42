@@ -22,7 +22,7 @@ void set_eat(t_philo *philo)
 	philo->status = 1;
 	*philo->left_fork = 0;
 	philo->right_fork = 0;
-	philo->eat--;
+	philo->eat_count--;
 }
 void set_status_wait(t_philo *philo)
 {
@@ -36,7 +36,7 @@ void *do_something(void *t)
 {
 
  	t_philo *philo = (t_philo *)t;
-	while(philo->eat != 0)
+	while(philo->eat_count != 0)
 	{
 		pthread_mutex_lock(&mutex);
 		print_philo(philo);
@@ -52,8 +52,6 @@ void *do_something(void *t)
 			pthread_mutex_unlock(&mutex);
 			philo->status = 2;
 		}
-		print_philo(philo);
-
 		if (philo->status == 1)
 		{
 			usleep(300);

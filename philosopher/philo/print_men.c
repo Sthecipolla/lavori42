@@ -28,7 +28,7 @@ void	print_philo(t_philo *philo)
 	printf("philo %d\n", philo->id);
 	printf("tot_filo %d\n", philo->tot_filo);
 	printf("time_to_die %lld\n", philo->time_to_die);
-	printf("eat %lld\n", philo->eat);
+	printf("eat count%lld\n", philo->eat_count);
 	printf("time_to_eat %lld\n", philo->time_to_eat);
 	printf("sleep %lld\n", philo->sleep);
 	printf("think %lld\n", philo->think);

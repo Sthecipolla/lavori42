@@ -29,7 +29,7 @@ void fill_philo(t_philo *philo, char **argv)
 		philo[i].id = i;
 		philo[i].tot_filo =(int) atol(argv[1]);
 		philo[i].time_to_die = atol(argv[2]);
-		philo[i].eat = atol(argv[5]);
+		philo[i].eat_count = atol(argv[5]);
 		philo[i].sleep = atol(argv[4]);
 		philo[i].time_to_eat = atol(argv[3]);
 		philo[i].think = 0;
