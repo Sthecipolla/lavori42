@@ -15,7 +15,7 @@
 
 // "2" entrambe sono prese e pront a mangiare
 // "1" disponibili
-pthread_mutex_t mutex;
+
 
 void set_eat(t_philo *philo)
 {
@@ -34,8 +34,10 @@ void set_status_wait(t_philo *philo)
 
 void *do_something(void *t)
 {
-
  	t_philo *philo = (t_philo *)t;
+	pthread_mutex_t mutex;
+
+	mutex = philo->mutex;
 	while(philo->eat_count != 0)
 	{
 		pthread_mutex_lock(&mutex);
@@ -72,7 +74,6 @@ int main(int argc, char **argv)
 {
 	pthread_t *thread;
 	t_philo *philos;
-
 	int i;
 
 	if(argc != 6)
@@ -98,16 +99,20 @@ int main(int argc, char **argv)
 		perror("Error: malloc\n");
 		return (1);
 	}
-
-	fill_philo(philos, argv);
-	pthread_mutex_init(&mutex, NULL);
+	fill_philo(philos, argv, &mutex);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
 		pthread_create(&thread[i], NULL, &do_something, &philos[i]);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
+	{
 		pthread_join(thread[i], NULL);
-	pthread_mutex_destroy(&mutex);
+	}
+	i = -1;
+	while(++i < ft_atol(argv[1]))
+	{
+		pthread_mutex_destroy(&philos[i].right_fork);
+	}
 	free(philos);
 	free(thread);
 	return (0);

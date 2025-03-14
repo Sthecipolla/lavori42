@@ -28,9 +28,10 @@ typedef struct s_philo
 	long long eat_count;
 	long long time_to_eat;
 	long long think;
-	int *left_fork;
-	int right_fork;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t right_fork;
 	int status;
+	//pthread_mutex_t mutex;
 }					t_philo;
 
 typedef struct s_data

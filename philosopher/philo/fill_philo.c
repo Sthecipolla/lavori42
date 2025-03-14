@@ -37,7 +37,7 @@ void fill_philo(t_philo *philo, char **argv)
 			philo[i].left_fork = &philo[atol(argv[1]) - 1].right_fork;
 		else
 			philo[i].left_fork = &philo[i - 1].right_fork;
-		philo[i].right_fork = 1;
+		pthread_mutex_init(&philo[i].right_fork, NULL);
 		philo[i].status = 0;
 	}
 }
