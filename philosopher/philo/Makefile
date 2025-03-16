@@ -6,11 +6,13 @@ CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 SRC = main.c check.c atol.c print_men.c fill_philo.c
 
-ARG = 4 410 200 200 200
+ARG = 4 410 200 200 3
+
+ARG2 = 5 800 200 200 7
 
 OBJ = $(SRC:%.c=%.o)
 
-all: cleaning $(NAME)
+all: cleaning $(NAME) clean
 	
 cleaning:
 	clear
@@ -31,11 +33,11 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-run:
-	./$(NAME) $(ARG)
+run: cleaning
+	./$(NAME) $(ARG2)
 
 val:
-	valgrind ./$(NAME) $(ARG)
+	valgrind ./$(NAME) $(ARG2)
 
 re: fclean all
 

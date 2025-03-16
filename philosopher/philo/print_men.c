@@ -17,23 +17,19 @@
 	printf("bella ragazzi e benvenuti in questo nuovo video\n");
 } */
 
+void ft_print(int i, char *str, long time)
+{
+	printf("%ld philo %d is %s", time, i, str);
+}
+
 void	print_philo(t_philo *philo)
 {
-	/* write(1,"philo ", 6);
-	int i;
-
-	i = philo->id + '0';
-	write(1, &i , 1);
-	write(1,"\n", 1); */
 	printf("philo %d\n", philo->id);
 	printf("tot_filo %d\n", philo->tot_filo);
 	printf("time_to_die %lld\n", philo->time_to_die);
-	printf("eat count%lld\n", philo->eat_count);
+	printf("eat count %lld\n", philo->eat_count);
 	printf("time_to_eat %lld\n", philo->time_to_eat);
 	printf("sleep %lld\n", philo->sleep);
 	printf("think %lld\n", philo->think);
-	printf("left_fork %d\n", *philo->left_fork);
-	printf("right_fork %d\n", philo->right_fork);
-	printf("status %d\n", philo->status);
 	printf("-------------------------\n");
 }
