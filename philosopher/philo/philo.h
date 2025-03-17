@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:24:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/14 11:24:55 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/17 14:56:06 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ typedef struct s_philo
 	long long think;
 	pthread_mutex_t *left_fork;
 	pthread_mutex_t right_fork;
+	pthread_mutex_t *print;
 }					t_philo;
 
 int			checks(char **str);
 long long	ft_atol(const char *nptr);
-void		fill_philo(t_philo *philo, char **argv);
+void		fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print);
 void		print_philo(t_philo *philo);
-void		ft_print(int i, char *str, long time);
+void 		ft_print(int i, char *str, long long time, pthread_mutex_t *print);
 
 
 

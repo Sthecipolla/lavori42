@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:04 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/13 15:35:29 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/17 14:57:10 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,16 @@
 	printf("bella ragazzi e benvenuti in questo nuovo video\n");
 } */
 
-void ft_print(int i, char *str, long time)
+void ft_print(int i, char *str, long long time, pthread_mutex_t *print)
 {
-	printf("%ld philo %d is %s", time, i, str);
+	pthread_mutex_lock(print);
+	printf("%lld %d %s\n", time, i, str);
+	pthread_mutex_unlock(print);
 }
+/* {
+
+	printf("%lld %d %s", time, i, str);
+} */
 
 void	print_philo(t_philo *philo)
 {
@@ -33,3 +39,8 @@ void	print_philo(t_philo *philo)
 	printf("think %lld\n", philo->think);
 	printf("-------------------------\n");
 }
+/*
+time stamp
+
+
+*/

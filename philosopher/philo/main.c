@@ -6,104 +6,101 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/13 16:41:31 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/17 15:09:06 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
 // "2" entrambe sono prese e pront a mangiare
 // "1" disponibili
 
-/* 
-void set_eat(t_philo *philo)
-{
-	philo->status = 1;
-	*philo->left_fork = 0;
-	philo->right_fork = 0;
-	philo->eat_count--;
-}
-void set_status_wait(t_philo *philo)
-{
-
-	philo->status = 0;
-	*philo->left_fork = 1;
-	philo->right_fork = 1;
-} */
-void ft_set_time(long *value)
+long long ft_get_time(void)
 {
 	struct timeval time;
-	if(gettimeofday(&time, NULL) == -1)
-	{
-		perror("Error: gettimeofday\n");
-		*value = -1;
-		return;
-	}
-	*value = time.tv_usec;
-}
 
-long ft_get_time(void)
-{
-	struct timeval time;
 	if(gettimeofday(&time, NULL) == -1)
 	{
 		perror("Error: gettimeofday\n");
 		return (-1);
 	}
-	return (time.tv_usec);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+int ft_set_time(long long *value)
+{
+	*value = ft_get_time();
+	if(*value == -1)
+	{
+		perror("Error: gettimeofday\n");
+		*value = -1;
+		return -1;
+	}
+	return 1;
 }
 
 void *do_something(void *t)
 {
  	t_philo *philo = (t_philo *)t;
-	long	start;
-	long	end;
+	long	long start;
+	long	long end;
+	long	long start2;
+	long	long end2;
+	int flag = 0;
 
+	start = 0;
 	end = 0;
+	ft_set_time(&start2);
 	while (philo->eat_count != 0)
 	{
-		ft_set_time(&start);
 		pthread_mutex_lock(philo->left_fork);
+		ft_set_time(&end2);
+		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
 		pthread_mutex_lock(&philo->right_fork);
+		ft_set_time(&end2);
+		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_set_time(&end2);
+		ft_print(philo->id, "is eating",end2 - start2, philo->print);
+		usleep(philo->time_to_eat * 1000);
+		philo->eat_count--;
+		ft_set_time(&end2);
 		ft_set_time(&end);
-		if(end - start >= philo->time_to_die)
+		if(end - start >= philo->time_to_die * 1000 && flag == 1)
 		{
-			ft_print(philo->id, "dead", ft_get_time());
-			printf("<------------------- start: %ld end: %ld\n",start, end);
+			printf("%lld %d dead",ft_get_time(), philo->id);
 			pthread_mutex_unlock(&philo->right_fork);
 			pthread_mutex_unlock(philo->left_fork);
 			return (NULL);
 		}
-		ft_print(philo->id, "eating\n", ft_get_time());
-		usleep(philo->time_to_eat);
+		else if(flag == 0)
+			flag = 1;
 		pthread_mutex_unlock(&philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
-		philo->eat_count--;
-		ft_print(philo->id, "sleeping\n", ft_get_time());
-		usleep(philo->sleep);
-		ft_print(philo->id, "awake\n", ft_get_time());
-		ft_print(philo->id, "thinking\n", ft_get_time());
+		ft_set_time(&start);
+		ft_set_time(&end2);
+		ft_print(philo->id, "is sleeping", end2 - start2, philo->print);
+		usleep(philo->sleep * 1000);
+		ft_set_time(&end2);
+		//ft_print(philo->id, "is awake", end2 - start2, philo->print);
+		ft_print(philo->id, "is thinking", end2 - start2, philo->print);
 		if(start == -1 || end == -1)
 			return (NULL);
 		end += philo->time_to_die;
-		if(end <= start)
-		{
-			ft_print(philo->id, "dead\n", ft_get_time());
-			return (NULL);
-		}
-		
 	}
-
 	return (NULL);
 }
-
 
 //number_of_philosophers     time_to_die    time_to_eat    time_to_sleep    [number_of_times_each_philosopher_must_eat]
 // 5                        800            200            200             		7
 // 4                        410            200            200					3
+
+
+/// aggiungere mutex per stampare per bene
 int main(int argc, char **argv)
 {
 	pthread_t *thread;
 	t_philo *philos;
+	pthread_mutex_t print;
 	int i;
 
 	if(argc != 6)
@@ -129,7 +126,8 @@ int main(int argc, char **argv)
 		perror("Error: malloc\n");
 		return (1);
 	}
-	fill_philo(philos, argv);
+	pthread_mutex_init(&print, NULL);
+	fill_philo(philos, argv, &print);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
 		pthread_create(&thread[i], NULL, &do_something, &philos[i]);
@@ -143,6 +141,7 @@ int main(int argc, char **argv)
 	{
 		pthread_mutex_destroy(&philos[i].right_fork);
 	}
+	pthread_mutex_destroy(&print);
 	free(philos);
 	free(thread);
 	return (0);
