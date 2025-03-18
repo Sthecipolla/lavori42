@@ -2,11 +2,11 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 SRC = main.c check.c atol.c print_men.c fill_philo.c
 
-ARG = 4 410 200 200
+ARG = 4 410 200 200 4
 
 ARG2 = 5 810 200 200 7
 
@@ -41,7 +41,7 @@ run: cleaning
 	./$(NAME) $(ARG)
 
 val: cleaning
-	valgrind --tool=helgrind --fair-sched=yes --history-level=full \
+	valgrind --tool=helgrind \
 	--log-file=helgrind.log -s ./$(NAME) $(ARG)
 
 rm_val:
