@@ -1,0 +1,6 @@
+==1671506== Helgrind, a thread error detector
+==1671506== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==1671506== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1671506== Command: ./philo 4 410 200 200
+==1671506== Parent PID: 1671504
+==1671506== 

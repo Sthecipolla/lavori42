@@ -2,13 +2,17 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -pthread -g
+CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread -g
 
 SRC = main.c check.c atol.c print_men.c fill_philo.c
 
-ARG = 4 410 200 200 3
+ARG = 4 410 200 200
 
 ARG2 = 5 810 200 200 7
+
+ARG3= 199 800 200 200 5
+
+ARG4 = 3 800 200 200 4
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -34,10 +38,14 @@ fclean: clean
 	rm -f $(NAME)
 
 run: cleaning
-	./$(NAME) $(ARG2)
+	./$(NAME) $(ARG)
 
-val:
-	valgrind ./$(NAME) $(ARG)
+val: cleaning
+	valgrind --tool=helgrind --fair-sched=yes --history-level=full \
+	--log-file=helgrind.log -s ./$(NAME) $(ARG)
+
+rm_val:
+	rm -f helgrind.log
 
 re: fclean all
 
