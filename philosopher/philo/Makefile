@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -pthread -g
 
-SRC = main.c check.c atol.c print_men.c fill_philo.c
+SRC = main.c check.c atol.c print_men.c fill_philo.c forks.c
 
 ARG = 2 410 200 200 2
 
@@ -38,8 +38,7 @@ fclean: clean
 	rm -f $(NAME)
 
 run: cleaning
-#	echo ./$(NAME) $(ARG3)
-	./$(NAME) $(ARG3) > out.txt
+	./$(NAME) $(ARG)
 
 val: cleaning
 	valgrind --tool=helgrind \
