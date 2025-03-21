@@ -6,11 +6,11 @@ CFLAGS = -Wall -Wextra -Werror -pthread -g
 
 SRC = main.c check.c atol.c print_men.c fill_philo.c
 
-ARG = 4 410 200 200 4
+ARG = 2 410 200 200 2
 
 ARG2 = 5 810 200 200 7
 
-ARG3= 199 800 200 200 5
+ARG3= 200 800 200 200 5
 
 ARG4 = 3 800 200 200 4
 
@@ -38,11 +38,15 @@ fclean: clean
 	rm -f $(NAME)
 
 run: cleaning
-	./$(NAME) $(ARG)
+#	echo ./$(NAME) $(ARG3)
+	./$(NAME) $(ARG3) > out.txt
 
 val: cleaning
 	valgrind --tool=helgrind \
 	--log-file=helgrind.log -s ./$(NAME) $(ARG)
+
+count: run
+	grep "is eating" | wc -l
 
 rm_val:
 	rm -f helgrind.log

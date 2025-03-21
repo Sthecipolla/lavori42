@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:04 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/18 13:49:20 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/21 12:04:31 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ void ft_print(int i, char *str, long long time, pthread_mutex_t *print)
 	printf("%lld %d %s\n", time, i, str);
 	pthread_mutex_unlock(print);
 }
-/* {
-
-	printf("%lld %d %s", time, i, str);
-} */
 
 void	print_philo(t_philo *philo)
 {
@@ -39,8 +35,3 @@ void	print_philo(t_philo *philo)
 	printf("think %lld\n", philo->think);
 	printf("-------------------------\n");
 }
-/*
-time stamp
-
-
-*/

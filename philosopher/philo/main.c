@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/19 15:26:01 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:58:57 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,53 @@ int ft_set_time(long long *value)
 	}
 	return 1;
 }
-void ft_lock(t_philo *philo, long long start2, long long end2,int flag)
+void ft_lock(t_philo *philo, long long start_working, long long end2,int flag)
 {
-	if (philo->id % 2 == 0 && flag == 0)
+	if (philo->id % 2 == 0 && flag == 0 && philo->id == 0)
 	{
 		pthread_mutex_lock(&philo->right_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 		pthread_mutex_lock(philo->left_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 	}
-	else if(philo->id % 2 != 0 && flag == 0)
+	else if (philo->id % 2 == 0 && flag == 0)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 		pthread_mutex_lock(&philo->right_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 	}
-	if(philo->id == 0)
+	else if (philo->id % 2 != 0 && flag == 0)
 	{
-		pthread_mutex_lock(&philo->right_fork);
-		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		usleep(1000);
 		pthread_mutex_lock(philo->left_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
+		pthread_mutex_lock(&philo->right_fork);
+		ft_set_time(&end2);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 	}
-	else
+	else if (philo->id == 0 && flag == 1)
+	{
+		pthread_mutex_lock(&philo->right_fork);
+		ft_set_time(&end2);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
+		pthread_mutex_lock(philo->left_fork);
+		ft_set_time(&end2);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
+	}
+	else if (flag == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 		pthread_mutex_lock(&philo->right_fork);
 		ft_set_time(&end2);
-		ft_print(philo->id, "has taken a fork", end2 - start2, philo->print);
+		ft_print(philo->id, "has taken a fork", end2 - start_working, philo->print);
 	}
 }
 void *do_something(void *t)
@@ -82,26 +92,28 @@ void *do_something(void *t)
  	t_philo *philo = (t_philo *)t;
 	long	long start;
 	long	long end;
-	long	long start2;
+	long	long start_working;
 	long	long end2;
-	int flag = 0;
+	int		flag = 0;
 
 	start = 0;
 	end = 0;
-	ft_set_time(&start2);
+	ft_set_time(&start_working);
 	while (philo->eat_count != 0)
 	{
-		ft_lock(philo,start2, end2,flag);
+		ft_lock(philo,start_working, end2,flag);
 		ft_set_time(&end2);
-		ft_print(philo->id, "is eating",end2 - start2, philo->print);
+		ft_print(philo->id, "is eating",end2 - start_working, philo->print);
 		usleep(philo->time_to_eat * 1000);
 		philo->eat_count--;
 		ft_set_time(&end2);
 		ft_set_time(&end);
-		//printf("dead?%lld\n", (end - start));
+		/* printf("start %lld\n", start - start_working);
+		printf("end %lld\n", end - start_working);
+		printf("%lld\n", (end - start)); */
 		if(((end - start) >= philo->time_to_die) && flag == 1)
 		{
-			ft_print(philo->id, "died",end2 - start2, philo->print);
+			ft_print(philo->id, "died",end2 - start_working, philo->print);
 			pthread_mutex_unlock(&philo->right_fork);
 			pthread_mutex_unlock(philo->left_fork);
 			return (NULL);
@@ -112,10 +124,10 @@ void *do_something(void *t)
 		pthread_mutex_unlock(philo->left_fork);
 		ft_set_time(&start);
 		ft_set_time(&end2);
-		ft_print(philo->id, "is sleeping", end2 - start2, philo->print);
+		ft_print(philo->id, "is sleeping", end2 - start_working, philo->print);
 		usleep(philo->sleep * 1000);
 		ft_set_time(&end2);
-		ft_print(philo->id, "is thinking", end2 - start2, philo->print);
+		ft_print(philo->id, "is thinking", end2 - start_working, philo->print);
 		if(start == -1 || end == -1)
 			return (NULL);
 	}
