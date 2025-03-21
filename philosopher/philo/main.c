@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/21 16:35:40 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/21 16:47:35 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,20 +118,20 @@ int main(int argc, char **argv)
 	t_philo *philos;
 	pthread_mutex_t print;
 	pthread_mutex_t murder;
-	char *str;
+	pthread_t *death;
 	int i;
 
 	if (lets_see(argc, argv, &thread, &philos))
 		return (1);
 	pthread_mutex_init(&print, NULL);
 	pthread_mutex_init(&murder, NULL);
-	fill_philo(philos, argv, &print, murder);
+	fill_philo(philos, argv, &print, &murder);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
 		pthread_create(&thread[i], NULL, &do_something, &philos[i]);
 	i = -1;
-	murder = malloc(sizeof(pthread_t));
-	pthread_create(&murder, NULL, &is_dead, philos);
+	death = malloc(sizeof(pthread_t));
+	pthread_create(death, NULL, &is_dead, philos);
 	pthread_join(thread[i], NULL);
 	while(++i < ft_atol(argv[1]))
 		pthread_join(thread[i], NULL);
