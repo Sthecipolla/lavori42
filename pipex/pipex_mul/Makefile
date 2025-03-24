@@ -34,6 +34,9 @@ SUPPRESSION_FILE =	"{\n\
 					...\n\
 					obj:/usr/bin/*\n\
 					}"
+					{
+						
+					}
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
 

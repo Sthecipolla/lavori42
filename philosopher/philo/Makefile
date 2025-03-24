@@ -4,9 +4,9 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -pthread -g
 
-SRC = main.c check.c atol.c print_men.c fill_philo.c forks.c
+SRC = main.c check.c atol.c print_men.c fill_philo.c forks.c death.c
 
-ARG = 2 410 200 200 2
+ARG = 2 40 200 200 2
 
 ARG2 = 5 810 200 200 7
 
@@ -38,11 +38,11 @@ fclean: clean
 	rm -f $(NAME)
 
 run: cleaning
-	./$(NAME) $(ARG)
+	./$(NAME) $(ARG) > file.txt
 
 val: cleaning
 	valgrind --tool=helgrind \
-	--log-file=helgrind.log -s ./$(NAME) $(ARG)
+	--log-file=helgrind.log -s ./$(NAME) $(ARG3)
 
 count: run
 	grep "is eating" | wc -l

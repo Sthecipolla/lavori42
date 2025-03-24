@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/21 16:47:35 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/24 14:26:44 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,42 +43,43 @@ void *do_something(void *t)
 {
  	t_philo *philo = (t_philo *)t;
 	long	long start_working;
-	long	long action;
 	int		flag = 0;
 
-	ft_set_time(&start_working);
+	start_working = *philo->start_working;
 	while (philo->eat_count != 0)
 	{
-		ft_lock(philo,start_working, action,flag);
-		ft_set_time(&action);
-		ft_print(philo->id, "is eating", \
-		action - start_working, philo->print);
+		ft_lock(philo, start_working, flag);
+		ft_print(philo, "is eating", \
+		start_working, philo->print);
 		usleep(philo->time_to_eat * 1000);
-		philo->eat_count--;
-		ft_set_time(&action);
 		ft_set_time(&philo->end);
-		/* printf("start %lld\n", start - start_working);
-		printf("end %lld\n", end - start_working);
-		printf("%lld\n", (end - start)); */
-		if(((philo->end - philo->start) >= philo->time_to_die) && flag == 1)
+		pthread_mutex_lock(philo->print);
+		if (philo->status == 1)
 		{
-			ft_print(philo->id, "died", \
-			action - start_working, philo->print);
+			pthread_mutex_unlock(philo->print);
+			pthread_mutex_unlock(&philo->right_fork);
+			pthread_mutex_unlock(philo->left_fork);
+			return (NULL);
+		}
+		if (((philo->end - philo->start) >= philo->time_to_die) && flag != 1)
+		{
+			ft_print(philo, "died", start_working, philo->print);
 			philo->status = 1;
+			pthread_mutex_unlock(philo->print);
 			pthread_mutex_unlock(&philo->right_fork);
 			pthread_mutex_unlock(philo->left_fork);
 			return (NULL);
 		}
 		else if(flag == 0)
 			flag = 1;
+		philo->eat_count--;
+		pthread_mutex_unlock(philo->print);
 		pthread_mutex_unlock(&philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
 		ft_set_time(&philo->start);
-		ft_set_time(&action);
-		ft_print(philo->id, "is sleeping", action - start_working, philo->print);
+		ft_print(philo, "is sleeping",start_working, philo->print);
 		usleep(philo->sleep * 1000);
-		ft_set_time(&action);
-		ft_print(philo->id, "is thinking", action - start_working, philo->print);
+		ft_print(philo, "is thinking",start_working, philo->print);
 	}
 	return (NULL);
 }
@@ -117,28 +118,29 @@ int main(int argc, char **argv)
 	pthread_t *thread;
 	t_philo *philos;
 	pthread_mutex_t print;
-	pthread_mutex_t murder;
 	pthread_t *death;
+	long long time;
 	int i;
 
 	if (lets_see(argc, argv, &thread, &philos))
 		return (1);
 	pthread_mutex_init(&print, NULL);
-	pthread_mutex_init(&murder, NULL);
-	fill_philo(philos, argv, &print, &murder);
+	ft_set_time(&time);
+	fill_philo(philos, argv, &print, &time);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
-		pthread_create(&thread[i], NULL, &do_something, &philos[i]);
+		pthread_create(&thread[i], NULL, &do_something,(void *) &philos[i]);
 	i = -1;
 	death = malloc(sizeof(pthread_t));
-	pthread_create(death, NULL, &is_dead, philos);
-	pthread_join(thread[i], NULL);
+	pthread_create(death, NULL, &is_dead,(void *) philos);
+	pthread_join(*death, NULL);
 	while(++i < ft_atol(argv[1]))
 		pthread_join(thread[i], NULL);
 	i = -1;
 	while(++i < ft_atol(argv[1]))
 		pthread_mutex_destroy(&philos[i].right_fork);
 	pthread_mutex_destroy(&print);
+	free(death);
 	free(philos);
 	free(thread);
 	return (0);

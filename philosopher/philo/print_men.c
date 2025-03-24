@@ -6,21 +6,26 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:04 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/21 12:04:31 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/24 14:16:49 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* void print_men()
+void ft_print(t_philo *philo, char *str, long long time, pthread_mutex_t *print)
 {
-	printf("bella ragazzi e benvenuti in questo nuovo video\n");
-} */
+	long	long action;
 
-void ft_print(int i, char *str, long long time, pthread_mutex_t *print)
-{
+	usleep(7);
 	pthread_mutex_lock(print);
-	printf("%lld %d %s\n", time, i, str);
+	if(philo->status == 1)
+	{
+		pthread_mutex_unlock(print);
+		return ;
+	}
+	ft_set_time(&action);
+	time = action - time;
+	printf("%lld %d %s\n", time,philo->id, str);
 	pthread_mutex_unlock(print);
 }
 
@@ -32,6 +37,5 @@ void	print_philo(t_philo *philo)
 	printf("eat count %lld\n", philo->eat_count);
 	printf("time_to_eat %lld\n", philo->time_to_eat);
 	printf("sleep %lld\n", philo->sleep);
-	printf("think %lld\n", philo->think);
 	printf("-------------------------\n");
 }
