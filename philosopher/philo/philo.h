@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:24:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/24 14:15:13 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 10:43:56 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_philo
 	long long		start;
 	long long		end;
 	int				status;
-	long long		*start_working;
+	long long		start_working;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	right_fork;
 	pthread_mutex_t	*print;
@@ -38,12 +38,16 @@ typedef struct s_philo
 
 int			checks(char **str);
 long long	ft_atol(const char *nptr);
-void		fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long *time);
+void		fill_philo(t_philo *philo, char **argv, \
+			pthread_mutex_t *print, long long time);
 void		print_philo(t_philo *philo);
-void		ft_print(t_philo *philo, char *str, long long time, pthread_mutex_t *print);
+void		ft_print(t_philo *philo, char *str, long long time, \
+			pthread_mutex_t *print);
 void		ft_lock(t_philo *philo, long long start_working, int flag);
 int			ft_set_time(long long *value);
+long long	ft_get_time(void);
 void		*is_dead(void *p);
+void		*do_something(void *t);
 
 
 

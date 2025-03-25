@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/24 14:13:55 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 10:38:25 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 5 [number_of_times_each_philosopher_must_eat
 
 */
-void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long *time)
+void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long time)
 {
 	int i;
 
@@ -29,7 +29,10 @@ void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long *
 		philo[i].id = i;
 		philo[i].tot_filo =(int) atol(argv[1]);
 		philo[i].time_to_die = atol(argv[2]);
-		philo[i].eat_count = atol(argv[5]);
+		if(argv[5] == NULL)
+			philo[i].eat_count = -1;
+		else
+			philo[i].eat_count = atol(argv[5]);
 		philo[i].sleep = atol(argv[4]);
 		philo[i].time_to_eat = atol(argv[3]);
 		philo[i].print = print;
