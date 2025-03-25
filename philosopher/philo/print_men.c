@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:04 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 12:32:22 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 13:02:36 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void ft_print(t_philo *philo, char *str, long long time, pthread_mutex_t *print)
 {
 	long	long action;
+	int id;
 
 	usleep(7);
 	pthread_mutex_lock(print);
+	id = philo->id + 1;
 	if(philo->status == 1)
 	{
 		pthread_mutex_unlock(print);
@@ -25,7 +27,7 @@ void ft_print(t_philo *philo, char *str, long long time, pthread_mutex_t *print)
 	}
 	ft_set_time(&action);
 	time = action - time;
-	printf("%lld %d %s\n", time, philo->id, str);
+	printf("%lld %d %s\n", time, id, str);
 	pthread_mutex_unlock(print);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:45:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 10:38:25 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 16:43:33 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 2 time_to_die
 3 time_to_eat
 4 time_to_sleep
-5 [number_of_times_each_philosopher_must_eat
-
+5 [number_of_times_each_philosopher_must_eat]
 */
 void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long time)
 {
@@ -43,7 +42,7 @@ void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long t
 		else
 			philo[i].left_fork = &philo[i - 1].right_fork;
 		pthread_mutex_init(&philo[i].right_fork, NULL);
-		philo[i].start = 0;
+		philo[i].start = time;
 		philo[i].end = 0;
 	}
 }

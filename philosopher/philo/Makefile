@@ -13,7 +13,7 @@ ARG2 = 5 810 200 200 7
 
 ARG3= 200 800 200 200 5
 
-ARG4 = 3 800 200 200 4
+ARG4 = 2 24 100 100 2
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -43,7 +43,7 @@ run: cleaning
 
 val: cleaning
 	valgrind --tool=helgrind \
-	--log-file=helgrind.log -s ./$(NAME) $(ARG)
+	--log-file=helgrind.log -s ./$(NAME) $(ARG4)
 
 count: run
 	grep "is eating" | wc -l

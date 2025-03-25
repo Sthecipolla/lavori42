@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:31 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 10:40:39 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 12:53:09 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	checks(char **str)
 {
 	if (if_numeric(str) == 0)
 	{
-		perror("Error: arguments must be numeric\n");
+		write(2,"Error: arguments must be numeric\n", 34);
 		return (1);
 	}
-	if (atol(str[0]) <= 1)
+	if (atol(str[0]) < 1)
 	{
 		perror("Error: not enough philo\n");
 		return (1);

@@ -1,14 +1,14 @@
-==1264941== Helgrind, a thread error detector
-==1264941== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
-==1264941== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==1264941== Command: ./philo 4 410 200 100 2
-==1264941== Parent PID: 1264939
-==1264941== 
-==1264941== 
-==1264941== Use --history-level=approx or =none to gain increased speed, at
-==1264941== the cost of reduced accuracy of conflicting-access information
-==1264941== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 15061 from 118)
---1264941-- 
---1264941-- used_suppression:  15061 helgrind-glibc2X-005 /usr/lib/x86_64-linux-gnu/valgrind/default.supp:963
-==1264941== 
-==1264941== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 15061 from 118)
+==2082892== Helgrind, a thread error detector
+==2082892== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==2082892== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2082892== Command: ./philo 2 24 100 100 2
+==2082892== Parent PID: 2082890
+==2082892== 
+==2082892== 
+==2082892== Use --history-level=approx or =none to gain increased speed, at
+==2082892== the cost of reduced accuracy of conflicting-access information
+==2082892== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 200062 from 52)
+--2082892-- 
+--2082892-- used_suppression: 200062 helgrind-glibc2X-005 /usr/lib/x86_64-linux-gnu/valgrind/default.supp:963
+==2082892== 
+==2082892== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 200062 from 52)

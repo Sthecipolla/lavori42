@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:29:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/24 11:57:11 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 18:43:47 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void *is_dead(void *p)
 	t_philo *philos = (t_philo *)p;
 	int i;
 	int j;
-
+	usleep(1000);
 	while (1)
 	{
 		pthread_mutex_lock(philos[0].print);
@@ -38,7 +38,8 @@ void *is_dead(void *p)
 		{
 			if (philos[i].eat_count == 0)
 				j++;
-			if (philos[i].status == 1)
+			//printf("time to die: %lld\n", philos[i].end - philos[i].start);
+			if (philos[i].end - philos[i].start >= philos[i].time_to_die)
 				set_all_one(philos);
 		}
 		if(philos[0].status == 1)
@@ -46,7 +47,6 @@ void *is_dead(void *p)
 		if(j == philos[0].tot_filo)
 			break;
 		pthread_mutex_unlock(philos[0].print);
-		usleep(10);
 	}
 	pthread_mutex_unlock(philos[0].print);
 	return (NULL);

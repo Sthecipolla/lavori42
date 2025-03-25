@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 11:46:31 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 18:20:54 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int main(int argc, char **argv)
 	i = -1;
 	while(++i < ft_atol(argv[1]))
 		pthread_create(&thread[i], NULL, &do_something,(void *) &philos[i]);
+	/* i = -1;
+	while(++i < ft_atol(argv[1]))
+		if(philos[i].id % 2 != 0)
+			pthread_create(&thread[i], NULL, &do_something,(void *) &philos[i]); */
 	i = -1;
 	death = malloc(sizeof(pthread_t));
 	pthread_create(death, NULL, &is_dead,(void *) philos);
