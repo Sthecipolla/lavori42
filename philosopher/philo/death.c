@@ -6,21 +6,22 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:29:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 18:47:44 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/26 18:52:39 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-//mutex per la morte e fai exit del programma
-
-static void set_all_one(t_philo *philos)
+static void set_all_one(t_philo *philos, int j)
 {
 	int i;
 
 	i = -1;
+	printf("%lld %d died\n", ft_get_time() - philos[j].start_working, philos[j].id + 1);
 	while(++i < philos[0].tot_filo)
 		philos[i].status = 1;
+	pthread_mutex_unlock(philos[0].print);
+
 }
 
 void *is_dead(void *p)
@@ -28,9 +29,9 @@ void *is_dead(void *p)
 	t_philo *philos = (t_philo *)p;
 	int i;
 	int j;
-	usleep(1000);
 	while (1)
 	{
+		usleep(10);
 		pthread_mutex_lock(philos[0].print);
 		j = 0;
 		i = -1;
@@ -38,15 +39,9 @@ void *is_dead(void *p)
 		{
 			if (philos[i].eat_count == 0)
 				j++;
-			//printf("time to die: %lld\n", philos[i].end - philos[i].start);
-			if (philos[i].end - philos[i].start >= philos[i].time_to_die)
-			{
-				set_all_one(philos);
-				return (NULL);
-			}
+			if (ft_get_time() - philos[i].start >= philos[i].time_to_die)
+				return (set_all_one(philos, i), NULL);
 		}
-		if(philos[0].status == 1)
-			break;
 		if(j == philos[0].tot_filo)
 			break;
 		pthread_mutex_unlock(philos[0].print);

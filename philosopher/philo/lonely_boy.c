@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_men.c                                        :+:      :+:    :+:   */
+/*   lonely_boy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:45:04 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/26 17:02:53 by lhima            ###   ########.fr       */
+/*   Created: 2025/03/26 17:05:01 by lhima             #+#    #+#             */
+/*   Updated: 2025/03/26 19:10:27 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int ft_print(t_philo *philo, char *str, long long time)
+void	*lonely(void *t)
 {
-	usleep(7);
-	pthread_mutex_lock(philo->print);
-	if (philo->status == 1)
-	{
-		pthread_mutex_unlock(philo->print);
-		return (1);
-	}
-	ft_set_time(&philo -> end);
-	time = philo -> end - time;
-	printf("%lld %d %s\n", time, philo->id + 1, str);
-	pthread_mutex_unlock(philo->print);
-	return (0);
-}
+	t_philo *philo;
 
+	philo = (t_philo *) t;
+	printf("%lld %d is taken a fork\n", ft_get_time() \
+	- philo->start_working, philo->id + 1);
+	usleep(1000 * philo->time_to_die);
+	printf("%lld %d died\n", philo->time_to_die, philo->id + 1);
+	return (NULL);
+}

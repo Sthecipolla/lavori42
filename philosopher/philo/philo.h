@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:24:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 10:43:56 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/26 19:11:11 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,11 @@ long long	ft_atol(const char *nptr);
 void		fill_philo(t_philo *philo, char **argv, \
 			pthread_mutex_t *print, long long time);
 void		print_philo(t_philo *philo);
-void		ft_print(t_philo *philo, char *str, long long time, \
-			pthread_mutex_t *print);
+int			ft_print(t_philo *philo, char *str, long long time);
 void		ft_lock(t_philo *philo, long long start_working, int flag);
 int			ft_set_time(long long *value);
 long long	ft_get_time(void);
 void		*is_dead(void *p);
 void		*do_something(void *t);
-
-
-
+void		*lonely(void *t);
 # endif

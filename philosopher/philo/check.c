@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:31 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 12:53:09 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/26 17:35:16 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	checks(char **str)
 	}
 	if (atol(str[0]) < 1)
 	{
-		perror("Error: not enough philo\n");
+		write(2, "Error: not enough philo\n", 25);
 		return (1);
 	}
 	//if()

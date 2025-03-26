@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:37:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 17:01:59 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/26 13:38:52 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	sleep_a_little(t_philo *philo, long long start_working)
 {
-	usleep(100);
+	usleep(1000);
 	pthread_mutex_lock(philo->left_fork);
 	ft_print(philo, "has taken a fork", \
-	start_working, philo->print);
+	start_working);
 	pthread_mutex_lock(&philo->right_fork);
 	ft_print(philo, "has taken a fork", \
-	start_working, philo->print);
+	start_working);
 }
 
 static void	first_lock(t_philo *philo, long long start_working, \
@@ -30,19 +30,19 @@ static void	first_lock(t_philo *philo, long long start_working, \
 	{
 		pthread_mutex_lock(&philo->right_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 		pthread_mutex_lock(philo->left_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 	}
 	else if (philo->id % 2 == 0 && flag == 0)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 		pthread_mutex_lock(&philo->right_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 	}
 	else if (philo->id % 2 != 0 && flag == 0)
 		sleep_a_little(philo, start_working);
@@ -57,18 +57,18 @@ void	ft_lock(t_philo *philo, long long start_working, \
 	{
 		pthread_mutex_lock(&philo->right_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 		pthread_mutex_lock(philo->left_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 	}
 	else if (flag == 1)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 		pthread_mutex_lock(&philo->right_fork);
 		ft_print(philo, "has taken a fork", \
-		start_working, philo->print);
+		start_working);
 	}
 }
