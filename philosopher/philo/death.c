@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:29:01 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 18:43:47 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 18:47:44 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void *is_dead(void *p)
 				j++;
 			//printf("time to die: %lld\n", philos[i].end - philos[i].start);
 			if (philos[i].end - philos[i].start >= philos[i].time_to_die)
+			{
 				set_all_one(philos);
+				return (NULL);
+			}
 		}
 		if(philos[0].status == 1)
 			break;

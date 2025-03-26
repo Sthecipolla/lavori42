@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:43:12 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/25 18:44:43 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/25 18:48:20 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 static int death_see(t_philo *philo ,int *flag )
 {
+	printf("%d", philo->status == 1);
 	if (philo->status == 1)
 	{
 		pthread_mutex_unlock(philo->print);
