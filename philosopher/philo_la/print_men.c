@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int ft_print(t_philo *philo, char *str, long long time)
+int	ft_print(t_philo *philo, char *str, long long time)
 {
 	usleep(7);
 	pthread_mutex_lock(philo->print);
@@ -21,10 +21,9 @@ int ft_print(t_philo *philo, char *str, long long time)
 		pthread_mutex_unlock(philo->print);
 		return (1);
 	}
-	ft_set_time(&philo -> end);
-	time = philo -> end - time;
+	ft_set_time(&philo->end);
+	time = philo->end - time;
 	printf("%lld %d %s\n", time, philo->id + 1, str);
 	pthread_mutex_unlock(philo->print);
 	return (0);
 }
-

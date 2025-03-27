@@ -12,17 +12,17 @@
 
 #include "philo.h"
 
-static void eat(t_philo *philo ,int *flag )
+static void	eat(t_philo *philo, int *flag)
 {
-	if(*flag == 0)
+	if (*flag == 0)
 		*flag = 1;
-	if(philo->eat_count != -1)
+	if (philo->eat_count != -1)
 		philo->eat_count--;
 }
 
 static int	quit(t_philo *philo)
 {
-	if(philo->status == 1)
+	if (philo->status == 1)
 	{
 		pthread_mutex_unlock(philo->print);
 		pthread_mutex_unlock(&philo->right_fork);
@@ -32,9 +32,9 @@ static int	quit(t_philo *philo)
 	return (0);
 }
 
-void *do_something(void *t)
+void	*do_something(void *t)
 {
- 	t_philo *philo;
+	t_philo	*philo;
 	int		flag;
 
 	philo = (t_philo *)t;
@@ -47,7 +47,7 @@ void *do_something(void *t)
 		pthread_mutex_lock(philo->print);
 		ft_set_time(&philo->start);
 		eat(philo, &flag);
-		if(quit(philo) == 1)
+		if (quit(philo) == 1)
 			return (NULL);
 		pthread_mutex_unlock(philo->print);
 		pthread_mutex_unlock(&philo->right_fork);
@@ -56,7 +56,6 @@ void *do_something(void *t)
 		usleep(philo->sleep * 1000);
 		usleep(1000);
 		ft_print(philo, "is thinking", philo->start_working);
-
 	}
 	return (NULL);
 }

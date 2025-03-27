@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+
 /*
 1 number_of_philosophers
 2 time_to_die
@@ -18,17 +19,18 @@
 4 time_to_sleep
 5 [number_of_times_each_philosopher_must_eat]
 */
-void fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print, long long time)
+void	fill_philo(t_philo *philo, char **argv, pthread_mutex_t *print,
+		long long time)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (atol(argv[1]) > ++i)
 	{
 		philo[i].id = i;
-		philo[i].tot_filo =(int) atol(argv[1]);
+		philo[i].tot_filo = (int)atol(argv[1]);
 		philo[i].time_to_die = atol(argv[2]);
-		if(argv[5] == NULL)
+		if (argv[5] == NULL)
 			philo[i].eat_count = -1;
 		else
 			philo[i].eat_count = atol(argv[5]);

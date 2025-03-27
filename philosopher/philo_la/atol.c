@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "philo.h"
 
 static int	white_space(const char *arr)
@@ -23,7 +22,7 @@ static int	white_space(const char *arr)
 	return (i);
 }
 
-static long	long	negativo(const char *nptr, int i, long long valore)
+static long long	negativo(const char *nptr, int i, long long valore)
 {
 	while (nptr[i] > 47 && nptr[i] < 58)
 	{

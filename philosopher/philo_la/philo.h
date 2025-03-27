@@ -6,11 +6,11 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:24:55 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/26 19:11:11 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/26 20:07:04 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PHILO_H
+#ifndef PHILO_H
 # define PHILO_H
 
 # include <stdio.h>
@@ -48,4 +48,4 @@ long long	ft_get_time(void);
 void		*is_dead(void *p);
 void		*do_something(void *t);
 void		*lonely(void *t);
-# endif
+#endif

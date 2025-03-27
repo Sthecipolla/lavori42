@@ -6,19 +6,18 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:00:03 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/26 19:27:57 by lhima            ###   ########.fr       */
+/*   Updated: 2025/03/27 12:00:22 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	one_philo(t_philo *philos, char **argv)
+static int	one_philo(t_philo *philos, pthread_t *thread)
 {
-	pthread_t *thread;
-
-	thread = malloc(sizeof(pthread_t) * ft_atol(argv[1]));
-	pthread_create(&thread[0], NULL, &lonely, (void *) &philos[0]);
+	pthread_create(&thread[0], NULL, &lonely, (void *)&philos[0]);
 	pthread_join(thread[0], NULL);
+	pthread_mutex_destroy(&philos[0].right_fork);
+	pthread_mutex_destroy(philos[0].print);
 	free(philos);
 	free(thread);
 	return (0);
@@ -26,23 +25,23 @@ int	one_philo(t_philo *philos, char **argv)
 
 static void	create(t_philo *philos, pthread_t *thread, char **argv)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(++i < ft_atol(argv[1]))
-		if(philos[i].id % 2 == 0)
-			pthread_create(&thread[i], NULL, &do_something,(void *) &philos[i]);
+	while (++i < ft_atol(argv[1]))
+		if (philos[i].id % 2 == 0)
+			pthread_create(&thread[i], NULL, &do_something, (void *)&philos[i]);
 	i = -1;
-	while(++i < ft_atol(argv[1]))
-		if(philos[i].id % 2 != 0)
-			pthread_create(&thread[i], NULL, &do_something,(void *) &philos[i]);
+	while (++i < ft_atol(argv[1]))
+		if (philos[i].id % 2 != 0)
+			pthread_create(&thread[i], NULL, &do_something, (void *)&philos[i]);
 }
 
-int lets_see(int argc, char **argv, pthread_t **thread, t_philo **philos)
+int	lets_see(int argc, char **argv, pthread_t **thread, t_philo **philos)
 {
 	if (argc != 6 && argc != 5)
 	{
-		if(argv[1] == NULL)
+		if (argv[1] == NULL)
 			write(2, "Error: no arguments\n", 20);
 		else
 			write(2, "Error: wrong number of arguments\n", 34);
@@ -50,7 +49,7 @@ int lets_see(int argc, char **argv, pthread_t **thread, t_philo **philos)
 	}
 	if (checks(argv + 1) == 1)
 		return (1);
-	*philos =  malloc(sizeof(t_philo) * ft_atol(argv[1]));
+	*philos = malloc(sizeof(t_philo) * ft_atol(argv[1]));
 	if (philos == NULL)
 	{
 		write(2, "Error: malloc\n", 14);
@@ -66,7 +65,7 @@ int lets_see(int argc, char **argv, pthread_t **thread, t_philo **philos)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	pthread_t		*thread;
 	t_philo			*philos;
@@ -79,21 +78,18 @@ int main(int argc, char **argv)
 	pthread_mutex_init(&print, NULL);
 	fill_philo(philos, argv, &print, ft_get_time());
 	if (atol(argv[1]) == 1)
-		return (one_philo(philos, argv));
+		return (one_philo(philos, thread));
 	i = -1;
 	create(philos, thread, argv);
 	death = malloc(sizeof(pthread_t));
-	pthread_create(death, NULL, &is_dead,(void *) philos);
+	pthread_create(death, NULL, &is_dead, (void *)philos);
 	pthread_join(*death, NULL);
-	while(++i < ft_atol(argv[1]))
+	while (++i < ft_atol(argv[1]))
 		pthread_join(thread[i], NULL);
 	i = -1;
-	while(++i < ft_atol(argv[1]))
+	while (++i < ft_atol(argv[1]))
 		pthread_mutex_destroy(&philos[i].right_fork);
 	pthread_mutex_destroy(&print);
-	free(death);
-	free(philos);
 	free(thread);
-	return (0);
+	return (free(death), free(philos), 0);
 }
-
