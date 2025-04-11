@@ -34,9 +34,7 @@ SUPPRESSION_FILE =	"{\n\
 					...\n\
 					obj:/usr/bin/*\n\
 					}"
-					{
-						
-					}
+
 
 OTHER_SOURCE = -L./libft -l:libft.a -L./printf -l:libftprintf.a
 
@@ -83,6 +81,11 @@ rebonus: fclean bonus
 supp: rem_supp
 	touch supp.supp
 	echo $(SUPPRESSION_FILE) >> supp.supp
+cla:
+	valgrind --trace-children=yes --track-fds=yes \
+	--gen-suppressions=all --track-origins=yes \
+	--errors-for-leak-kinds=all  --leak-check=full \
+	--show-leak-kinds=all  ./pipex main.c ls "wc -l" output
 
 rem_supp:
 	rm -f supp.supp

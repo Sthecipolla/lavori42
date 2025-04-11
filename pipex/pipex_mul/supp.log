@@ -1,0 +1,41 @@
+==1230778== Memcheck, a memory error detector
+==1230778== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1230778== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1230778== Command: /usr/bin/wc -l
+==1230778== Parent PID: 1230747
+==1230778===1==1230778== 
+==12==1230747== 
+==1230747== FILE DESCRIPTORS: 6 open at exit.
+==1230747== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==1230747==    <inherited from parent>
+==1230747== 
+==1230747== Open file descriptor 43: /nfs/homes/lhima/.config/Code/logs/20250404T133941/ptyhost.log
+==1230747==    <inherited from parent>
+==1230747== 
+==1230747== Open file descriptor 3: /nfs/homes/lhima/Desktop/lavori42/pipex/pipex_mul/supp.log
+==1230747==    <inherited from parent>
+==1230747== 
+==1230747== Open file descriptor 2: /dev/pts/1
+==1230747==    <inherited from parent>
+==1230747== 
+==1230747== Open file descriptor 1: /dev/pts/1
+==1230747==    <inherited from parent>
+==1230747== 
+==1230747== Open file descriptor 0:
+==1230747==    at 0x4974AEB: dup2 (syscall-template.S:78)
+==1230747==    by 0x401434: parent (pipex_bonus.c:76)
+==1230747==    by 0x40175D: main (main_bonus.c:85)
+==1230747== 
+==1230747== 
+==1230747== HEAP SUMMARY:
+==1230747==     in use at exit: 0 bytes in 0 blocks
+==1230747==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==1230747== 
+==1230747== All heap blocks were freed -- no leaks are possible
+==1230747== 
+==1230747== For lists of detected and suppressed errors, rerun with: -s
+==1230747== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+f leaked memory
+==1230761== 
+==1230761== For lists of detected and suppressed errors, rerun with: -s
+==1230761== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

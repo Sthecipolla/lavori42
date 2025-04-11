@@ -22,7 +22,7 @@ $(NAME): $(SRC)
 	@$(CC) $(SRC) $(CFLAGS) $(MINILBX) -o so_long
 
 $(MINILB):
-	wget https://cdn.intra.42.fr/document/document/26192/minilibx-linux.tgz
+	wget https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
 	tar -xvf minilibx-linux.tgz
 	make -C minilibx-linux
 	rm -f minilibx-linux.tgz

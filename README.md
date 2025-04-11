@@ -22,6 +22,11 @@ git commit -m "Removed deleted files"
 git push
 
 The git add -u command stages only modified and deleted files for commit, but not new (untracked) files.
+
+per pushare da un branch ad un'altro branch cercare sintax poi perche non cio voglia di scrivere
+git push origin siul:siul_test_e_corr
+
+
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 altri comandi futuri per situazioni specifiche:
 
