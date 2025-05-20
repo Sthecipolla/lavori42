@@ -6,7 +6,7 @@
 /*   By: lhima <lhima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:04:12 by lhima             #+#    #+#             */
-/*   Updated: 2025/03/18 15:58:26 by lhima            ###   ########.fr       */
+/*   Updated: 2025/04/23 16:44:07 by lhima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,22 +108,22 @@ char	*get_next_line(int fd)
 	return (str);
 }
 
-/* int main()
+int main()
 {
 	int fd;
 	char *f = "not null";
 	int x = 1;
 	fd = open("prova.txt", O_RDONLY, 777);
 
-	if (f == NULL)
+	while (f != NULL)
 	{
-		f = get_next_line(fd);
+		f = get_next_line(1);
 		if (f != NULL)
 			printf("linea %d%s%s", x++, ": ", f);
 		if (f != NULL)
 			free(f);
 	}
-	else
+	/* else
 	{
 		while (f != NULL)
 		{
@@ -140,5 +140,5 @@ printf("linea lunga %ld numero %d%s%s", ft_strlen(f), x++, ": ", f);
 		close(fd);
 		printf("%c", '\n');
 	}
-	return (0);
-} */
+	return (0); */
+}
