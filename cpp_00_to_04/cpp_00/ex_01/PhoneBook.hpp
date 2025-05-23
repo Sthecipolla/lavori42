@@ -42,6 +42,6 @@ class PhoneBook
 		PhoneBook(std::time_t time);
 		void	AddUser(std::string LastName, std::string FirstName,\
 			std::string NickName, std::string Number, std::string secret);
-		void	SearchUser(void);
+		void	SearchUser(int i);
 		void	Exit(void);
 };

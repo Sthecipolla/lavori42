@@ -34,7 +34,7 @@ void	PhoneBook:: AddUser(std::string LastName, std::string FirstName,\
 	book[pos].SetDarkestSecret(secret);
 }
 
-void	PhoneBook:: SearchUser(void/* std::string name, std::string number */)
+void	PhoneBook:: SearchUser(int i)
 {
 	std::cout <<"index     |first name|last name |nickname" << std:: endl;
 	int			i = 0;
@@ -75,6 +75,33 @@ void	PhoneBook:: SearchUser(void/* std::string name, std::string number */)
 			std::cout << str << "|" << std::endl;
 		}
 		i++;
+	}
+	std::cin >> str;
+	i = std::stoi(str);
+	if(i < 0 || i > 10)
+		return ;
+	str = book[i].GetFirstName();
+	if (str.length() > 10) {
+			str.resize(10);
+		str[9] = '.';
+	} else {
+		str.resize(10, ' ');
+	}
+	std::cout << str << "|";
+	str = book[i].GetLastName();
+	if (str.length() > 10) {
+		str.resize(10);
+		str[9] = '.';
+	} else {
+		str.resize(10, ' ');
+	}
+	std::cout << str << "|";
+	str = book[i].GetNickname();
+	if (str.length() > 10) {
+		str.resize(10);
+		str[9] = '.';
+	} else {
+		str.resize(10, ' ');
 	}
 }
 
