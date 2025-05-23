@@ -6,14 +6,16 @@ STD = -std=c++98
 
 INCLUDES = -I ./
 
-SOURCES= PhoneBook.cpp
+SOURCES= PhoneBook.cpp Main.cpp Contact.cpp
 
 all:
 	c++ $(INCLUDES) $(CFLAG) $(STD) $(SOURCES) -o $(NAME)
 
 run: all
-	./megaphone
+	clear
+	./$(NAME)
 	rm -f PhoneBook
+
 
 fclean:
 	rm -f PhoneBook

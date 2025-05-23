@@ -1,6 +1,36 @@
-# include <include.h>
+#include <iostream>
+#include <stdio.h>
+#include <string>
+# include <ctime>
+#include <cstdlib>
 
-class Contact;
+class Contact
+{
+private:
+	std::time_t Time;
+    std::string FirstName;
+    std::string LastName;
+    std::string Nickname;
+    std::string Number;
+    std::string DarkestSecret;
+
+public:
+
+    void SetFirstName(std::string FirstName);
+    void SetLastName(std::string LastName);
+    void SetNickname(std::string Nickname);
+    void SetNumber(std::string Number);
+    void SetDarkestSecret(std::string DarkestSecret);
+	void SetTime(std::time_t Time);
+
+    std::string GetFirstName();
+    std::string GetLastName();
+    std::string GetNickname();
+    std::string GetNumber();
+    std::string GetDarkestSecret();
+	std::time_t GetTime();
+
+};
 
 class PhoneBook
 {
@@ -8,43 +38,10 @@ class PhoneBook
 
 		Contact book[8];
 
-	PhoneBook(std::time_t time)
-	{
-		int i = -1;
-		while(++i < 8)
-			book[i].SetTime(time);
-	}
-
 	public :
-
+		PhoneBook(std::time_t time);
 		void	AddUser(std::string LastName, std::string FirstName,\
-			std::string NickName, std::string Number)
-		{
-			int			i = 0;
-			std::time_t	Time;
-			int			pos;
-
-			Time = book[i].getTime();
-			pos = 0;
-			while(i < 8)
-			{
-				if(book[i].getTime < time)
-				{
-					Time = book[i].getTime;
-					pos = i;
-				}
-				i++;
-			}
-			book[pos].SetFirstName(FirstName);
-			book[pos].SetLastName(LastName);
-			book[pos].SetNickName(NickName);
-			book[pos].SetNumber(Number);
-			book[pos].SetTime(std::time(nullptr));
-		}
-
-		void	SearchUser(std::string name, std::string number)
-		{
-			std::cout << "first name	last name	nickname	number";
-		}
-}
-
+			std::string NickName, std::string Number, std::string secret);
+		void	SearchUser(void);
+		void	Exit(void);
+};
