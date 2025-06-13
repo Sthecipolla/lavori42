@@ -20,4 +20,3 @@ run: all
 fclean:
 	rm -f PhoneBook
 
-.SILENT:

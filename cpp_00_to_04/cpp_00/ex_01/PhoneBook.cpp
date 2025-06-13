@@ -26,6 +26,11 @@ void	PhoneBook:: AddUser(std::string LastName, std::string FirstName,\
 		}
 		i++;
 	}
+	if(book[pos].GetFirstName().compare("") != 0)
+	{
+		std::cout << "no contacts available." << std::endl;
+		return;
+	}
 	book[pos].SetFirstName(FirstName);
 	book[pos].SetLastName(LastName);
 	book[pos].SetNickname(NickName);
@@ -34,19 +39,52 @@ void	PhoneBook:: AddUser(std::string LastName, std::string FirstName,\
 	book[pos].SetDarkestSecret(secret);
 }
 
-void	PhoneBook:: SearchUser(int i)
+
+
+int PhoneBook::select()
 {
-	std::cout <<"index     |first name|last name |nickname" << std:: endl;
+	int i;
+
+	try{
+	std::cin >> i;
+	}catch(std::exception &e){
+		std::cout << "Error invalid value for the index" << std::endl;
+		return (FALSE);
+	}
+	if(i < 0 || i > 10)
+	{
+		std::cout << "Error invalid value for the index" << std::endl;
+		return FALSE;
+	}
+	std::cout << book[i].GetFirstName() << std::endl;
+	std::cout << book[i].GetLastName() << std::endl;
+	std::cout << book[i].GetNickname() << std::endl;
+	std::cout << book[i].GetNumber() << std::endl;
+	std::cout << book[i].GetDarkestSecret() << std::endl;
+	return TRUE;
+}
+
+
+
+void	PhoneBook:: SearchUser(void)
+{
 	int			i = 0;
 	std::time_t	time;
 	int			pos;
 	std::string	str;
 
+	if(book[0].GetNickname().compare("") == 0)
+	{
+		std::cout << "No contacts available." << std::endl;
+		return;
+	}
+	std::cout <<"index     |first name|last name |nickname" << std:: endl;
+
 	time = book[i].GetTime();
 	pos = 0;
 	while(i < 8)
 	{
-		if(book->GetNickname().compare("") != 0)
+		if(book[i].GetNickname().compare("") != 0)
 		{
 			std::cout << i << "         |";
 			str = book[i].GetFirstName();
@@ -76,33 +114,8 @@ void	PhoneBook:: SearchUser(int i)
 		}
 		i++;
 	}
-	std::cin >> str;
-	i = std::stoi(str);
-	if(i < 0 || i > 10)
-		return ;
-	str = book[i].GetFirstName();
-	if (str.length() > 10) {
-			str.resize(10);
-		str[9] = '.';
-	} else {
-		str.resize(10, ' ');
-	}
-	std::cout << str << "|";
-	str = book[i].GetLastName();
-	if (str.length() > 10) {
-		str.resize(10);
-		str[9] = '.';
-	} else {
-		str.resize(10, ' ');
-	}
-	std::cout << str << "|";
-	str = book[i].GetNickname();
-	if (str.length() > 10) {
-		str.resize(10);
-		str[9] = '.';
-	} else {
-		str.resize(10, ' ');
-	}
+	if(select() == FALSE)
+		return;
 }
 
 void	PhoneBook:: Exit(void)

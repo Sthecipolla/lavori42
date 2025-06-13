@@ -4,6 +4,10 @@
 # include <ctime>
 #include <cstdlib>
 
+#define FALSE 0
+
+#define TRUE 1
+
 class Contact
 {
 private:
@@ -37,11 +41,12 @@ class PhoneBook
 	private :
 
 		Contact book[8];
+        int select();
 
 	public :
 		PhoneBook(std::time_t time);
 		void	AddUser(std::string LastName, std::string FirstName,\
 			std::string NickName, std::string Number, std::string secret);
-		void	SearchUser(int i);
+		void	SearchUser();
 		void	Exit(void);
 };

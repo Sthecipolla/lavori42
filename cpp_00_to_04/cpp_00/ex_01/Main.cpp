@@ -15,7 +15,13 @@ int main()
 	{
 		std::cout << "write a command: ADD | SEARCH | EXIT" << std::endl;
 		std::cin >>	str;
+		std::cin.ignore();
 		i = 0;
+		if(str.length() == 0)
+		{
+			std::cout << "Error: command cannot be empty." << std::endl;
+			continue;
+		}
 		while ( str.length() > i)
 		{
 			if(str[i] >='a' && str[i] <= 'z')
@@ -25,15 +31,23 @@ int main()
 		if (str.compare("ADD") == 0)
 		{
 			std::cout << "First name:" << std::endl;
-			std::cin >> FirstName;
+			std::getline(std::cin, FirstName);
 			std::cout << "Last name:" << std::endl;
-			std::cin >> LastName;
+			std::getline(std::cin, LastName);
 			std::cout << "Nickname:" << std::endl;
-			std::cin >> Nickname;
+			std::getline(std::cin, Nickname);
 			std::cout << "Number:" << std::endl;
-			std::cin >> Number;
+			std::getline(std::cin, Number);
 			std::cout << "Darkest secret:" << std::endl;
-			std::cin >> DarkestSecret;
+			std::getline(std::cin, DarkestSecret);
+			if (FirstName.empty() || LastName.empty() || Nickname.empty() || \
+				Number.empty() || DarkestSecret.empty() || FirstName.find_first_not_of(' ') == '\0'\
+				|| LastName.find_first_not_of(' ') == '\0' || Nickname.find_first_not_of(' ') == '\0'\
+				|| Number.find_first_not_of(' ') == '\0' || DarkestSecret.find_first_not_of(' ') == '\0')
+			{
+				std::cout << "Error: all fields must be filled." << std::endl;
+				continue;
+			}
 			PhoBook.AddUser(LastName, FirstName, Nickname, Number, DarkestSecret);
 		}
 		else if (str.compare("SEARCH") == 0)
