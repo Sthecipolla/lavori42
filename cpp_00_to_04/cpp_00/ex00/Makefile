@@ -8,14 +8,21 @@ INCLUDES = -I ./
 
 SOURCES= megaphone.cpp
 
-all:
+all:$(NAME)
+
+$(NAME):
 	c++ $(INCLUDES) $(CFLAG) $(STD) $(SOURCES) -o $(NAME)
+	
 
 run: all
 	./megaphone
 	rm -f megaphone
 
-fclean:
+clear:
+
+fclean: clear
 	rm -f megaphone
 
-.SILENT:
+re: fclean all
+
+# .SILENT:

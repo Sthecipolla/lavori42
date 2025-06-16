@@ -8,7 +8,9 @@ INCLUDES = -I ./
 
 SOURCES= Account.cpp tests.cpp
 
-all:
+all:$(NAME)
+
+$(NAME):
 	c++ $(INCLUDES) $(STD) $(SOURCES) -o $(NAME)
 
 run: all
@@ -16,6 +18,8 @@ run: all
 	./$(NAME)
 	rm -f Bank
 
+clear:
 
-fclean:
-	rm -f Bank
+fclean: clear
+
+re: fclean all

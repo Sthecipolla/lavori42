@@ -26,11 +26,7 @@ void	PhoneBook:: AddUser(std::string LastName, std::string FirstName,\
 		}
 		i++;
 	}
-	if(book[pos].GetFirstName().compare("") != 0)
-	{
-		std::cout << "no contacts available." << std::endl;
-		return;
-	}
+
 	book[pos].SetFirstName(FirstName);
 	book[pos].SetLastName(LastName);
 	book[pos].SetNickname(NickName);
@@ -43,19 +39,21 @@ void	PhoneBook:: AddUser(std::string LastName, std::string FirstName,\
 
 int PhoneBook::select()
 {
+	std::string input;
 	int i;
 
-	try{
-	std::cin >> i;
-	}catch(std::exception &e){
-		std::cout << "Error invalid value for the index" << std::endl;
-		return (FALSE);
-	}
-	if(i < 0 || i > 10)
+    std::cout << "Enter the index of the contact: ";
+    std::getline(std::cin, input);
+    i = std::atoi(input.c_str());
+	i--;
+
+	if(i < 0 || i > 7)
 	{
 		std::cout << "Error invalid value for the index" << std::endl;
 		return FALSE;
 	}
+	if(book[i].GetFirstName().empty() == TRUE)
+		return FALSE;
 	std::cout << book[i].GetFirstName() << std::endl;
 	std::cout << book[i].GetLastName() << std::endl;
 	std::cout << book[i].GetNickname() << std::endl;
@@ -78,7 +76,7 @@ void	PhoneBook:: SearchUser(void)
 		std::cout << "No contacts available." << std::endl;
 		return;
 	}
-	std::cout <<"index     |first name|last name |nickname" << std:: endl;
+	std::cout <<"index     |first name|last name |nickname  |" << std:: endl;
 
 	time = book[i].GetTime();
 	pos = 0;
@@ -86,7 +84,7 @@ void	PhoneBook:: SearchUser(void)
 	{
 		if(book[i].GetNickname().compare("") != 0)
 		{
-			std::cout << i << "         |";
+			std::cout << i + 1 << "         |";
 			str = book[i].GetFirstName();
 			if (str.length() > 10) {
    				 str.resize(10);
@@ -114,8 +112,7 @@ void	PhoneBook:: SearchUser(void)
 		}
 		i++;
 	}
-	if(select() == FALSE)
-		return;
+	select();
 }
 
 void	PhoneBook:: Exit(void)

@@ -14,8 +14,7 @@ int main()
 	while(1)
 	{
 		std::cout << "write a command: ADD | SEARCH | EXIT" << std::endl;
-		std::cin >>	str;
-		std::cin.ignore();
+		std::getline(std::cin, str);
 		i = 0;
 		if(str.length() == 0)
 		{
@@ -40,10 +39,15 @@ int main()
 			std::getline(std::cin, Number);
 			std::cout << "Darkest secret:" << std::endl;
 			std::getline(std::cin, DarkestSecret);
-			if (FirstName.empty() || LastName.empty() || Nickname.empty() || \
-				Number.empty() || DarkestSecret.empty() || FirstName.find_first_not_of(' ') == '\0'\
-				|| LastName.find_first_not_of(' ') == '\0' || Nickname.find_first_not_of(' ') == '\0'\
-				|| Number.find_first_not_of(' ') == '\0' || DarkestSecret.find_first_not_of(' ') == '\0')
+			if (FirstName.empty() \
+				|| LastName.empty() \
+				|| Nickname.empty() \
+				|| Number.empty() || DarkestSecret.empty()\
+				|| FirstName.find_first_not_of(' ') == std::string::npos\
+				|| LastName.find_first_not_of(' ') == std::string::npos \
+				|| Nickname.find_first_not_of(' ') == std::string::npos\
+				|| Number.find_first_not_of(' ') == std::string::npos \
+				|| DarkestSecret.find_first_not_of(' ') == std::string::npos)
 			{
 				std::cout << "Error: all fields must be filled." << std::endl;
 				continue;
