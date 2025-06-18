@@ -4,7 +4,7 @@ CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = Zombie.cpp randomChump.cpp newZombie.cpp main.cpp
+SRC = Zombie.cpp zombieHorde.cpp main.cpp
 
 all: $(NAME)
 

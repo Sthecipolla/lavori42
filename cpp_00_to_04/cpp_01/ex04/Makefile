@@ -1,15 +1,17 @@
-NAME = Zombie
+NAME = file
 
 CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = Zombie.cpp randomChump.cpp newZombie.cpp main.cpp
+COM = c++
+
+SRC = main.cpp
 
 all: $(NAME)
 
 $(NAME):
-	c++ $(CFLAG) $(STD) $(SRC) -o $(NAME)
+	$(COM) $(CFLAG) $(STD) $(SRC) -o $(NAME)
 
 clean:
 
