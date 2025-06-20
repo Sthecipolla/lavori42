@@ -18,3 +18,6 @@ Weapon HumanB::getWeapon()
 {
 	return (*this->weapon);
 }
+HumanB::~HumanB()
+{
+}
