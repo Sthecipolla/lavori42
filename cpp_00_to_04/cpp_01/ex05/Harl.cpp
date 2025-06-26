@@ -49,10 +49,8 @@ void Harl::complain(std::string level)
 
 Harl::Harl()
 {
-	
 }
 
 Harl::~Harl()
 {
-	
 }
