@@ -35,7 +35,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string &target)
 {
-	target.
+	target
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
