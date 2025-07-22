@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror -pthread -g
 SRC = main.c check.c atol.c print_men.c fill_philo.c forks.c death.c \
 		thread.c time.c lonely_boy.c
 
-ARG = 1 180 60 60 5
+ARG = 5 1200 200 200 7
 
 OBJ = $(SRC:%.c=%.o)
 

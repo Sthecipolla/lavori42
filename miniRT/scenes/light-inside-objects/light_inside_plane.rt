@@ -1,0 +1,9 @@
+#	Camera and lights
+A 	0.2										255,255,255
+C	0,0,0	0,0,1					50
+L	2,0,29							0.7		255,255,255
+
+#	Objects
+pl	10,0,30	0,0,1							255,50,50
+
+#	Moving the light forward one time puts it inside the plane

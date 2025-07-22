@@ -55,7 +55,7 @@ void	*do_something(void *t)
 		pthread_mutex_unlock(&philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
 		ft_print(philo, "is sleeping", philo->start_working);
-		usleep((philo->sleep * 1000) + 100);
+		usleep((philo->sleep * 1000) + 500);
 		ft_print(philo, "is thinking", philo->start_working);
 	}
 	return (NULL);

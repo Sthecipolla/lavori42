@@ -1,0 +1,9 @@
+#	Camera and lights
+A 	0.2								255,255,255
+C	0,0,0		0,0,1		90
+L	0,0,5					0.7		255,255,255
+
+#	Objects
+sp	0,0,0					12		64,126,250
+
+#	Moving the light forward one time puts it inside the sphere
