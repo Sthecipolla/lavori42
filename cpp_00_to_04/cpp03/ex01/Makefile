@@ -1,10 +1,10 @@
-NAME = ClapTrap
+NAME = ScavTrap
 
 CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = ClapTrap.cpp main.cpp
+SRC = ScavTrap.cpp ClapTrap.cpp main.cpp
 
 all: $(NAME)
 

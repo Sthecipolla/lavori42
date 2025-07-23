@@ -1,12 +1,12 @@
-#ifndef CLAPTRAP_H
-#define CLAPTRAP_H
+#ifndef DIAMONDTRAP_H
+#define DIAMONDTRAP_H
 
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 #include <cfloat>
 
-class ClapTrap
+class DiamondTrap
 {
 private:
 	std::string Name;
@@ -16,11 +16,11 @@ private:
 
 public:
 	/*--------------------------------*/
-//	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(ClapTrap const &value);
-	ClapTrap &operator=(ClapTrap const &value);
-	~ClapTrap();
+//	DiamondTrap();
+	DiamondTrap(std::string name);
+	DiamondTrap(DiamondTrap const &value);
+	DiamondTrap &operator=(DiamondTrap const &value);
+	~DiamondTrap();
 
 	/*--------------------------------*/
 	void attack(const std::string &target);

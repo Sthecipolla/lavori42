@@ -1,31 +1,28 @@
-#ifndef CLAPTRAP_H
-#define CLAPTRAP_H
+#ifndef FRAGTRAP_H
+#define FRAGTRAP_H
 
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 #include <cfloat>
 
-class ClapTrap
-{
-private:
-	std::string Name;
-	int hitPoint;
-	int energyPoints;
-	int attackDamage;
+#include "ScavTrap.hpp"
 
+class FragTrap : public ScavTrap
+{
 public:
 	/*--------------------------------*/
-//	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(ClapTrap const &value);
-	ClapTrap &operator=(ClapTrap const &value);
-	~ClapTrap();
+//	FragTrap();
+	FragTrap(std::string name);
+	FragTrap(FragTrap const &value);
+	FragTrap &operator=(FragTrap const &value);
+	~FragTrap();
 
 	/*--------------------------------*/
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+	void highFivesGuys(void);
 	/*--------------------------------*/
 
 };

@@ -1,12 +1,12 @@
-#ifndef CLAPTRAP_H
-#define CLAPTRAP_H
+#ifndef SCAVTRAP_H
+#define SCAVTRAP_H
 
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 #include <cfloat>
 
-class ClapTrap
+class ScavTrap
 {
 private:
 	std::string Name;
@@ -17,15 +17,16 @@ private:
 public:
 	/*--------------------------------*/
 //	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(ClapTrap const &value);
-	ClapTrap &operator=(ClapTrap const &value);
-	~ClapTrap();
+	ScavTrap(std::string name);
+	ScavTrap(ScavTrap const &value);
+	ScavTrap &operator=(ScavTrap const &value);
+	~ScavTrap();
 
 	/*--------------------------------*/
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+	void guardGate();
 	/*--------------------------------*/
 
 };
