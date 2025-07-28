@@ -1,10 +1,10 @@
-NAME = DiamondTrap
+NAME = animal
 
 CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = ScavTrap.cpp ClapTrap.cpp main.cpp FragTrap.cpp DiamondTrap.cpp
+SRC = animal.cpp dog.cpp main.cpp cat.cpp
 
 all: $(NAME)
 
@@ -21,4 +21,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
