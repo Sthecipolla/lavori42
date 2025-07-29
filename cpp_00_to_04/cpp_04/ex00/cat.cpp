@@ -30,7 +30,7 @@ void Cat::makeSound() const
 Cat::~Cat()
 {
 	std::cout << "Destructor" << std::endl;
-
+	// delete this;
 }
 
 std::string Cat::getType() const

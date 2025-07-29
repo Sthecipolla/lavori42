@@ -1,5 +1,5 @@
-#ifndef WRONGCAT_H
-#define WRONGCAT_H
+#ifndef WRONGANIMAL_H
+#define WRONGANIMAL_H
 
 #include "share.hpp"
 

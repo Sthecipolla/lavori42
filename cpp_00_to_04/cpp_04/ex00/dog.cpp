@@ -5,13 +5,13 @@ Dog::Dog()
 	this->type = "dog";
 }
 
-Dog::Dog(Dog const &value)
+Dog::Dog(Dog const &value) : Animal(value)
 {
 	std::cout << "copy constructor" << std::endl;
 	this->type = value.type;
 }
 
-Dog& Dog::operator=(Dog const &value)
+Dog &Dog::operator=(Dog const &value)
 {
 	std::cout << "Copy assignment operator called " << std::endl;
 	if (this != &value)
@@ -29,7 +29,7 @@ void Dog::makeSound() const
 Dog::~Dog()
 {
 	std::cout << "Destructor" << std::endl;
-
+	// delete this;
 }
 
 std::string Dog::getType() const

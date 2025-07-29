@@ -30,3 +30,8 @@ std::string Animal::getType() const
 {
 	return this->type;
 }
+
+Animal::~Animal()
+{
+	std::cout << "Animal destructor called" << std::endl;
+}
