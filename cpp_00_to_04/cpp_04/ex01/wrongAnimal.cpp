@@ -23,11 +23,6 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other)
     this->type = other.type;
 }
 
-WrongAnimal::~WrongAnimal()
-{
-    std::cout << "wrongAnimal Copy destructor called " << std::endl;
-}
-
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
     std::cout << "wrongAnimal Copy assignment operator called " << std::endl;
@@ -36,4 +31,9 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
         this->type = other.type;
     }
     return *this;
+}
+
+WrongAnimal::~WrongAnimal()
+{
+    std::cout << "wrongAnimal Copy destructor called " << std::endl;
 }

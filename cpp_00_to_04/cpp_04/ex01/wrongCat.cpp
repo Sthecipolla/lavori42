@@ -33,5 +33,5 @@ std::string WrongCat::getType() const
 
 WrongCat::~WrongCat()
 {
-    std::cout << "wrongCat destructor" << std::endl;
+    std::cout << "destructor" << std::endl;
 }

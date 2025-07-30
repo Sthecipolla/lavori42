@@ -2,7 +2,7 @@
 
 Animal::Animal()
 {
-	std::cout << "Animal constructor" << std::endl;
+	std::cout << "Animal custroctor called " << std::endl;
 	this->type = "none";
 }
 
@@ -24,7 +24,7 @@ Animal& Animal::operator=(const Animal &value)
 
 void Animal::makeSound() const
 {
-	std::cout << "Animal soud" << std::endl;
+	std::cout << "no soud" << std::endl;
 }
 
 std::string Animal::getType() const
