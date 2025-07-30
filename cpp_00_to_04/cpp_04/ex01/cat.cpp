@@ -5,12 +5,14 @@ Cat::Cat()
 {
 	std::cout << "Cat constructor" << std::endl;
 	this->type = "cat";
+	this->brain = new Brain;
 }
 
 Cat::Cat(Cat const &value) : Animal(value)
 {
 	std::cout << "Cat copy constructor" << std::endl;
 	this->type = value.type;
+	this->brain = value.brain;
 }
 
 Cat& Cat::operator=(Cat const &value)
@@ -19,6 +21,7 @@ Cat& Cat::operator=(Cat const &value)
 	if (this != &value)
 	{
 		this->type = value.type;
+		this->brain = value.brain;
 	}
 	return *this;
 }
@@ -31,7 +34,7 @@ void Cat::makeSound() const
 Cat::~Cat()
 {
 	std::cout << "Cat Destructor" << std::endl;
-	// delete this;
+	delete this->brain;
 }
 
 std::string Cat::getType() const

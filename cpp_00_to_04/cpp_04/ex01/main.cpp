@@ -6,19 +6,31 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const int arraySize = 4;
+	Animal *animals[arraySize];
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	for (int i = 0; i < arraySize; i++)
+	{
+		if (i < arraySize / 2)
+		{
+			animals[i] = new Dog();
+		}
+		else
+		{
+			animals[i] = new Cat();
+		}
+	}
 
-	delete meta;
-	delete i;
-	delete j;
+	for (int i = 0; i < arraySize; i++)
+	{
+		std::cout << "Animal " << i << " type: " << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
+	}
+
+	for (int i = 0; i < arraySize; i++)
+	{
+		delete animals[i];
+	}
 
 	return 0;
 }
