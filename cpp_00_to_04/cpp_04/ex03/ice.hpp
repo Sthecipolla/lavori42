@@ -4,7 +4,13 @@
 class Ice
 {
     
-
-}
+    public:
+        Ice clone()
+        Ice();
+        Ice(const Ice& other);
+        Ice& operator=(const Ice& other);
+        ~Ice();
+    
+};
 
 #endif
