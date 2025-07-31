@@ -1,13 +1,15 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "i_character.hpp"
+#include "iCharacter.hpp"
 
 class Character : ICharacter
 {
     private:
         std::string name;
         AMateria *materia[4];
+        std::vector<AMateria *> left;
+
     public:
         Character(std::string name);
         Character(const Character& other);

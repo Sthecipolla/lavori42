@@ -20,9 +20,14 @@ Character::Character(const Character& other)
     
     i = 0;
     std::cout << "Character copy constructor called" << std::endl;
+    this->name = other.name;
     while(i < 4)
     {
-        this->materia[i] = other.materia[i];
+        unequip(i);
+        if (other.materia[i] != NULL)
+            this->materia[i] = other.materia[i]->clone(); // Deep copy using clone()
+        else
+            this->materia[i] = NULL;
         i++;
     }
 }
@@ -33,10 +38,16 @@ Character& Character::operator=(const Character& other)
 
     i = 0;
     std::cout << "Character copy assignment operator called" << std::endl;
-    if (this != &other) {
+    this->name = other.name;
+    if (this != &other)
+    {
+        unequip(i);
         while(i < 4)
         {
-            this->materia[i] = other.materia[i];
+            if (other.materia[i] != NULL)
+                this->materia[i] = other.materia[i]->clone(); // Deep copy using clone()
+            else
+                this->materia[i] = NULL;
             i++;
         }
     }
@@ -45,7 +56,21 @@ Character& Character::operator=(const Character& other)
 
 Character::~Character()
 {
+    int i;
+
+    i = 0;
     std::cout << "Character destructor called" << std::endl;
+    while (i < 4)
+    {
+        delete this->materia[i];
+        i++;
+    }
+    i = 0;
+    while (i < this->left.size())
+    {
+        delete this->left[i];
+        i++;
+    }
 }
 
 std::string const Character::&getName() const
@@ -68,10 +93,16 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-    this->materia[i] = NULL;
+    if (idx < 0 || idx > || this->materia[idx] == NULL)
+        return;
+    this->left.resize(this->left.size() + 1);
+    this->left.push_back(this->materia[idx]);
+    this->materia[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter &target) : AMateria::use(target)
 {
-    
+    if (materia[i] == NULL)
+        return;
+    std::cout << "use" << this->materia[i] << std::endl;
 }

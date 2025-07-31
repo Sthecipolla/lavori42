@@ -1,7 +1,7 @@
 #ifndef CURE_H
 #define CURE_H
 
-#include "a_material.hpp"
+#include "aMateria.hpp"
 
 class Cure : AMateria
 {
