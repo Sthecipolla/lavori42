@@ -5,11 +5,13 @@
 
 class MateriaSource : IMateriaSource 
 {
-public:
-    MateriaSource();
-    MateriaSource(const MateriaSource& other);
-    MateriaSource& operator=(const MateriaSource& other);
-    ~MateriaSource();
+    private :
+        AMateria *store[4];
+    public:
+        MateriaSource();
+        MateriaSource(const MateriaSource& other);
+        MateriaSource& operator=(const MateriaSource& other);
+        ~MateriaSource();
 
 };
 

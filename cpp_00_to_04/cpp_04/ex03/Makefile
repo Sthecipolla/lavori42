@@ -4,7 +4,7 @@ CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp 
 
 all: $(NAME)
 
