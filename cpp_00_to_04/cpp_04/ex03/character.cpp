@@ -1,4 +1,5 @@
 #include "character.hpp"
+#include "aMateria.hpp"
 
 Character::Character(std::string name)
 {
@@ -25,7 +26,7 @@ Character::Character(const Character& other)
     {
         unequip(i);
         if (other.materia[i] != NULL)
-            this->materia[i] = other.materia[i]->clone(); // Deep copy using clone()
+            this->materia[i] = other.materia[i]->clone();
         else
             this->materia[i] = NULL;
         i++;
@@ -38,14 +39,14 @@ Character& Character::operator=(const Character& other)
 
     i = 0;
     std::cout << "Character copy assignment operator called" << std::endl;
-    this->name = other.name;
     if (this != &other)
     {
-        unequip(i);
+        this->name = other.name;
         while(i < 4)
         {
+            unequip(i);    
             if (other.materia[i] != NULL)
-                this->materia[i] = other.materia[i]->clone(); // Deep copy using clone()
+                this->materia[i] = other.materia[i]->clone();
             else
                 this->materia[i] = NULL;
             i++;
@@ -62,18 +63,17 @@ Character::~Character()
     std::cout << "Character destructor called" << std::endl;
     while (i < 4)
     {
-        delete this->materia[i];
+        if(this->materia[i] != NULL)
+            delete this->materia[i];
         i++;
     }
-    i = 0;
-    while (i < this->left.size())
+    for (size_t j = 0; j < this->left.size(); j++)
     {
-        delete this->left[i];
-        i++;
+        delete this->left[j];
     }
 }
 
-std::string const Character::&getName() const
+std::string &const Character::getName() const
 {
     return this->name;
 }
@@ -82,27 +82,32 @@ void Character::equip(AMateria* m)
 {
     int i;
 
+    if (m == NULL)
+        return;
+        
     i = 0;
     while(i < 4)
     {
         if( this->materia[i] == NULL)
+        {
             this->materia[i] = m;
+            return;
+        }
         i++;
     }
 }
 
 void Character::unequip(int idx)
 {
-    if (idx < 0 || idx > || this->materia[idx] == NULL)
+    if (idx < 0 || idx >= 4 || this->materia[idx] == NULL)
         return;
-    this->left.resize(this->left.size() + 1);
     this->left.push_back(this->materia[idx]);
     this->materia[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter &target) : AMateria::use(target)
+void Character::use(int idx, ICharacter& target)
 {
-    if (materia[i] == NULL)
+    if (idx < 0 || idx >= 4 || this->materia[idx] == NULL)
         return;
-    std::cout << "use" << this->materia[i] << std::endl;
+    this->materia[idx]->use(target);
 }

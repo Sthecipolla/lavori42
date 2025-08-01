@@ -1,22 +1,35 @@
 
 #include "cure.hpp"
 
-cure::cure() {
-    std::cout << "cure constructor called" << std::endl;
+Cure::Cure() : AMateria("cure")
+{
+    std::cout << "Cure constructor called" << std::endl;
+    this->type = "cure";
 }
 
-cure::cure(const cure& other) {
-    std::cout << "cure copy constructor called" << std::endl;
+Cure::Cure(const Cure& other) : AMateria(other)
+{
+    std::cout << "Cure copy constructor called" << std::endl;
+    this->type = other.type;
 }
 
-cure& cure::operator=(const cure& other) {
-    std::cout << "cure copy assignment operator called" << std::endl;
+Cure& Cure::operator=(const Cure& other) {
+    std::cout << "Cure copy assignment operator called" << std::endl;
     if (this != &other) {
-        // copy assignment implementation
+        this->type = other.type;
     }
     return *this;
 }
 
-cure::~cure() {
-    std::cout << "cure destructor called" << std::endl;
+Cure::~Cure() {
+    std::cout << "Cure destructor called" << std::endl;
+}
+
+Cure Cure::clone()
+{
+    return (new Cure(*this));
+}
+void Cure::use(ICharacter& target)
+{
+    std::cout << "heals " << target.getName() << "'s wounds " << std::endl;
 }

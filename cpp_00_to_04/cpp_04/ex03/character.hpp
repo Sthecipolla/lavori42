@@ -2,8 +2,9 @@
 #define CHARACTER_H
 
 #include "iCharacter.hpp"
+#include <vector>
 
-class Character : ICharacter
+class Character : public ICharacter
 {
     private:
         std::string name;
@@ -20,8 +21,6 @@ class Character : ICharacter
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
-
-
 };
 
 #endif
