@@ -35,5 +35,6 @@ std::string const & AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {
+    (void)target;
     std::cout << "no right object" << std::endl;
 }

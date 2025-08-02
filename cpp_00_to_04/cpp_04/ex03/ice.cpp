@@ -28,7 +28,7 @@ Ice::~Ice()
     std::cout << "Ice destructor called" << std::endl;
 }
 
-Ice* Ice::clone() const
+AMateria* Ice::clone() const
 {
     return (new Ice( *this));
 }

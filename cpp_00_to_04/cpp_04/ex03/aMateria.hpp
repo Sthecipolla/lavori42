@@ -21,7 +21,7 @@ class AMateria
 
         AMateria(const AMateria &other);
         AMateria &operator=(const AMateria &other);
-        ~AMateria();
+        virtual ~AMateria();
 };
 
 

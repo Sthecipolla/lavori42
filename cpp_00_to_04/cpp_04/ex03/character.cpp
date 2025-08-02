@@ -24,7 +24,6 @@ Character::Character(const Character& other)
     this->name = other.name;
     while(i < 4)
     {
-        unequip(i);
         if (other.materia[i] != NULL)
             this->materia[i] = other.materia[i]->clone();
         else
@@ -44,7 +43,8 @@ Character& Character::operator=(const Character& other)
         this->name = other.name;
         while(i < 4)
         {
-            unequip(i);    
+            if (this->materia[i] != NULL)
+                delete this->materia[i];
             if (other.materia[i] != NULL)
                 this->materia[i] = other.materia[i]->clone();
             else
@@ -73,7 +73,7 @@ Character::~Character()
     }
 }
 
-std::string &const Character::getName() const
+std::string const& Character::getName() const
 {
     return this->name;
 }
