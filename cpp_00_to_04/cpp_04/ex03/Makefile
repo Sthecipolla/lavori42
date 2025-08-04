@@ -1,4 +1,4 @@
-NAME = animal
+NAME = littleGame
 
 CFLAG = -Wall -Wextra -Werror
 
