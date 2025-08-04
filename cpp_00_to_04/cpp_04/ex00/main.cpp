@@ -1,6 +1,6 @@
-#include "cat.hpp"
-#include "dog.hpp"
-#include "animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Animal.hpp"
 
 
 

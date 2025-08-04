@@ -1,16 +1,15 @@
-#include "cat.hpp"
+#include "Cat.hpp"
 
 
 Cat::Cat()
 {
 	std::cout << "Cat constructor" << std::endl;
-	this->type = "cat";
+	this->type = "Cat";
 }
 
 Cat::Cat(Cat const &value) : Animal(value)
 {
 	std::cout << "Cat copy constructor" << std::endl;
-	this->type = value.type;
 }
 
 Cat& Cat::operator=(Cat const &value)
@@ -34,7 +33,4 @@ Cat::~Cat()
 	// delete this;
 }
 
-std::string Cat::getType() const
-{
-	return (this->type);
-}
+

@@ -1,15 +1,14 @@
-#include "dog.hpp"
+#include "Dog.hpp"
 
 Dog::Dog()
 {
 	std::cout << "Dog constructor" << std::endl;
-	this->type = "dog";
+	this->type = "Dog";
 }
 
 Dog::Dog(Dog const &value) : Animal(value)
 {
 	std::cout << "Dog copy constructor" << std::endl;
-	this->type = value.type;
 }
 
 Dog &Dog::operator=(Dog const &value)
@@ -33,7 +32,3 @@ Dog::~Dog()
 	// delete this;
 }
 
-std::string Dog::getType() const
-{
-	return (this->type);
-}

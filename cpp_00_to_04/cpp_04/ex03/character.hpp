@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "iCharacter.hpp"
+#include "ICharacter.hpp"
 #include <vector>
 
 class Character : public ICharacter

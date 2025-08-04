@@ -1,6 +1,6 @@
-#include "cat.hpp"
-#include "dog.hpp"
-#include "animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Animal.hpp"
 
 
 
@@ -32,5 +32,10 @@ int main()
 		delete animals[i];
 	}
 
+	std::cout << "------------------------------------ " << std::endl;
+
+	Dog		dog;
+	Animal *an = new Dog(dog);
+	delete an;
 	return 0;
 }

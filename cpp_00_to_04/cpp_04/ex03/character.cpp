@@ -1,5 +1,5 @@
-#include "character.hpp"
-#include "aMateria.hpp"
+#include "Character.hpp"
+#include "AMateria.hpp"
 
 Character::Character(std::string name)
 {

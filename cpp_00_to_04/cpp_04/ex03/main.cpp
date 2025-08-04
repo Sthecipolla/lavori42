@@ -1,7 +1,7 @@
-#include "materiaSource.hpp"
-#include "character.hpp"
-#include "ice.hpp"
-#include "cure.hpp" 
+#include "MateriaSource.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp" 
 
 
 /* int main()

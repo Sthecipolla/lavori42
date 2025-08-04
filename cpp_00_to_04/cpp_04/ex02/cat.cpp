@@ -1,27 +1,32 @@
-#include "cat.hpp"
+#include "Cat.hpp"
 
 
-Cat::Cat()
+Cat::Cat() : Animal()
 {
 	std::cout << "Cat constructor" << std::endl;
-	this->type = "cat";
+	this->type = "Cat";
 	this->brain = new Brain;
 }
 
 Cat::Cat(Cat const &value) : Animal(value)
 {
 	std::cout << "Cat copy constructor" << std::endl;
-	this->type = value.type;
-	this->brain = value.brain;
+	this->brain = new Brain(*value.brain);
 }
 
-Cat& Cat::operator=(Cat const &value)
+Cat& Cat::operator=(Cat const &value) 
 {
+	int i;
+
+	i = 0;
 	std::cout << "Cat Copy assignment operator called " << std::endl;
 	if (this != &value)
 	{
-		this->type = value.type;
-		this->brain = value.brain;
+		while(i < 100)
+		{
+			this->brain[i] = value.brain[i];
+			i ++;
+		}
 	}
 	return *this;
 }
@@ -35,9 +40,4 @@ Cat::~Cat()
 {
 	std::cout << "Cat Destructor" << std::endl;
 	delete this->brain;
-}
-
-std::string Cat::getType() const
-{
-	return (this->type);
 }

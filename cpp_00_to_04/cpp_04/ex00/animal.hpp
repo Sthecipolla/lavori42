@@ -1,7 +1,7 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
 
-#include "share.hpp"
+#include "Share.hpp"
 
 class Animal 
 {

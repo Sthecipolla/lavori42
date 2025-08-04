@@ -1,7 +1,7 @@
 #ifndef AMATERIAL_H
 #define AMATERIAL_H
 
-#include "iCharacter.hpp"
+#include "ICharacter.hpp"
 
 #include <iostream>
 #include <iomanip>

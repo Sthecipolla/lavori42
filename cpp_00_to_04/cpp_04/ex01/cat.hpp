@@ -1,8 +1,8 @@
 #ifndef CAT_H
 #define CAT_H
 
-#include "animal.hpp"
-#include "brain.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -15,7 +15,6 @@ public:
 	Cat &operator=(Cat const &value);
 	~Cat();
 	void makeSound() const;
-	std::string getType() const;
 };
 
 #endif

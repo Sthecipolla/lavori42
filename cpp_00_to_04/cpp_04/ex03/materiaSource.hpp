@@ -1,7 +1,7 @@
 #ifndef MATERIASOURCE_H
 #define MATERIASOURCE_H
 
-#include "iMateriaSource.hpp"
+#include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource 
 {

@@ -1,7 +1,7 @@
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
 
-#include "share.hpp"
+#include "Share.hpp"
 
 class Brain
 {
@@ -9,7 +9,7 @@ class Brain
         std::string ideas[100];
     public :
         Brain();
-		Brain(const Brain &value);
+		Brain(Brain const &value);
         Brain &operator=(const Brain &value);
         ~Brain();
 };

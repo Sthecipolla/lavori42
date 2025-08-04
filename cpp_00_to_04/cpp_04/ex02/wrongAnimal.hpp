@@ -1,7 +1,7 @@
 #ifndef WRONGANIMAL_H
 #define WRONGANIMAL_H
 
-#include "share.hpp"
+#include "Share.hpp"
 
 class WrongAnimal
 {
@@ -12,8 +12,8 @@ class WrongAnimal
         WrongAnimal &operator=(const WrongAnimal &other);
 		WrongAnimal();
 		~WrongAnimal();
-		virtual void makeSound() const;
-		virtual std::string getType() const;
+		void makeSound() const;
+		std::string getType() const;
 	
 };
 

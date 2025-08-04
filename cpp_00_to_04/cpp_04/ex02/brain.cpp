@@ -1,11 +1,11 @@
-#include "brain.hpp"
+#include "Brain.hpp"
 
 Brain::Brain()
 {
     std::cout << "Brain constructor" << std::endl;
 }
 
-Brain::Brain(const Brain &value)
+Brain::Brain(Brain const &value)
 {
     int i;
 

@@ -4,7 +4,7 @@ CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = animal.cpp dog.cpp main.cpp cat.cpp
+SRC = Animal.cpp Dog.cpp main.cpp Cat.cpp
 
 all: $(NAME)
 

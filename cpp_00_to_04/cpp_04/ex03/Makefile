@@ -4,7 +4,7 @@ CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = main.cpp ice.cpp cure.cpp aMateria.cpp character.cpp materiaSource.cpp
+SRC = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp MateriaSource.cpp
 
 all: $(NAME)
 

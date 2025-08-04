@@ -1,7 +1,7 @@
 #ifndef CAT_H
 #define CAT_H
 
-#include "animal.hpp"
+#include "Animal.hpp"
 
 
 
@@ -13,7 +13,6 @@ class Cat : public Animal
 		Cat &operator=(Cat const &value);
 		~Cat();
 		void makeSound() const;
-		std::string getType() const;
 
 
 };

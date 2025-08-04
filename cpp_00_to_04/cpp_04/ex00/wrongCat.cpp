@@ -1,4 +1,4 @@
-#include "wrongCat.hpp"
+#include "WrongCat.hpp"
 
 WrongCat::WrongCat()
 {
@@ -8,7 +8,6 @@ WrongCat::WrongCat()
 WrongCat::WrongCat(WrongCat const &value) : WrongAnimal(value)
 {
     std::cout << "wrongCat Copy constructor called " << std::endl;
-    this->type = value.type;
 }
 
 WrongCat &WrongCat::operator=(WrongCat const &value)

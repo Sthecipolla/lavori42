@@ -1,8 +1,8 @@
 #ifndef DOG_H
 #define DOG_H
 
-#include "animal.hpp"
-#include "brain.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -15,7 +15,6 @@ public:
 	Dog &operator=(Dog const &value);
 	~Dog();
 	void makeSound() const;
-	std::string getType() const;
 };
 
 #endif

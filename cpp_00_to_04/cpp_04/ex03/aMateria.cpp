@@ -1,4 +1,4 @@
-#include "aMateria.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
 AMateria::AMateria(std::string const & type)

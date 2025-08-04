@@ -1,6 +1,6 @@
-#include "cat.hpp"
-#include "dog.hpp"
-#include "animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Animal.hpp"
 
 
 
@@ -9,7 +9,6 @@ int main()
 	const int arraySize = 4;
 	Animal *animals[arraySize];
 
-	//Animal *anim = new Animal();
 	for (int i = 0; i < arraySize; i++)
 	{
 		if (i < arraySize / 2)
@@ -32,6 +31,12 @@ int main()
 	{
 		delete animals[i];
 	}
+	//Animal *animals = new Animial();
 
+	std::cout << "------------------------------------ " << std::endl;
+
+	Dog		dog;
+	Animal *an = new Dog(dog);
+	delete an;
 	return 0;
 }
