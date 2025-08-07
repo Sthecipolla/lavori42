@@ -29,6 +29,5 @@ void Dog::makeSound() const
 Dog::~Dog()
 {
 	std::cout << "Dog Destructor" << std::endl;
-	// delete this;
 }
 
