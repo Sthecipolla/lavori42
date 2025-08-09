@@ -9,7 +9,7 @@ class Character : public ICharacter
     private:
         std::string name;
         AMateria *materia[4];
-        std::vector<AMateria *> left;
+        //std::vector<AMateria *> left;
 
     public:
         Character(std::string name);

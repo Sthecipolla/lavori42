@@ -121,6 +121,8 @@ void test_unequip_functionality() {
     delete target;
     delete src;
     std::cout << std::endl;
+    delete ice;
+    //delete cure;
 }
 
 void test_inventory_limits() {

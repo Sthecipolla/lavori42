@@ -1,10 +1,10 @@
-NAME = littleGame
+NAME = Bureaucrat
 
-CFLAG = -Wall -Wextra -Werror -g
+CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp MateriaSource.cpp
+SRC = main.cpp Bureaucrat.cpp
 
 all: $(NAME)
 

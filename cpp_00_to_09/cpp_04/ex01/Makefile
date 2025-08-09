@@ -4,7 +4,7 @@ CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = Animal.cpp Dog.cpp main.cpp Cat.cpp Brain.cpp
+SRC = Animal.cpp Dog.cpp main.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
 all: $(NAME)
 
@@ -21,3 +21,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: re fclean clean all run

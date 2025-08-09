@@ -67,10 +67,7 @@ Character::~Character()
             delete this->materia[i];
         i++;
     }
-    for (size_t j = 0; j < this->left.size(); j++)
-    {
-        delete this->left[j];
-    }
+   
 }
 
 std::string const& Character::getName() const
@@ -101,7 +98,6 @@ void Character::unequip(int idx)
 {
     if (idx < 0 || idx >= 4 || this->materia[idx] == NULL)
         return;
-    this->left.push_back(this->materia[idx]);
     this->materia[idx] = NULL;
 }
 
