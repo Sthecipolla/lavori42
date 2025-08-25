@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <string>
 
 class Bureaucrat
 {
@@ -6,7 +7,7 @@ class Bureaucrat
         std::string const name;
         int grade;
     public:
-        Bureaucrat();
+        Bureaucrat(std::string name, int grade);
         Bureaucrat(Bureaucrat& other);
         Bureaucrat& operator=(Bureaucrat& other);
         ~Bureaucrat();

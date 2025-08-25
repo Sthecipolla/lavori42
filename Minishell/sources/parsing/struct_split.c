@@ -86,6 +86,7 @@ static void	*special_operator(char **app, char *str, int *i, t_cmd_line **arg)
 
 char	*char_men(char *str, int *i, char **app, t_shell *t)
 {
+	char *se;
 	if (str[*i] == '\'' || str[*i] == '\"')
 	{
 		*app = ft_safe_strjoin(*app, quotes(str, i, t, str[*i]), 3);
@@ -97,7 +98,14 @@ char	*char_men(char *str, int *i, char **app, t_shell *t)
 	}
 	if (str[*i] != '\'' && str[*i] != '\"' && str[*i] != '\0'
 		&& ft_isspace(str[*i]) == FALSE)
-		*app = ft_safe_strjoin(ft_strdup(*app), normal_str(t, str, i, *app), 3);
+		{
+			// aggiunto delle linee perche nella versione piu recente 
+			//di ubuntu leakava perche é una merda ubuntu
+			// la variabile se che fa lo strdup
+			se = ft_strdup(*app);
+			*app = ft_safe_strjoin(se, normal_str(t, str, i, *app), 3);
+		}
+		
 	if (*app == NULL)
 		return (NULL);
 	if (str[*i] == '<' || str[*i] == '>' || str[*i] == '|')
