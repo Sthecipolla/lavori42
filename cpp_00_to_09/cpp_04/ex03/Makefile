@@ -8,7 +8,7 @@ SRC = main.cpp Ice.cpp Cure.cpp AMateria.cpp Character.cpp MateriaSource.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	c++ $(CFLAG) $(STD) $(SRC) -o $(NAME)
 
 run: re

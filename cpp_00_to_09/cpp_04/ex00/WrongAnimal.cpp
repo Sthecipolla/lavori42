@@ -25,7 +25,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other)
 
 WrongAnimal::~WrongAnimal()
 {
-    std::cout << "wrongAnimal Copy destructor called " << std::endl;
+    std::cout << "wrongAnimal destructor called " << std::endl;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)

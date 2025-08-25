@@ -8,7 +8,7 @@ SRC = Animal.cpp Dog.cpp main.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	c++ $(CFLAG) $(STD) $(SRC) -o $(NAME)
 
 run: re
