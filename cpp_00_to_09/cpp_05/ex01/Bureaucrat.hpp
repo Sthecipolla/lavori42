@@ -4,6 +4,10 @@
 
 #include <unistd.h>
 #include <string>
+#include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -35,6 +39,7 @@ class Bureaucrat
         void decrementGrade();
 		std::string getName() const;
 		int getGrade() const;
+		void signForm(Form *c);
 
 };
     std::ostream& operator<<(std::ostream &os, const Bureaucrat &fxd);

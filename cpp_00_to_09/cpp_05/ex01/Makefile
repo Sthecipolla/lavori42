@@ -1,14 +1,15 @@
 NAME = Bureaucrat
 
-CFLAG = -Wall -Wextra -Werror -g
+CFLAG = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC)
+	clear
 	c++ $(CFLAG) $(STD) $(SRC) -o $(NAME)
 
 run: re

@@ -1,6 +1,5 @@
 
 #include "Bureaucrat.hpp"
-#include <iostream>
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)
 {
@@ -64,4 +63,16 @@ std::string Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
     return (this->grade);
+}
+
+void Bureaucrat::signForm(Form *c)
+{
+	try
+	{
+		c->beSigned(this);
+		std::cout << this->name << " signed " << c->getName() << std::endl;
+	}catch(/* Form::GradeTooLowException */ std::exception &sa)
+	{
+		std::cout<< this->name <<" coulden't sign " << c->getName() << " because: " << sa.what() << std::endl;
+	}
 }

@@ -10,6 +10,11 @@
 
 static volatile sig_atomic_t timeout_flag = 0;
 
+void ret_true()
+{
+   return ; 
+}
+
 void handle_alarm(int sig)
 {
 	(void)sig;
@@ -80,4 +85,8 @@ int sandbox(void (*f)(void), unsigned int timeout, bool verbose)
 		usleep(1000);
 	}
 	return (-1);
+}
+int main()
+{
+	printf("exit status: %d\n ", sandbox(ret_true, 5, true));
 }

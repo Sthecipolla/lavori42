@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <malloc.h> // change this to <stdlib.h>
 #include <ctype.h>
+#include <ctype.h>
+
 
 typedef struct node {
     enum {
@@ -45,7 +47,7 @@ void    unexpected(char c)
 
 int accept(char **s, char c)
 {
-    if (**s == c)
+    if (**s)
     {
         (*s)++;
         return (1);
@@ -64,8 +66,22 @@ int expect(char **s, char c)
 
 node    *parse_expr(char *s)
 {
+	char *app;
+	node  tmp;
+	app = calloc(1, 1);
+	int i = 0;
 
+	while(s[i] != '\0')
+	{
+		if (is_digit(s[i]) == 1)
+		{
 
+		}
+		else if(s[i] == '(')
+		{
+			else if(s[i] == )
+		}
+	}
     if (*s) 
     {
         destroy_tree(ret);

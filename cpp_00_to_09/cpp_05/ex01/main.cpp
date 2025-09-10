@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int main()
@@ -15,16 +16,26 @@ int main()
 		Mariaccio.incrementGrade();
 		Mariaccio.decrementGrade();
 		std::cout << siul << std::endl; 
-		siul.incrementGrade();
-
+		//siul.incrementGrade();
+		Form forms(122, 6, "Love form");
+		siul.signForm(&forms);
+		Mariaccio.signForm(&forms);
 	}
 	catch(Bureaucrat::GradeTooLowException &sa){
 		std::cout << sa.what() << std::endl;
 	}
 	catch(Bureaucrat::GradeTooHighException &c){
 		std::cout << c.what() << std::endl;
+	}
+	catch(Form::GradeTooLowException &a){
+		std::cout << a.what() << std::endl;
+	}
+	catch(Form::GradeTooHighException &v){
+		std::cout << v.what() << std::endl;
+	}
+	catch(std::exception &t)
+	{
+		std::cout << "error" << std::endl;
 	};
-	
 	return (0);
-	
 }
